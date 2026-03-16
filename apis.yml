@@ -1,12 +1,20 @@
+aid: wordpress
 name: WordPress
 description: WordPress is an open-source content management system (CMS) that powers
   a significant portion of websites on the internet. Its extensive plugin and theme
   ecosystem, combined with an intuitive editing interface, makes it accessible for
   building everything from personal blogs to complex enterprise websites.
-url: null
+type: Index
+url: https://developer.wordpress.org/rest-api/
 tags:
-- WordPress
+  - WordPress
+  - CMS
+  - Content Management
 created: '2025'
-modified: '2025'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis: []
 common: []
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
