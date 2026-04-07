@@ -1,15 +1,12 @@
 aid: wordpress
 name: WordPress
-description: WordPress is an open-source content management system (CMS) that powers
-  a significant portion of websites on the internet. Its extensive plugin and theme
-  ecosystem, combined with an intuitive editing interface, makes it accessible for
-  building everything from personal blogs to complex enterprise websites.
+description: WordPress is an open-source content management system (CMS) that powers a significant portion of websites on the internet. Its extensive plugin and theme ecosystem, combined with an intuitive editing interface, makes it accessible for building everything from personal blogs to complex enterprise websites.
 type: Index
 url: https://developer.wordpress.org/rest-api/
 tags:
-  - WordPress
   - CMS
   - Content Management
+  - WordPress
 created: '2025'
 modified: '2026-03-16'
 specificationVersion: '0.19'
