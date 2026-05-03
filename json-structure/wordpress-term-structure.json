@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-term-structure.json",
+  "name": "Term",
+  "description": "A WordPress taxonomy term (category or tag)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "description": "Unique identifier for the term",
+      "example": 1
+    },
+    "count": {
+      "type": "int32",
+      "description": "Number of published posts for the term",
+      "example": 12
+    },
+    "description": {
+      "type": "string",
+      "description": "HTML description of the term",
+      "example": ""
+    },
+    "link": {
+      "type": "string",
+      "description": "URL of the term",
+      "example": "https://example.com/category/uncategorized/"
+    },
+    "name": {
+      "type": "string",
+      "description": "HTML title for the term",
+      "example": "Uncategorized"
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier for the term",
+      "example": "uncategorized"
+    },
+    "taxonomy": {
+      "type": "string",
+      "description": "Type attribution for the term",
+      "example": "category"
+    },
+    "parent": {
+      "type": "int32",
+      "description": "The parent term ID",
+      "example": 0
+    }
+  }
+}

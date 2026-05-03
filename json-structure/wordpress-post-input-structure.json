@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-post-input-structure.json",
+  "name": "PostInput",
+  "description": "Input schema for creating or updating a post",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title for the post",
+      "example": "My New Post"
+    },
+    "content": {
+      "type": "string",
+      "description": "The content for the post",
+      "example": "This is the post content."
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the post",
+      "enum": [
+        "publish",
+        "future",
+        "draft",
+        "pending",
+        "private"
+      ],
+      "example": "publish"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "The excerpt for the post",
+      "example": "A short excerpt"
+    },
+    "author": {
+      "type": "int32",
+      "description": "The ID for the author of the post",
+      "example": 1
+    },
+    "featured_media": {
+      "type": "int32",
+      "description": "The ID of the featured media for the post",
+      "example": 45
+    },
+    "categories": {
+      "type": "array",
+      "description": "The terms assigned in the category taxonomy",
+      "items": {
+        "type": "int32"
+      },
+      "example": [
+        1
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "description": "The terms assigned in the post_tag taxonomy",
+      "items": {
+        "type": "int32"
+      },
+      "example": [
+        12
+      ]
+    }
+  }
+}

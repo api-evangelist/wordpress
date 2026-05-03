@@ -1,0 +1,397 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "WordPress Content Management"
+  description: "Unified capability for content editors and publishers managing WordPress sites. Combines post, page, media, comment, category, and tag management into a single workflow for content teams and editorial automation."
+  tags:
+    - CMS
+    - Content Management
+    - Editorial
+    - WordPress
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      WORDPRESS_APP_PASSWORD: WORDPRESS_APP_PASSWORD
+      WORDPRESS_USERNAME: WORDPRESS_USERNAME
+
+capability:
+  consumes:
+    - import: wordpress-rest
+      location: ./shared/rest-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: wordpress-content-api
+      description: "Unified REST API for WordPress content management workflows."
+      resources:
+        - path: /v1/posts
+          name: posts
+          description: "WordPress posts"
+          operations:
+            - method: GET
+              name: list-posts
+              description: "List posts with search, filter, and pagination"
+              call: "wordpress-rest.list-posts"
+              with:
+                page: "rest.page"
+                per_page: "rest.per_page"
+                search: "rest.search"
+                status: "rest.status"
+                categories: "rest.categories"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-post
+              description: "Create a new post"
+              call: "wordpress-rest.create-post"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/posts/{id}
+          name: post-by-id
+          description: "Single post operations"
+          operations:
+            - method: GET
+              name: get-post
+              description: "Get a post by ID"
+              call: "wordpress-rest.get-post"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-post
+              description: "Update a post"
+              call: "wordpress-rest.update-post"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-post
+              description: "Delete a post"
+              call: "wordpress-rest.delete-post"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/pages
+          name: pages
+          description: "WordPress pages"
+          operations:
+            - method: GET
+              name: list-pages
+              description: "List pages"
+              call: "wordpress-rest.list-pages"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-page
+              description: "Create a new page"
+              call: "wordpress-rest.create-page"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/pages/{id}
+          name: page-by-id
+          description: "Single page operations"
+          operations:
+            - method: GET
+              name: get-page
+              description: "Get a page by ID"
+              call: "wordpress-rest.get-post"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/media
+          name: media
+          description: "WordPress media library"
+          operations:
+            - method: GET
+              name: list-media
+              description: "List media items"
+              call: "wordpress-rest.list-media"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/comments
+          name: comments
+          description: "WordPress comments"
+          operations:
+            - method: GET
+              name: list-comments
+              description: "List comments"
+              call: "wordpress-rest.list-comments"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-comment
+              description: "Create a comment"
+              call: "wordpress-rest.create-comment"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/categories
+          name: categories
+          description: "WordPress categories"
+          operations:
+            - method: GET
+              name: list-categories
+              description: "List categories"
+              call: "wordpress-rest.list-categories"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-category
+              description: "Create a category"
+              call: "wordpress-rest.create-category"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/tags
+          name: tags
+          description: "WordPress tags"
+          operations:
+            - method: GET
+              name: list-tags
+              description: "List tags"
+              call: "wordpress-rest.list-tags"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/search
+          name: search
+          description: "WordPress content search"
+          operations:
+            - method: GET
+              name: search-content
+              description: "Search across all content types"
+              call: "wordpress-rest.search-content"
+              with:
+                search: "rest.search"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: wordpress-content-mcp
+      transport: http
+      description: "MCP server for AI-assisted WordPress content management and publishing workflows."
+      tools:
+        - name: list-posts
+          description: "List WordPress posts with optional search and category filtering"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.list-posts"
+          with:
+            search: "tools.search"
+            categories: "tools.categories"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-post
+          description: "Get a single WordPress post by ID"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.get-post"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-post
+          description: "Create a new WordPress post with title, content, status, categories, and tags"
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "wordpress-rest.create-post"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-post
+          description: "Update an existing WordPress post"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wordpress-rest.update-post"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-post
+          description: "Delete a WordPress post (moves to trash)"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "wordpress-rest.delete-post"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-pages
+          description: "List WordPress pages"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.list-pages"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-page
+          description: "Create a new WordPress page"
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "wordpress-rest.create-page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-media
+          description: "List WordPress media library items with optional type filtering"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.list-media"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-comments
+          description: "List WordPress comments, optionally filtered by post"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.list-comments"
+          with:
+            post: "tools.post_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-comment
+          description: "Create a new comment on a WordPress post"
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "wordpress-rest.create-comment"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-categories
+          description: "List WordPress post categories"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.list-categories"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-category
+          description: "Create a new WordPress category"
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "wordpress-rest.create-category"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-tags
+          description: "List WordPress post tags"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.list-tags"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-content
+          description: "Search across all WordPress content types including posts, pages, and terms"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wordpress-rest.search-content"
+          with:
+            search: "tools.query"
+            type: "tools.type"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+  - type: rest
+    port: 8081
+    namespace: wordpress-site-admin-api
+    description: "REST API for WordPress site administration."
+    resources:
+      - path: /v1/settings
+        name: settings
+        description: "WordPress site settings"
+        operations:
+          - method: GET
+            name: get-settings
+            description: "Get site settings"
+            call: "wordpress-rest.get-settings"
+            outputParameters:
+              - type: object
+                mapping: "$."
+      - path: /v1/themes
+        name: themes
+        description: "WordPress themes"
+        operations:
+          - method: GET
+            name: list-themes
+            description: "List installed themes"
+            call: "wordpress-rest.list-themes"
+            outputParameters:
+              - type: object
+                mapping: "$."
+      - path: /v1/plugins
+        name: plugins
+        description: "WordPress plugins"
+        operations:
+          - method: GET
+            name: list-plugins
+            description: "List installed plugins"
+            call: "wordpress-rest.list-plugins"
+            outputParameters:
+              - type: object
+                mapping: "$."
+      - path: /v1/users
+        name: users
+        description: "WordPress users"
+        operations:
+          - method: GET
+            name: list-users
+            description: "List users"
+            call: "wordpress-rest.list-users"
+            outputParameters:
+              - type: object
+                mapping: "$."
+      - path: /v1/block-types
+        name: block-types
+        description: "Registered block types"
+        operations:
+          - method: GET
+            name: list-block-types
+            description: "List registered block types"
+            call: "wordpress-rest.list-block-types"
+            outputParameters:
+              - type: object
+                mapping: "$."

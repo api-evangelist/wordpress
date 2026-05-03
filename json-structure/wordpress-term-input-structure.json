@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-term-input-structure.json",
+  "name": "TermInput",
+  "description": "Input schema for creating or updating a term",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "HTML title for the term",
+      "example": "Technology"
+    },
+    "description": {
+      "type": "string",
+      "description": "HTML description of the term",
+      "example": "Technology-related posts"
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier",
+      "example": "technology"
+    },
+    "parent": {
+      "type": "int32",
+      "description": "The parent term ID",
+      "example": 0
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

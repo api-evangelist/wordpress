@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-post-type-schema.json",
+  "title": "PostType",
+  "description": "A WordPress registered post type",
+  "type": "object",
+  "properties": {
+    "capabilities": {
+      "type": "object",
+      "description": "All capabilities used by the post type",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "A human-readable description of the post type",
+      "example": ""
+    },
+    "hierarchical": {
+      "type": "boolean",
+      "description": "Whether or not the post type should have children",
+      "example": false
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the post type, e.g., Posts",
+      "example": "Posts"
+    },
+    "rest_base": {
+      "type": "string",
+      "description": "REST base route for the post type",
+      "example": "posts"
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier for the post type",
+      "example": "post"
+    },
+    "taxonomies": {
+      "type": "array",
+      "description": "All taxonomies associated with the post type",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "category",
+        "post_tag"
+      ]
+    }
+  }
+}

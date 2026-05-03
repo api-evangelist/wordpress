@@ -1,0 +1,318 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "WordPress"
+  description: "Unified vocabulary mapping operational (REST API) and capability (Naftiko) dimensions for the WordPress CMS platform"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: WordPress REST API
+      namespace: wordpress-rest
+      version: v2
+      baseUrl: https://{site}/wp-json
+      status: active
+
+  resources:
+    - name: posts
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: WordPress blog posts and custom post types
+    - name: pages
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: WordPress hierarchical pages
+    - name: media
+      api: wordpress-rest
+      actions: [list, get, upload]
+      description: WordPress media library attachments
+    - name: comments
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: WordPress post comments
+    - name: users
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: WordPress registered users
+    - name: categories
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: Post categories taxonomy terms
+    - name: tags
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: Post tags taxonomy terms
+    - name: settings
+      api: wordpress-rest
+      actions: [get, update]
+      description: WordPress site configuration settings
+    - name: themes
+      api: wordpress-rest
+      actions: [list, get]
+      description: Installed WordPress themes
+    - name: plugins
+      api: wordpress-rest
+      actions: [list, get, install, activate, deactivate]
+      description: Installed WordPress plugins
+    - name: blocks
+      api: wordpress-rest
+      actions: [list, get, create, update, delete]
+      description: WordPress reusable block patterns
+    - name: block-types
+      api: wordpress-rest
+      actions: [list, get]
+      description: Registered Gutenberg block type definitions
+    - name: post-types
+      api: wordpress-rest
+      actions: [list, get]
+      description: Registered WordPress post type definitions
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a paginated collection of resources
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a single resource by ID
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create a new resource
+    - name: update
+      httpMethod: PUT
+      pattern: write
+      description: Update an existing resource
+    - name: delete
+      httpMethod: DELETE
+      pattern: destructive
+      description: Delete a resource (usually moves to trash)
+    - name: search
+      httpMethod: GET
+      pattern: query
+      description: Search across content types
+
+  schemas:
+    core:
+      - name: Post
+        description: WordPress post object with title, content, excerpt, status, and taxonomy assignments
+      - name: Page
+        description: WordPress hierarchical page object
+      - name: MediaItem
+        description: WordPress media attachment with source URL, MIME type, and size metadata
+      - name: Comment
+        description: WordPress comment with author info, content, and moderation status
+      - name: User
+        description: WordPress user with roles, avatar, and profile data
+      - name: Term
+        description: WordPress taxonomy term (category or tag)
+    editorial:
+      - name: RenderedContent
+        description: Dual-representation content object with raw and HTML-rendered versions
+      - name: Settings
+        description: Site-level configuration including timezone, date format, and default values
+    administration:
+      - name: Theme
+        description: WordPress theme metadata with version and status
+      - name: Plugin
+        description: WordPress plugin metadata with activation status
+      - name: PostType
+        description: Registered post type definition with capabilities and REST base
+      - name: BlockType
+        description: Gutenberg block type definition with attributes and editor categories
+
+  parameters:
+    pagination:
+      - name: page
+        type: integer
+        description: Current page number
+      - name: per_page
+        type: integer
+        description: Number of items per page (max 100)
+    filters:
+      - name: search
+        type: string
+        description: Free-text search string
+      - name: status
+        type: string
+        description: Filter by content status (publish, draft, etc.)
+      - name: author
+        type: array
+        description: Filter by author user IDs
+      - name: categories
+        type: array
+        description: Filter by category term IDs
+      - name: tags
+        type: array
+        description: Filter by tag term IDs
+    sorting:
+      - name: orderby
+        type: string
+        description: Field to sort results by
+      - name: order
+        type: string
+        description: Sort direction (asc or desc)
+
+  enums:
+    post-statuses:
+      - publish
+      - future
+      - draft
+      - pending
+      - private
+      - trash
+    post-formats:
+      - standard
+      - aside
+      - chat
+      - gallery
+      - link
+      - image
+      - quote
+      - status
+      - video
+      - audio
+    comment-statuses:
+      - approved
+      - unapproved
+      - hold
+      - spam
+      - trash
+    media-types:
+      - image
+      - video
+      - text
+      - application
+      - audio
+    content-contexts:
+      - view
+      - embed
+      - edit
+
+  authentication:
+    schemes:
+      - name: Application Passwords
+        type: basic
+        description: Per-application passwords generated in WordPress user profile (WordPress 5.6+)
+      - name: Cookie Authentication
+        type: apiKey
+        description: WordPress login cookies with WP-Nonce for CSRF protection
+      - name: OAuth Plugins
+        type: oauth2
+        description: Third-party OAuth 1.0a or JWT plugin-based authentication
+
+capability:
+  workflows:
+    - name: Content Management
+      file: capabilities/content-management.yaml
+      description: Unified workflow for content editors managing posts, pages, media, comments, categories, and tags
+      apisUsed: [WordPress REST API]
+      toolCount: 14
+      personas: [Content Editor, Publisher, Blogger]
+      domains: [Content, Publishing, Editorial]
+
+  personas:
+    - id: content-editor
+      name: Content Editor
+      description: Manages WordPress content including writing, editing, and publishing posts and pages
+      workflows: [Content Management]
+    - id: publisher
+      name: Publisher
+      description: Oversees content publishing workflow, approves drafts, and manages site taxonomy
+      workflows: [Content Management]
+    - id: site-administrator
+      name: Site Administrator
+      description: Manages WordPress installation including plugins, themes, users, and site settings
+      workflows: [Content Management]
+    - id: developer
+      name: Developer
+      description: Builds integrations and automations using the WordPress REST API
+      workflows: [Content Management]
+
+  domains:
+    - name: Content
+      description: Posts, pages, and media management
+      resources: [posts, pages, media]
+    - name: Editorial
+      description: Content taxonomy and comment management
+      resources: [comments, categories, tags]
+    - name: Administration
+      description: Site settings, themes, plugins, and user management
+      resources: [settings, themes, plugins, users]
+    - name: Block Editor
+      description: Gutenberg blocks and block types for the visual editor
+      resources: [blocks, block-types]
+
+  namespaces:
+    consumed:
+      - name: wordpress-rest
+        baseUri: https://{site}/wp-json
+        description: WordPress REST API
+    exposed-rest:
+      - name: wordpress-content-api
+        port: 8080
+      - name: wordpress-site-admin-api
+        port: 8081
+      - name: wordpress-rest-api
+        port: 8100
+    exposed-mcp:
+      - name: wordpress-content-mcp
+        port: 9080
+      - name: wordpress-mcp
+        port: 9100
+
+  binds:
+    - name: WORDPRESS_USERNAME
+      description: WordPress username for API authentication
+      workflows: [Content Management]
+    - name: WORDPRESS_APP_PASSWORD
+      description: WordPress Application Password for the user
+      workflows: [Content Management]
+
+crossReference:
+  - resource: posts
+    operations: [listPosts, getPost, createPost, updatePost, deletePost]
+    workflows: [Content Management]
+    personas: [Content Editor, Publisher]
+  - resource: pages
+    operations: [listPages, getPage, createPage]
+    workflows: [Content Management]
+    personas: [Content Editor, Publisher]
+  - resource: media
+    operations: [listMedia, getMedia]
+    workflows: [Content Management]
+    personas: [Content Editor]
+  - resource: comments
+    operations: [listComments, createComment]
+    workflows: [Content Management]
+    personas: [Content Editor, Publisher]
+  - resource: categories
+    operations: [listCategories, createCategory]
+    workflows: [Content Management]
+    personas: [Publisher]
+  - resource: tags
+    operations: [listTags]
+    workflows: [Content Management]
+    personas: [Content Editor, Publisher]
+  - resource: search
+    operations: [searchContent]
+    workflows: [Content Management]
+    personas: [Content Editor, Publisher, Developer]
+  - resource: settings
+    operations: [getSettings]
+    workflows: [Content Management]
+    personas: [Site Administrator]
+  - resource: themes
+    operations: [listThemes]
+    workflows: [Content Management]
+    personas: [Site Administrator]
+  - resource: plugins
+    operations: [listPlugins]
+    workflows: [Content Management]
+    personas: [Site Administrator]
+  - resource: block-types
+    operations: [listBlockTypes]
+    workflows: [Content Management]
+    personas: [Developer]

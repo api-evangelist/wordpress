@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-block-schema.json",
+  "title": "Block",
+  "description": "A WordPress reusable block",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the block",
+      "example": 15
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the block",
+      "example": "publish"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of post",
+      "example": "wp_block"
+    },
+    "title": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "content": {
+      "$ref": "#/components/schemas/RenderedContent"
+    }
+  }
+}

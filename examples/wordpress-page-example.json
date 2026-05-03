@@ -1,0 +1,22 @@
+{
+  "id": 2,
+  "date": "2026-01-01T00:00:00",
+  "status": "publish",
+  "type": "page",
+  "link": "https://example.com/about/",
+  "title": {
+    "rendered": "Sample Title"
+  },
+  "content": {
+    "rendered": "<p>Sample content.</p>",
+    "protected": false
+  },
+  "excerpt": {
+    "rendered": "<p>Sample excerpt.</p>",
+    "protected": false
+  },
+  "author": 1,
+  "parent": 0,
+  "menu_order": 0,
+  "template": ""
+}

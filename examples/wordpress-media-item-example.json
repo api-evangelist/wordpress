@@ -1,0 +1,18 @@
+{
+  "id": 45,
+  "date": "2026-03-10T09:00:00",
+  "status": "inherit",
+  "type": "attachment",
+  "mime_type": "image/jpeg",
+  "title": {
+    "rendered": "Sample Title"
+  },
+  "alt_text": "A sample photo",
+  "source_url": "https://example.com/wp-content/uploads/2026/03/photo.jpg",
+  "media_type": "image",
+  "media_details": {
+    "width": 1920,
+    "height": 1080,
+    "file": "2026/03/photo.jpg"
+  }
+}

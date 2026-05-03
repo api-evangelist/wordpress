@@ -1,0 +1,8 @@
+{
+  "name": "core/paragraph",
+  "title": "Paragraph",
+  "description": "Start with the basic building block of narrative.",
+  "category": "text",
+  "attributes": {},
+  "is_dynamic": false
+}

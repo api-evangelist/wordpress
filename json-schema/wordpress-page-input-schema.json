@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-page-input-schema.json",
+  "title": "PageInput",
+  "description": "Input schema for creating or updating a page",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title for the page",
+      "example": "New Page"
+    },
+    "content": {
+      "type": "string",
+      "description": "The content for the page",
+      "example": "Page content goes here."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "publish",
+        "draft",
+        "private"
+      ],
+      "example": "publish"
+    },
+    "parent": {
+      "type": "integer",
+      "description": "The ID for the parent page",
+      "example": 0
+    },
+    "menu_order": {
+      "type": "integer",
+      "description": "The order of the page",
+      "example": 0
+    }
+  }
+}

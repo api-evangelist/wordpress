@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-theme-schema.json",
+  "title": "Theme",
+  "description": "A WordPress theme object",
+  "type": "object",
+  "properties": {
+    "stylesheet": {
+      "type": "string",
+      "description": "The theme's stylesheet",
+      "example": "twentytwentyfive"
+    },
+    "template": {
+      "type": "string",
+      "description": "The theme's template",
+      "example": "twentytwentyfive"
+    },
+    "name": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "description": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the theme",
+      "example": "active"
+    },
+    "version": {
+      "type": "string",
+      "description": "The theme's current version",
+      "example": "1.3"
+    },
+    "author": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "author_uri": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "theme_uri": {
+      "$ref": "#/components/schemas/RenderedContent"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "stylesheet": "twentytwentyfive",
+  "template": "twentytwentyfive",
+  "name": "Sample Name",
+  "description": "A sample description for this item.",
+  "status": "active",
+  "version": "1.3",
+  "author": 1,
+  "author_uri": "sample-author_uri",
+  "theme_uri": "sample-theme_uri"
+}

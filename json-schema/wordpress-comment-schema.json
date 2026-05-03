@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-comment-schema.json",
+  "title": "Comment",
+  "description": "A WordPress comment object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the comment",
+      "example": 1
+    },
+    "post": {
+      "type": "integer",
+      "description": "The ID of the associated post",
+      "example": 123
+    },
+    "parent": {
+      "type": "integer",
+      "description": "The ID for the parent of the comment",
+      "example": 0
+    },
+    "author": {
+      "type": "integer",
+      "description": "The ID of the user object, if author was a user",
+      "example": 0
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Display name for the comment author",
+      "example": "John Doe"
+    },
+    "author_email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address for the comment author",
+      "example": "john@example.com"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the comment was published",
+      "example": "2026-04-16T08:00:00"
+    },
+    "content": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "status": {
+      "type": "string",
+      "description": "State of the comment",
+      "enum": [
+        "approved",
+        "unapproved",
+        "hold",
+        "spam",
+        "trash"
+      ],
+      "example": "approved"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the comment",
+      "example": "comment"
+    }
+  }
+}

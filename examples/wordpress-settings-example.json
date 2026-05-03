@@ -1,0 +1,14 @@
+{
+  "title": "My WordPress Site",
+  "description": "Just another WordPress site",
+  "url": "https://example.com",
+  "email": "admin@example.com",
+  "timezone": "America/New_York",
+  "date_format": "F j, Y",
+  "time_format": "g:i a",
+  "start_of_week": 1,
+  "language": "en_US",
+  "use_smilies": true,
+  "default_category": 1,
+  "posts_per_page": 10
+}

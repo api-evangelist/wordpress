@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-settings-structure.json",
+  "name": "Settings",
+  "description": "WordPress site settings",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Site title",
+      "example": "My WordPress Site"
+    },
+    "description": {
+      "type": "string",
+      "description": "Site tagline",
+      "example": "Just another WordPress site"
+    },
+    "url": {
+      "type": "string",
+      "description": "Site URL",
+      "example": "https://example.com"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Administrator email address",
+      "example": "admin@example.com"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Site timezone string",
+      "example": "America/New_York"
+    },
+    "date_format": {
+      "type": "string",
+      "description": "Date format for the site",
+      "example": "F j, Y"
+    },
+    "time_format": {
+      "type": "string",
+      "description": "Time format for the site",
+      "example": "g:i a"
+    },
+    "start_of_week": {
+      "type": "int32",
+      "description": "Day of the week that the week should start on (0=Sunday, 1=Monday)",
+      "example": 1
+    },
+    "language": {
+      "type": "string",
+      "description": "WordPress locale code",
+      "example": "en_US"
+    },
+    "use_smilies": {
+      "type": "boolean",
+      "description": "Whether smilies should automatically be converted to graphics",
+      "example": true
+    },
+    "default_category": {
+      "type": "int32",
+      "description": "Default post category ID",
+      "example": 1
+    },
+    "posts_per_page": {
+      "type": "int32",
+      "description": "Number of posts per page",
+      "example": 10
+    }
+  }
+}

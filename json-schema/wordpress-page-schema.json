@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-page-schema.json",
+  "title": "Page",
+  "description": "A WordPress page object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the page",
+      "example": 2
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date the page was published in site timezone",
+      "example": "2026-01-01T00:00:00"
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the page",
+      "enum": [
+        "publish",
+        "future",
+        "draft",
+        "pending",
+        "private",
+        "trash"
+      ],
+      "example": "publish"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of post",
+      "example": "page"
+    },
+    "link": {
+      "type": "string",
+      "description": "URL to the page",
+      "example": "https://example.com/about/"
+    },
+    "title": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "content": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "excerpt": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "author": {
+      "type": "integer",
+      "description": "The ID for the author of the page",
+      "example": 1
+    },
+    "parent": {
+      "type": "integer",
+      "description": "The ID for the parent of the page",
+      "example": 0
+    },
+    "menu_order": {
+      "type": "integer",
+      "description": "The order of the page in relation to other pages",
+      "example": 0
+    },
+    "template": {
+      "type": "string",
+      "description": "The theme file used to display the page",
+      "example": ""
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "name": "admin",
+  "slug": "admin",
+  "description": "Site administrator",
+  "link": "https://example.com/author/admin/",
+  "avatar_urls": {
+    "96": "https://secure.gravatar.com/avatar/abc123?s=96"
+  },
+  "roles": [
+    "administrator"
+  ]
+}

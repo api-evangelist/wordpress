@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-rendered-content-schema.json",
+  "title": "RenderedContent",
+  "description": "A rendered content object containing raw and rendered versions",
+  "type": "object",
+  "properties": {
+    "rendered": {
+      "type": "string",
+      "description": "The HTML rendered version of the content",
+      "example": "<p>Hello World</p>"
+    },
+    "protected": {
+      "type": "boolean",
+      "description": "Whether the content is protected with a password",
+      "example": false
+    }
+  }
+}

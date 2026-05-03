@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-user-structure.json",
+  "name": "User",
+  "description": "A WordPress user object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "description": "Unique identifier for the user",
+      "example": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the user",
+      "example": "admin"
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier for the user",
+      "example": "admin"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the user",
+      "example": "Site administrator"
+    },
+    "link": {
+      "type": "string",
+      "description": "URL of the user",
+      "example": "https://example.com/author/admin/"
+    },
+    "avatar_urls": {
+      "type": "object",
+      "description": "Avatar URLs for the user keyed by image size",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "96": "https://secure.gravatar.com/avatar/abc123?s=96"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "description": "Roles assigned to the user",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "administrator"
+      ]
+    }
+  }
+}

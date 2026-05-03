@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-comment-input-schema.json",
+  "title": "CommentInput",
+  "description": "Input schema for creating a comment",
+  "type": "object",
+  "properties": {
+    "post": {
+      "type": "integer",
+      "description": "The ID of the associated post",
+      "example": 123
+    },
+    "parent": {
+      "type": "integer",
+      "description": "The ID for the parent of the comment",
+      "example": 0
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Display name for the comment author",
+      "example": "Jane Smith"
+    },
+    "author_email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email for the comment author",
+      "example": "jane@example.com"
+    },
+    "content": {
+      "type": "string",
+      "description": "The content for the comment",
+      "example": "Thanks for sharing!"
+    }
+  },
+  "required": [
+    "post",
+    "content"
+  ]
+}

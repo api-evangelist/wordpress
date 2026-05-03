@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-media-item-structure.json",
+  "name": "MediaItem",
+  "description": "A WordPress media attachment object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "description": "Unique identifier for the media item",
+      "example": 45
+    },
+    "date": {
+      "type": "datetime",
+      "description": "The date the media was uploaded",
+      "example": "2026-03-10T09:00:00"
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the object",
+      "example": "inherit"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of Post for the object",
+      "example": "attachment"
+    },
+    "mime_type": {
+      "type": "string",
+      "description": "The MIME type of the attachment",
+      "example": "image/jpeg"
+    },
+    "title": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "alt_text": {
+      "type": "string",
+      "description": "Alternative text to display when attachment is not displayed",
+      "example": "A sample photo"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "URL to the original attachment file",
+      "example": "https://example.com/wp-content/uploads/2026/03/photo.jpg"
+    },
+    "media_type": {
+      "type": "string",
+      "description": "Attachment type (image, video, audio, etc.)",
+      "enum": [
+        "image",
+        "file"
+      ],
+      "example": "image"
+    },
+    "media_details": {
+      "type": "object",
+      "description": "Details about the media file including sizes",
+      "properties": {
+        "width": {
+          "type": "int32",
+          "example": 1920
+        },
+        "height": {
+          "type": "int32",
+          "example": 1080
+        },
+        "file": {
+          "type": "string",
+          "example": "2026/03/photo.jpg"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "post": 123,
+  "parent": 0,
+  "author": 0,
+  "author_name": "John Doe",
+  "author_email": "john@example.com",
+  "date": "2026-04-16T08:00:00",
+  "content": {
+    "rendered": "<p>Sample content.</p>",
+    "protected": false
+  },
+  "status": "approved",
+  "type": "comment"
+}

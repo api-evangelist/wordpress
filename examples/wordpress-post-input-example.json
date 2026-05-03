@@ -1,0 +1,14 @@
+{
+  "title": "My New Post",
+  "content": "This is the post content.",
+  "status": "publish",
+  "excerpt": "A short excerpt",
+  "author": 1,
+  "featured_media": 45,
+  "categories": [
+    1
+  ],
+  "tags": [
+    12
+  ]
+}

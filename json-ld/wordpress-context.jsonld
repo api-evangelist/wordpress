@@ -1,0 +1,274 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wp": "https://developer.wordpress.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Block": "wp:Block",
+    "BlockType": "wp:BlockType",
+    "Comment": "wp:Comment",
+    "CommentInput": "wp:CommentInput",
+    "MediaItem": "wp:MediaItem",
+    "Page": "wp:Page",
+    "PageInput": "wp:PageInput",
+    "Plugin": "wp:Plugin",
+    "Post": "wp:Post",
+    "PostInput": "wp:PostInput",
+    "PostType": "wp:PostType",
+    "RenderedContent": "wp:RenderedContent",
+    "SearchResult": "wp:SearchResult",
+    "Settings": "wp:Settings",
+    "Term": "wp:Term",
+    "TermInput": "wp:TermInput",
+    "Theme": "wp:Theme",
+    "User": "wp:User",
+    "altText": {
+      "@id": "wp:alt_text",
+      "@type": "xsd:string"
+    },
+    "attributes": {
+      "@id": "wp:attributes",
+      "@type": "@id"
+    },
+    "author": {
+      "@id": "wp:author",
+      "@type": "xsd:integer"
+    },
+    "authorEmail": {
+      "@id": "wp:author_email",
+      "@type": "xsd:string"
+    },
+    "authorName": {
+      "@id": "wp:author_name",
+      "@type": "xsd:string"
+    },
+    "authorUri": {
+      "@id": "wp:author_uri",
+      "@type": "xsd:string"
+    },
+    "avatarUrls": {
+      "@id": "wp:avatar_urls",
+      "@type": "@id"
+    },
+    "capabilities": {
+      "@id": "wp:capabilities",
+      "@type": "@id"
+    },
+    "categories": {
+      "@id": "wp:categories",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "category": {
+      "@id": "wp:category",
+      "@type": "xsd:string"
+    },
+    "commentStatus": {
+      "@id": "wp:comment_status",
+      "@type": "xsd:string"
+    },
+    "content": {
+      "@id": "wp:content",
+      "@type": "xsd:string"
+    },
+    "count": {
+      "@id": "wp:count",
+      "@type": "xsd:integer"
+    },
+    "date": {
+      "@id": "wp:date",
+      "@type": "xsd:dateTime"
+    },
+    "dateFormat": {
+      "@id": "wp:date_format",
+      "@type": "xsd:string"
+    },
+    "dateGmt": {
+      "@id": "wp:date_gmt",
+      "@type": "xsd:dateTime"
+    },
+    "defaultCategory": {
+      "@id": "wp:default_category",
+      "@type": "xsd:integer"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "email": {
+      "@id": "schema:email"
+    },
+    "excerpt": {
+      "@id": "wp:excerpt",
+      "@type": "xsd:string"
+    },
+    "featuredMedia": {
+      "@id": "wp:featured_media",
+      "@type": "xsd:integer"
+    },
+    "format": {
+      "@id": "wp:format",
+      "@type": "xsd:string"
+    },
+    "hierarchical": {
+      "@id": "wp:hierarchical",
+      "@type": "xsd:boolean"
+    },
+    "id": {
+      "@id": "wp:id",
+      "@type": "xsd:integer"
+    },
+    "isDynamic": {
+      "@id": "wp:is_dynamic",
+      "@type": "xsd:boolean"
+    },
+    "language": {
+      "@id": "wp:language",
+      "@type": "xsd:string"
+    },
+    "link": {
+      "@id": "wp:link",
+      "@type": "xsd:string"
+    },
+    "mediaDetails": {
+      "@id": "wp:media_details",
+      "@type": "@id"
+    },
+    "mediaType": {
+      "@id": "wp:media_type",
+      "@type": "xsd:string"
+    },
+    "menuOrder": {
+      "@id": "wp:menu_order",
+      "@type": "xsd:integer"
+    },
+    "mimeType": {
+      "@id": "wp:mime_type",
+      "@type": "xsd:string"
+    },
+    "modified": {
+      "@id": "wp:modified",
+      "@type": "xsd:dateTime"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "parent": {
+      "@id": "wp:parent",
+      "@type": "xsd:integer"
+    },
+    "pingStatus": {
+      "@id": "wp:ping_status",
+      "@type": "xsd:string"
+    },
+    "plugin": {
+      "@id": "wp:plugin",
+      "@type": "xsd:string"
+    },
+    "pluginUri": {
+      "@id": "wp:plugin_uri",
+      "@type": "xsd:string"
+    },
+    "post": {
+      "@id": "wp:post",
+      "@type": "xsd:integer"
+    },
+    "postsPerPage": {
+      "@id": "wp:posts_per_page",
+      "@type": "xsd:integer"
+    },
+    "protected": {
+      "@id": "wp:protected",
+      "@type": "xsd:boolean"
+    },
+    "rendered": {
+      "@id": "wp:rendered",
+      "@type": "xsd:string"
+    },
+    "restBase": {
+      "@id": "wp:rest_base",
+      "@type": "xsd:string"
+    },
+    "roles": {
+      "@id": "wp:roles",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "slug": {
+      "@id": "wp:slug",
+      "@type": "xsd:string"
+    },
+    "sourceUrl": {
+      "@id": "wp:source_url",
+      "@type": "xsd:string"
+    },
+    "startOfWeek": {
+      "@id": "wp:start_of_week",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "wp:status",
+      "@type": "xsd:string"
+    },
+    "sticky": {
+      "@id": "wp:sticky",
+      "@type": "xsd:boolean"
+    },
+    "stylesheet": {
+      "@id": "wp:stylesheet",
+      "@type": "xsd:string"
+    },
+    "subtype": {
+      "@id": "wp:subtype",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "wp:tags",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "taxonomies": {
+      "@id": "wp:taxonomies",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "taxonomy": {
+      "@id": "wp:taxonomy",
+      "@type": "xsd:string"
+    },
+    "template": {
+      "@id": "wp:template",
+      "@type": "xsd:string"
+    },
+    "themeUri": {
+      "@id": "wp:theme_uri",
+      "@type": "xsd:string"
+    },
+    "timeFormat": {
+      "@id": "wp:time_format",
+      "@type": "xsd:string"
+    },
+    "timezone": {
+      "@id": "wp:timezone",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "wp:title",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "wp:type",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url"
+    },
+    "useSmilies": {
+      "@id": "wp:use_smilies",
+      "@type": "xsd:boolean"
+    },
+    "version": {
+      "@id": "schema:version"
+    }
+  }
+}

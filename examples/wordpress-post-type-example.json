@@ -1,0 +1,12 @@
+{
+  "capabilities": {},
+  "description": "",
+  "hierarchical": false,
+  "name": "Posts",
+  "rest_base": "posts",
+  "slug": "post",
+  "taxonomies": [
+    "category",
+    "post_tag"
+  ]
+}

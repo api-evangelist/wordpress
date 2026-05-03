@@ -1,0 +1,12 @@
+{
+  "id": 15,
+  "status": "publish",
+  "type": "wp_block",
+  "title": {
+    "rendered": "Sample Title"
+  },
+  "content": {
+    "rendered": "<p>Sample content.</p>",
+    "protected": false
+  }
+}

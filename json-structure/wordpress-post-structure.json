@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-structure/wordpress-post-structure.json",
+  "name": "Post",
+  "description": "A WordPress post object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "description": "Unique identifier for the post",
+      "example": 123
+    },
+    "date": {
+      "type": "datetime",
+      "description": "The date the post was published in site timezone",
+      "example": "2026-04-15T10:30:00"
+    },
+    "date_gmt": {
+      "type": "datetime",
+      "description": "The date the post was published in GMT",
+      "example": "2026-04-15T10:30:00"
+    },
+    "modified": {
+      "type": "datetime",
+      "description": "The date the post was last modified in site timezone",
+      "example": "2026-04-20T14:00:00"
+    },
+    "slug": {
+      "type": "string",
+      "description": "An alphanumeric identifier for the post",
+      "example": "my-first-wordpress-post"
+    },
+    "status": {
+      "type": "string",
+      "description": "A named status for the post",
+      "enum": [
+        "publish",
+        "future",
+        "draft",
+        "pending",
+        "private",
+        "trash"
+      ],
+      "example": "publish"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of post",
+      "example": "post"
+    },
+    "link": {
+      "type": "string",
+      "description": "URL to the post",
+      "example": "https://example.com/2026/04/my-first-post/"
+    },
+    "title": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "content": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "excerpt": {
+      "$ref": "#/components/schemas/RenderedContent"
+    },
+    "author": {
+      "type": "int32",
+      "description": "The ID for the author of the post",
+      "example": 1
+    },
+    "featured_media": {
+      "type": "int32",
+      "description": "The ID of the featured media for the post",
+      "example": 45
+    },
+    "comment_status": {
+      "type": "string",
+      "description": "Whether or not comments are open on the post",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "example": "open"
+    },
+    "ping_status": {
+      "type": "string",
+      "description": "Whether or not the post can be pinged",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "example": "open"
+    },
+    "sticky": {
+      "type": "boolean",
+      "description": "Whether or not the post should be treated as sticky",
+      "example": false
+    },
+    "template": {
+      "type": "string",
+      "description": "The theme file to use to display the post",
+      "example": ""
+    },
+    "format": {
+      "type": "string",
+      "description": "The format for the post",
+      "enum": [
+        "standard",
+        "aside",
+        "chat",
+        "gallery",
+        "link",
+        "image",
+        "quote",
+        "status",
+        "video",
+        "audio"
+      ],
+      "example": "standard"
+    },
+    "categories": {
+      "type": "array",
+      "description": "The terms assigned to the post in the category taxonomy",
+      "items": {
+        "type": "int32"
+      },
+      "example": [
+        1
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "description": "The terms assigned to the post in the post_tag taxonomy",
+      "items": {
+        "type": "int32"
+      },
+      "example": [
+        12
+      ]
+    }
+  }
+}

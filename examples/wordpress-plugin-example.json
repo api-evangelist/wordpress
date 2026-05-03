@@ -1,0 +1,10 @@
+{
+  "plugin": "akismet/akismet",
+  "status": "active",
+  "name": "Akismet Anti-Spam",
+  "plugin_uri": "https://akismet.com/",
+  "author": "Automattic",
+  "author_uri": "https://automattic.com/",
+  "description": "A sample description for this item.",
+  "version": "5.3.4"
+}

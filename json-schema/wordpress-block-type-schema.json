@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-block-type-schema.json",
+  "title": "BlockType",
+  "description": "A registered WordPress block type",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name identifying the block type",
+      "example": "core/paragraph"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable block type label",
+      "example": "Paragraph"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description for the block type",
+      "example": "Start with the basic building block of narrative."
+    },
+    "category": {
+      "type": "string",
+      "description": "Block category",
+      "example": "text"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Block attributes",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "is_dynamic": {
+      "type": "boolean",
+      "description": "Whether the block is dynamic",
+      "example": false
+    }
+  }
+}

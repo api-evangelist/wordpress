@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wordpress/refs/heads/main/json-schema/wordpress-plugin-schema.json",
+  "title": "Plugin",
+  "description": "A WordPress plugin object",
+  "type": "object",
+  "properties": {
+    "plugin": {
+      "type": "string",
+      "description": "The plugin file, relative to the plugins directory",
+      "example": "akismet/akismet"
+    },
+    "status": {
+      "type": "string",
+      "description": "The plugin activation status",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "example": "active"
+    },
+    "name": {
+      "type": "string",
+      "description": "The plugin name",
+      "example": "Akismet Anti-Spam"
+    },
+    "plugin_uri": {
+      "type": "string",
+      "description": "The plugin's website address",
+      "example": "https://akismet.com/"
+    },
+    "author": {
+      "type": "string",
+      "description": "The plugin author's name",
+      "example": "Automattic"
+    },
+    "author_uri": {
+      "type": "string",
+      "description": "Profile page for the plugin author",
+      "example": "https://automattic.com/"
+    },
+    "description": {
+      "type": "object",
+      "description": "The plugin description",
+      "properties": {
+        "raw": {
+          "type": "string",
+          "example": "Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam."
+        },
+        "rendered": {
+          "type": "string",
+          "example": "Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam."
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "The plugin version number",
+      "example": "5.3.4"
+    }
+  }
+}
