@@ -1,0 +1,13 @@
+{
+  "repo": "wordpress",
+  "feeds": [
+    {
+      "source": "https://developer.wordpress.org/news/",
+      "feed_url": "https://developer.wordpress.org/news/feed/",
+      "saved": 10,
+      "title": "WordPress Developer Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:38:19Z"
+}
