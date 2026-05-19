@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WordPress REST API — Plugins
+  description: 'WordPress REST API — Plugins. 1 operations. Lead operation: WordPress List Plugins. Self-contained Naftiko
+    capability covering one Wordpress business surface.'
+  tags:
+  - Wordpress
+  - Plugins
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORDPRESS_API_KEY: WORDPRESS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-plugins
+    baseUri: https://{site}/wp-json
+    description: WordPress REST API — Plugins business capability. Self-contained, no shared references.
+    resources:
+    - name: wp-v2-plugins
+      path: /wp/v2/plugins
+      operations:
+      - name: listplugins
+        method: GET
+        description: WordPress List Plugins
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: wordpress_logged_in
+      value: '{{env.WORDPRESS_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: rest-plugins-rest
+    port: 8080
+    description: REST adapter for WordPress REST API — Plugins. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/wp/v2/plugins
+      name: wp-v2-plugins
+      description: REST surface for wp-v2-plugins.
+      operations:
+      - method: GET
+        name: listplugins
+        description: WordPress List Plugins
+        call: rest-plugins.listplugins
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-plugins-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WordPress REST API — Plugins. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: wordpress-list-plugins
+      description: WordPress List Plugins
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-plugins.listplugins
+      outputParameters:
+      - type: object
+        mapping: $.

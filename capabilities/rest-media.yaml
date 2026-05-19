@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WordPress REST API — Media
+  description: 'WordPress REST API — Media. 2 operations. Lead operation: WordPress List Media. Self-contained Naftiko capability
+    covering one Wordpress business surface.'
+  tags:
+  - Wordpress
+  - Media
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORDPRESS_API_KEY: WORDPRESS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-media
+    baseUri: https://{site}/wp-json
+    description: WordPress REST API — Media business capability. Self-contained, no shared references.
+    resources:
+    - name: wp-v2-media
+      path: /wp/v2/media
+      operations:
+      - name: listmedia
+        method: GET
+        description: WordPress List Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Current page of the collection.
+        - name: per_page
+          in: query
+          type: integer
+          description: Maximum number of items to be returned.
+        - name: media_type
+          in: query
+          type: string
+          description: Limit result set to attachments of a particular media type.
+        - name: mime_type
+          in: query
+          type: string
+          description: Limit result set to attachments of a specific MIME type.
+    - name: wp-v2-media-id
+      path: /wp/v2/media/{id}
+      operations:
+      - name: getmedia
+        method: GET
+        description: WordPress Get Media Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the media item.
+          required: true
+    authentication:
+      type: apikey
+      key: wordpress_logged_in
+      value: '{{env.WORDPRESS_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: rest-media-rest
+    port: 8080
+    description: REST adapter for WordPress REST API — Media. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/wp/v2/media
+      name: wp-v2-media
+      description: REST surface for wp-v2-media.
+      operations:
+      - method: GET
+        name: listmedia
+        description: WordPress List Media
+        call: rest-media.listmedia
+        with:
+          page: rest.page
+          per_page: rest.per_page
+          media_type: rest.media_type
+          mime_type: rest.mime_type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/wp/v2/media/{id}
+      name: wp-v2-media-id
+      description: REST surface for wp-v2-media-id.
+      operations:
+      - method: GET
+        name: getmedia
+        description: WordPress Get Media Item
+        call: rest-media.getmedia
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-media-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WordPress REST API — Media. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: wordpress-list-media
+      description: WordPress List Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-media.listmedia
+      with:
+        page: tools.page
+        per_page: tools.per_page
+        media_type: tools.media_type
+        mime_type: tools.mime_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wordpress-get-media-item
+      description: WordPress Get Media Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-media.getmedia
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

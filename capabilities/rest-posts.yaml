@@ -1,0 +1,301 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WordPress REST API — Posts
+  description: 'WordPress REST API — Posts. 5 operations. Lead operation: WordPress List Posts. Self-contained Naftiko capability
+    covering one Wordpress business surface.'
+  tags:
+  - Wordpress
+  - Posts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORDPRESS_API_KEY: WORDPRESS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-posts
+    baseUri: https://{site}/wp-json
+    description: WordPress REST API — Posts business capability. Self-contained, no shared references.
+    resources:
+    - name: wp-v2-posts
+      path: /wp/v2/posts
+      operations:
+      - name: listposts
+        method: GET
+        description: WordPress List Posts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: context
+          in: query
+          type: string
+          description: Scope under which the request is made; determines fields present in response.
+        - name: page
+          in: query
+          type: integer
+          description: Current page of the collection.
+        - name: per_page
+          in: query
+          type: integer
+          description: Maximum number of items to be returned in result set.
+        - name: search
+          in: query
+          type: string
+          description: Limit results to those matching a string.
+        - name: status
+          in: query
+          type: string
+          description: Limit result set to posts assigned one or more statuses.
+        - name: author
+          in: query
+          type: array
+          description: Limit result set to posts assigned to specific authors.
+        - name: categories
+          in: query
+          type: array
+          description: Limit result set to items with specific terms assigned in the categories taxonomy.
+        - name: tags
+          in: query
+          type: array
+          description: Limit result set to items with specific terms assigned in the tags taxonomy.
+        - name: orderby
+          in: query
+          type: string
+          description: Sort collection by object attribute.
+        - name: order
+          in: query
+          type: string
+          description: Order sort attribute ascending or descending.
+      - name: createpost
+        method: POST
+        description: WordPress Create Post
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: wp-v2-posts-id
+      path: /wp/v2/posts/{id}
+      operations:
+      - name: getpost
+        method: GET
+        description: WordPress Get Post
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the post.
+          required: true
+        - name: context
+          in: query
+          type: string
+          description: Scope under which the request is made.
+      - name: updatepost
+        method: PUT
+        description: WordPress Update Post
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the post.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletepost
+        method: DELETE
+        description: WordPress Delete Post
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          description: Unique identifier for the post.
+          required: true
+        - name: force
+          in: query
+          type: boolean
+          description: Whether to bypass trash and force deletion.
+    authentication:
+      type: apikey
+      key: wordpress_logged_in
+      value: '{{env.WORDPRESS_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: rest-posts-rest
+    port: 8080
+    description: REST adapter for WordPress REST API — Posts. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/wp/v2/posts
+      name: wp-v2-posts
+      description: REST surface for wp-v2-posts.
+      operations:
+      - method: GET
+        name: listposts
+        description: WordPress List Posts
+        call: rest-posts.listposts
+        with:
+          context: rest.context
+          page: rest.page
+          per_page: rest.per_page
+          search: rest.search
+          status: rest.status
+          author: rest.author
+          categories: rest.categories
+          tags: rest.tags
+          orderby: rest.orderby
+          order: rest.order
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpost
+        description: WordPress Create Post
+        call: rest-posts.createpost
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/wp/v2/posts/{id}
+      name: wp-v2-posts-id
+      description: REST surface for wp-v2-posts-id.
+      operations:
+      - method: GET
+        name: getpost
+        description: WordPress Get Post
+        call: rest-posts.getpost
+        with:
+          id: rest.id
+          context: rest.context
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepost
+        description: WordPress Update Post
+        call: rest-posts.updatepost
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletepost
+        description: WordPress Delete Post
+        call: rest-posts.deletepost
+        with:
+          id: rest.id
+          force: rest.force
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-posts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WordPress REST API — Posts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: wordpress-list-posts
+      description: WordPress List Posts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-posts.listposts
+      with:
+        context: tools.context
+        page: tools.page
+        per_page: tools.per_page
+        search: tools.search
+        status: tools.status
+        author: tools.author
+        categories: tools.categories
+        tags: tools.tags
+        orderby: tools.orderby
+        order: tools.order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wordpress-create-post
+      description: WordPress Create Post
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-posts.createpost
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wordpress-get-post
+      description: WordPress Get Post
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-posts.getpost
+      with:
+        id: tools.id
+        context: tools.context
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wordpress-update-post
+      description: WordPress Update Post
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-posts.updatepost
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wordpress-delete-post
+      description: WordPress Delete Post
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-posts.deletepost
+      with:
+        id: tools.id
+        force: tools.force
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WordPress REST API — Block Types
+  description: 'WordPress REST API — Block Types. 1 operations. Lead operation: WordPress List Block Types. Self-contained
+    Naftiko capability covering one Wordpress business surface.'
+  tags:
+  - Wordpress
+  - Block Types
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORDPRESS_API_KEY: WORDPRESS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-block-types
+    baseUri: https://{site}/wp-json
+    description: WordPress REST API — Block Types business capability. Self-contained, no shared references.
+    resources:
+    - name: wp-v2-block-types
+      path: /wp/v2/block-types
+      operations:
+      - name: listblocktypes
+        method: GET
+        description: WordPress List Block Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: wordpress_logged_in
+      value: '{{env.WORDPRESS_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: rest-block-types-rest
+    port: 8080
+    description: REST adapter for WordPress REST API — Block Types. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/wp/v2/block-types
+      name: wp-v2-block-types
+      description: REST surface for wp-v2-block-types.
+      operations:
+      - method: GET
+        name: listblocktypes
+        description: WordPress List Block Types
+        call: rest-block-types.listblocktypes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-block-types-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WordPress REST API — Block Types. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: wordpress-list-block-types
+      description: WordPress List Block Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-block-types.listblocktypes
+      outputParameters:
+      - type: object
+        mapping: $.

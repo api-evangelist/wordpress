@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WordPress REST API — Search
+  description: 'WordPress REST API — Search. 1 operations. Lead operation: WordPress Search Content. Self-contained Naftiko
+    capability covering one Wordpress business surface.'
+  tags:
+  - Wordpress
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORDPRESS_API_KEY: WORDPRESS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-search
+    baseUri: https://{site}/wp-json
+    description: WordPress REST API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: wp-v2-search
+      path: /wp/v2/search
+      operations:
+      - name: searchcontent
+        method: GET
+        description: WordPress Search Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: Limit results to those matching a string.
+          required: true
+        - name: type
+          in: query
+          type: string
+          description: Limit results to items of an object type.
+        - name: subtype
+          in: query
+          type: string
+          description: Limit results to items of one or more object subtypes.
+        - name: page
+          in: query
+          type: integer
+          description: Current page of the collection.
+        - name: per_page
+          in: query
+          type: integer
+          description: Maximum number of items to return.
+    authentication:
+      type: apikey
+      key: wordpress_logged_in
+      value: '{{env.WORDPRESS_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: rest-search-rest
+    port: 8080
+    description: REST adapter for WordPress REST API — Search. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/wp/v2/search
+      name: wp-v2-search
+      description: REST surface for wp-v2-search.
+      operations:
+      - method: GET
+        name: searchcontent
+        description: WordPress Search Content
+        call: rest-search.searchcontent
+        with:
+          search: rest.search
+          type: rest.type
+          subtype: rest.subtype
+          page: rest.page
+          per_page: rest.per_page
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WordPress REST API — Search. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: wordpress-search-content
+      description: WordPress Search Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-search.searchcontent
+      with:
+        search: tools.search
+        type: tools.type
+        subtype: tools.subtype
+        page: tools.page
+        per_page: tools.per_page
+      outputParameters:
+      - type: object
+        mapping: $.
