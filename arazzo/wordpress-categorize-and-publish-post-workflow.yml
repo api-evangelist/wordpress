@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Categorize and Publish Post
+  summary: Create a category, publish a post into it, then read the post back.
+  description: >-
+    A foundational WordPress content pattern that establishes a category, drops a
+    fully published post into that category, and then re-reads the post to confirm
+    it was stored with the expected status and taxonomy assignment. Each step
+    spells out its request inline — including the application password
+    authentication WordPress requires for writes — so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: categorize-and-publish-post
+  summary: Create a category and publish a post assigned to it.
+  description: >-
+    Creates a new category term, creates a post whose categories array references
+    the freshly created category id and whose status is publish, and then fetches
+    the created post by id to verify it persisted.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - categoryName
+    - postTitle
+    - postContent
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      categoryName:
+        type: string
+        description: The display name for the new category (e.g. "Technology").
+      categoryDescription:
+        type: string
+        description: Optional HTML description of the category.
+      postTitle:
+        type: string
+        description: The title for the new post.
+      postContent:
+        type: string
+        description: The HTML content body for the new post.
+  steps:
+  - stepId: createCategory
+    description: >-
+      Create the category term that the post will be filed under. WordPress
+      returns 201 with the new term id on success.
+    operationId: createCategory
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.categoryName
+        description: $inputs.categoryDescription
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      categoryId: $response.body#/id
+      categorySlug: $response.body#/slug
+  - stepId: createPost
+    description: >-
+      Publish a new post and assign it to the category created in the prior step
+      by referencing its id in the categories array.
+    operationId: createPost
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.postTitle
+        content: $inputs.postContent
+        status: publish
+        categories:
+        - $steps.createCategory.outputs.categoryId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      postId: $response.body#/id
+      postStatus: $response.body#/status
+  - stepId: getPost
+    description: >-
+      Read the newly created post back by id to confirm it persisted with the
+      expected published status.
+    operationId: getPost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createPost.outputs.postId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+      title: $response.body#/title/rendered
+  outputs:
+    categoryId: $steps.createCategory.outputs.categoryId
+    postId: $steps.getPost.outputs.postId
+    status: $steps.getPost.outputs.status

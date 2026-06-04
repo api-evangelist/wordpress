@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Create Subpage Under Parent
+  summary: Find a parent page by title and create a child page nested beneath it.
+  description: >-
+    Builds out a WordPress page hierarchy. The workflow searches existing pages
+    for a parent that matches a supplied title, branches on whether it was found,
+    and when it is, creates a new child page whose parent is set to the matched
+    page id, then reads the new page back to confirm the nesting. Each step spells
+    out its request inline, including the application password authentication
+    WordPress requires for writes, so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-subpage-under-parent
+  summary: Create a child page nested under an existing parent page.
+  description: >-
+    Searches pages for a parent matching the supplied title, and when found
+    creates a child page with parent set to the matched id, then fetches the new
+    page to verify it was created beneath the parent.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - parentTitle
+    - childTitle
+    - childContent
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      parentTitle:
+        type: string
+        description: The title used to locate the parent page.
+      childTitle:
+        type: string
+        description: The title for the new child page.
+      childContent:
+        type: string
+        description: The HTML content body for the new child page.
+  steps:
+  - stepId: findParent
+    description: >-
+      Search the pages collection for a page whose content matches the supplied
+      parent title, returning at most one match.
+    operationId: listPages
+    parameters:
+    - name: search
+      in: query
+      value: $inputs.parentTitle
+    - name: per_page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      parentId: $response.body#/0/id
+    onSuccess:
+    - name: parentFound
+      type: goto
+      stepId: createChild
+      criteria:
+      - context: $response.body
+        condition: $.length > 0
+        type: jsonpath
+    - name: parentMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.length == 0
+        type: jsonpath
+  - stepId: createChild
+    description: >-
+      Create a new page nested under the matched parent by setting its parent to
+      the matched page id.
+    operationId: createPage
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.childTitle
+        content: $inputs.childContent
+        status: publish
+        parent: $steps.findParent.outputs.parentId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      pageId: $response.body#/id
+  - stepId: verifyPage
+    description: >-
+      Read the child page back by id to confirm it was created.
+    operationId: getPage
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createChild.outputs.pageId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pageId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    parentId: $steps.findParent.outputs.parentId
+    pageId: $steps.verifyPage.outputs.pageId
+    status: $steps.verifyPage.outputs.status

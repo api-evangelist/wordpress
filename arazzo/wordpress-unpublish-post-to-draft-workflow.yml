@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Unpublish Post to Draft
+  summary: Find a published post by search and revert it to draft.
+  description: >-
+    A content-retraction pattern that pulls a live post out of public view without
+    deleting it. The workflow searches published posts for a supplied query,
+    branches on whether a match was found, and when it is, updates the matched
+    post's status to draft, then reads the post back to confirm it is no longer
+    published. Each step spells out its request inline, including the application
+    password authentication WordPress requires for writes, so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: unpublish-post-to-draft
+  summary: Locate a published post and revert it to draft status.
+  description: >-
+    Searches published posts for the supplied query, and when a match is found
+    reverts that post to draft status, then reads it back to verify it is no
+    longer publicly visible.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - query
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      query:
+        type: string
+        description: The search string used to locate the published post.
+  steps:
+  - stepId: findPublishedPost
+    description: >-
+      Search published posts for the supplied query, returning at most one match
+      to revert.
+    operationId: listPosts
+    parameters:
+    - name: search
+      in: query
+      value: $inputs.query
+    - name: status
+      in: query
+      value: publish
+    - name: per_page
+      in: query
+      value: 1
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/0/id
+    onSuccess:
+    - name: postFound
+      type: goto
+      stepId: revertToDraft
+      criteria:
+      - context: $response.body
+        condition: $.length > 0
+        type: jsonpath
+    - name: postMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.length == 0
+        type: jsonpath
+  - stepId: revertToDraft
+    description: >-
+      Update the matched post so its status becomes draft, removing it from public
+      view while preserving its content.
+    operationId: updatePost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findPublishedPost.outputs.postId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        status: draft
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+  - stepId: verifyDraft
+    description: >-
+      Read the post back by id to confirm it now carries draft status.
+    operationId: getPost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.revertToDraft.outputs.postId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    postId: $steps.verifyDraft.outputs.postId
+    status: $steps.verifyDraft.outputs.status

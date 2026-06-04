@@ -156,6 +156,33 @@ apis:
     url: https://github.com/WordPress/mcp-adapter
     title: MCP Adapter
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/wordpress-assign-post-to-author-workflow.yml
+    name: WordPress Assign Post to Author
+    summary: Resolve a user by role, confirm them, and publish a post under their byline.
+  - url: arazzo/wordpress-attach-featured-media-to-post-workflow.yml
+    name: WordPress Attach Featured Media to Post
+    summary: Find an image in the media library and publish a post that features it.
+  - url: arazzo/wordpress-categorize-and-publish-post-workflow.yml
+    name: WordPress Categorize and Publish Post
+    summary: Create a category, publish a post into it, then read the post back.
+  - url: arazzo/wordpress-comment-on-found-post-workflow.yml
+    name: WordPress Comment on Found Post
+    summary: Search for a post, post a comment on it, then list comments to confirm.
+  - url: arazzo/wordpress-create-subpage-under-parent-workflow.yml
+    name: WordPress Create Subpage Under Parent
+    summary: Find a parent page by title and create a child page nested beneath it.
+  - url: arazzo/wordpress-draft-then-publish-post-workflow.yml
+    name: WordPress Draft Then Publish Post
+    summary: Create a draft post, revise it, then flip it to published.
+  - url: arazzo/wordpress-tag-an-existing-post-workflow.yml
+    name: WordPress Tag an Existing Post
+    summary: Find a tag by name and apply it to an existing post.
+  - url: arazzo/wordpress-unpublish-post-to-draft-workflow.yml
+    name: WordPress Unpublish Post to Draft
+    summary: Find a published post by search and revert it to draft.
 - type: Portal
   url: https://developer.wordpress.org/
 - type: GitHubOrganization

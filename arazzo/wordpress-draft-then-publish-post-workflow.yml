@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Draft Then Publish Post
+  summary: Create a draft post, revise it, then flip it to published.
+  description: >-
+    The classic editorial lifecycle for a WordPress post. The workflow first
+    creates the post in draft status, then updates its title and content with the
+    finalized copy while flipping the status to publish, and finally re-reads the
+    post to confirm it went live. Each step spells out its request inline,
+    including the application password authentication WordPress requires for
+    writes, so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: draft-then-publish-post
+  summary: Create a draft post, update it, and publish it.
+  description: >-
+    Creates a post with status draft, patches it with finalized title and content
+    while setting status to publish, then fetches it by id to verify the
+    published state.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - draftTitle
+    - finalTitle
+    - finalContent
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      draftTitle:
+        type: string
+        description: The working title used while the post is in draft.
+      finalTitle:
+        type: string
+        description: The finalized title to publish under.
+      finalContent:
+        type: string
+        description: The finalized HTML content body to publish.
+  steps:
+  - stepId: createDraft
+    description: >-
+      Create the post in draft status so it is saved but not yet visible to the
+      public. WordPress returns 201 with the new post id.
+    operationId: createPost
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.draftTitle
+        status: draft
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+  - stepId: updateAndPublish
+    description: >-
+      Patch the draft with the finalized title and content and flip its status to
+      publish in a single update.
+    operationId: updatePost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createDraft.outputs.postId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.finalTitle
+        content: $inputs.finalContent
+        status: publish
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+  - stepId: verifyPublished
+    description: >-
+      Read the post back by id to confirm it is now published.
+    operationId: getPost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.updateAndPublish.outputs.postId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+      title: $response.body#/title/rendered
+  outputs:
+    postId: $steps.verifyPublished.outputs.postId
+    status: $steps.verifyPublished.outputs.status

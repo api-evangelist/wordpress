@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Tag an Existing Post
+  summary: Find a tag by name and apply it to an existing post.
+  description: >-
+    A taxonomy-maintenance pattern that attaches an existing tag to an already
+    published post. The workflow searches the tags collection for a tag matching a
+    supplied name, branches on whether it exists, reads the target post to confirm
+    it is present, and then updates the post so its tags array includes the matched
+    tag id. Each step spells out its request inline, including the application
+    password authentication WordPress requires for writes, so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: tag-an-existing-post
+  summary: Resolve a tag by name and assign it to an existing post.
+  description: >-
+    Searches tags for the supplied name, and when a tag is found reads the target
+    post and updates it so the tag id is assigned in its tags taxonomy.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - tagName
+    - postId
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      tagName:
+        type: string
+        description: The tag name to resolve (e.g. "wordpress").
+      postId:
+        type: integer
+        description: The id of the post the tag should be applied to.
+  steps:
+  - stepId: findTag
+    description: >-
+      Search the tags collection for a tag matching the supplied name, returning
+      at most one result.
+    operationId: listTags
+    parameters:
+    - name: search
+      in: query
+      value: $inputs.tagName
+    - name: per_page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tagId: $response.body#/0/id
+    onSuccess:
+    - name: tagFound
+      type: goto
+      stepId: getTargetPost
+      criteria:
+      - context: $response.body
+        condition: $.length > 0
+        type: jsonpath
+    - name: tagMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.length == 0
+        type: jsonpath
+  - stepId: getTargetPost
+    description: >-
+      Read the target post by id to confirm it exists before updating its tags.
+    operationId: getPost
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.postId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+  - stepId: applyTag
+    description: >-
+      Update the post so the matched tag id is assigned in its tags taxonomy.
+    operationId: updatePost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.getTargetPost.outputs.postId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        tags:
+        - $steps.findTag.outputs.tagId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      status: $response.body#/status
+  outputs:
+    tagId: $steps.findTag.outputs.tagId
+    postId: $steps.applyTag.outputs.postId
+    status: $steps.applyTag.outputs.status

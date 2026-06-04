@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Attach Featured Media to Post
+  summary: Find an image in the media library and publish a post that features it.
+  description: >-
+    A headless-CMS pattern for giving a post a featured image. Because the
+    WordPress REST API surface described here exposes media as read-only
+    (list/get, no upload operation), this workflow adapts the "upload then set
+    featured" theme into a "find then set featured" flow: it searches the media
+    library for an existing image attachment, creates a post that references that
+    attachment as its featured_media, and reads the post back to confirm the
+    assignment. Each step spells out its request inline, including the application
+    password authentication WordPress requires for writes, so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: attach-featured-media-to-post
+  summary: Select an existing image attachment and feature it on a new post.
+  description: >-
+    Lists image media items, branches on whether any exist, and when one is found
+    creates a published post whose featured_media is set to that attachment id,
+    then reads the post back to verify.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - postTitle
+    - postContent
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      postTitle:
+        type: string
+        description: The title for the new post.
+      postContent:
+        type: string
+        description: The HTML content body for the new post.
+  steps:
+  - stepId: findImage
+    description: >-
+      List image attachments from the media library, returning the most recent
+      single image to use as the featured media.
+    operationId: listMedia
+    parameters:
+    - name: media_type
+      in: query
+      value: image
+    - name: per_page
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mediaId: $response.body#/0/id
+      sourceUrl: $response.body#/0/source_url
+    onSuccess:
+    - name: imageFound
+      type: goto
+      stepId: createPostWithFeatured
+      criteria:
+      - context: $response.body
+        condition: $.length > 0
+        type: jsonpath
+    - name: noImage
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.length == 0
+        type: jsonpath
+  - stepId: createPostWithFeatured
+    description: >-
+      Create a published post and set its featured_media to the image attachment
+      found in the media library.
+    operationId: createPost
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.postTitle
+        content: $inputs.postContent
+        status: publish
+        featured_media: $steps.findImage.outputs.mediaId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      postId: $response.body#/id
+  - stepId: verifyPost
+    description: >-
+      Read the post back by id to confirm it was created with the featured image
+      assigned.
+    operationId: getPost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createPostWithFeatured.outputs.postId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      featuredMedia: $response.body#/featured_media
+  outputs:
+    mediaId: $steps.findImage.outputs.mediaId
+    postId: $steps.verifyPost.outputs.postId
+    featuredMedia: $steps.verifyPost.outputs.featuredMedia

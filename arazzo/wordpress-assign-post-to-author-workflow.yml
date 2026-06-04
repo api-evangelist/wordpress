@@ -1,0 +1,132 @@
+arazzo: 1.0.1
+info:
+  title: WordPress Assign Post to Author
+  summary: Resolve a user by role, confirm them, and publish a post under their byline.
+  description: >-
+    An editorial-attribution pattern that publishes a post under a specific
+    author. The workflow lists users filtered to a given role, branches on whether
+    any were returned, reads the selected user to confirm the account, and then
+    creates a published post whose author is set to that user id, finally reading
+    the post back to verify the byline. Each step spells out its request inline,
+    including the application password authentication WordPress requires for
+    writes, so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: wordpressRestApi
+  url: ../openapi/wordpress-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: assign-post-to-author
+  summary: Find a user by role and publish a post attributed to them.
+  description: >-
+    Lists users for a supplied role, and when one is found confirms the user and
+    creates a published post with author set to that user id, then reads the post
+    back to verify the assignment.
+  inputs:
+    type: object
+    required:
+    - authorization
+    - role
+    - postTitle
+    - postContent
+    properties:
+      authorization:
+        type: string
+        description: >-
+          HTTP Basic Authorization header value built from a WordPress
+          Application Password (e.g. "Basic dXNlcjpwYXNzd29yZA==").
+      role:
+        type: string
+        description: The user role to filter authors by (e.g. "author").
+      postTitle:
+        type: string
+        description: The title for the new post.
+      postContent:
+        type: string
+        description: The HTML content body for the new post.
+  steps:
+  - stepId: findAuthor
+    description: >-
+      List users filtered to the supplied role, returning the first matching
+      account to attribute the post to.
+    operationId: listUsers
+    parameters:
+    - name: roles
+      in: query
+      value: $inputs.role
+    - name: per_page
+      in: query
+      value: 1
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      authorId: $response.body#/0/id
+    onSuccess:
+    - name: authorFound
+      type: goto
+      stepId: confirmAuthor
+      criteria:
+      - context: $response.body
+        condition: $.length > 0
+        type: jsonpath
+    - name: authorMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.length == 0
+        type: jsonpath
+  - stepId: confirmAuthor
+    description: >-
+      Read the selected user by id to confirm the account before attributing a
+      post to it.
+    operationId: getUser
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findAuthor.outputs.authorId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      authorId: $response.body#/id
+      authorName: $response.body#/name
+  - stepId: createAttributedPost
+    description: >-
+      Create a published post with its author set to the confirmed user id.
+    operationId: createPost
+    parameters:
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.postTitle
+        content: $inputs.postContent
+        status: publish
+        author: $steps.confirmAuthor.outputs.authorId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      postId: $response.body#/id
+  - stepId: verifyPost
+    description: >-
+      Read the created post back by id to confirm it was attributed to the chosen
+      author.
+    operationId: getPost
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createAttributedPost.outputs.postId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      postId: $response.body#/id
+      author: $response.body#/author
+  outputs:
+    authorId: $steps.confirmAuthor.outputs.authorId
+    postId: $steps.verifyPost.outputs.postId
+    author: $steps.verifyPost.outputs.author
