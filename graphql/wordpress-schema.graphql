@@ -1,0 +1,1993 @@
+"""
+WordPress GraphQL Schema (WPGraphQL)
+Provider: WordPress / WPGraphQL Plugin
+Source: https://www.wpgraphql.com/docs/
+GitHub: https://github.com/wp-graphql/wp-graphql
+Endpoint: POST https://{site}/graphql
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar ID
+scalar String
+scalar Boolean
+scalar Int
+scalar Float
+
+"""ISO 8601 date-time string."""
+scalar DateTime
+
+"""URL string."""
+scalar URL
+
+"""HTML string (may contain markup)."""
+scalar HTML
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+"""Allowed content type slugs registered on the site."""
+enum ContentTypeEnum {
+  POST
+  PAGE
+  ATTACHMENT
+  REVISION
+  NAV_MENU_ITEM
+}
+
+"""Taxonomy slug identifiers."""
+enum TaxonomyEnum {
+  CATEGORY
+  TAG
+  POST_FORMAT
+  NAV_MENU
+}
+
+"""Post status values."""
+enum PostStatus {
+  PUBLISH
+  FUTURE
+  DRAFT
+  PENDING
+  PRIVATE
+  TRASH
+  AUTO_DRAFT
+  INHERIT
+}
+
+"""Plugin activation status."""
+enum PluginStatus {
+  ACTIVE
+  INACTIVE
+  DROP_IN
+  MUST_USE
+  NETWORK_ACTIVATED
+}
+
+"""Theme status."""
+enum ThemeStatus {
+  ACTIVE
+  INACTIVE
+}
+
+"""Comment status for a comment object."""
+enum CommentStatus {
+  APPROVE
+  HOLD
+  SPAM
+  TRASH
+}
+
+"""Sort order direction."""
+enum OrderEnum {
+  ASC
+  DESC
+}
+
+"""Logical relation for compound queries."""
+enum RelationEnum {
+  AND
+  OR
+}
+
+"""MIME type groups for media filtering."""
+enum MimeTypeEnum {
+  IMAGE_JPEG
+  IMAGE_PNG
+  IMAGE_GIF
+  IMAGE_WEBP
+  IMAGE_SVG_XML
+  VIDEO_MP4
+  VIDEO_QUICKTIME
+  AUDIO_MPEG
+  AUDIO_OGG
+  APPLICATION_PDF
+  APPLICATION_ZIP
+}
+
+"""Registered nav menu locations."""
+enum MenuLocationEnum {
+  PRIMARY
+  SECONDARY
+  FOOTER
+  SOCIAL
+  MOBILE
+}
+
+"""Fields available for post ordering."""
+enum PostObjectsConnectionOrderbyField {
+  AUTHOR
+  COMMENT_COUNT
+  DATE
+  MENU_ORDER
+  MODIFIED
+  NAME_IN
+  PARENT
+  SLUG
+  TITLE
+  IN
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+"""Ordering clause for post object connections."""
+input PostObjectsConnectionOrderbyInput {
+  field: PostObjectsConnectionOrderbyField!
+  order: OrderEnum!
+}
+
+"""Date comparison query."""
+input DateQueryInput {
+  after: DateInput
+  before: DateInput
+  column: String
+  compare: String
+  day: Int
+  hour: Int
+  inclusive: Boolean
+  minute: Int
+  month: Int
+  relation: RelationEnum
+  second: Int
+  week: Int
+  year: Int
+}
+
+"""Specific date parts for after/before clauses."""
+input DateInput {
+  day: Int
+  month: Int
+  year: Int
+}
+
+"""Where arguments for filtering post connections."""
+input PostConnectionWhereArgs {
+  author: Int
+  authorIn: [ID]
+  authorNotIn: [ID]
+  authorName: String
+  categoryId: Int
+  categoryIn: [ID]
+  categoryName: String
+  dateQuery: DateQueryInput
+  hasPassword: Boolean
+  id: Int
+  in: [ID]
+  mimeType: MimeTypeEnum
+  name: String
+  nameIn: [String]
+  notIn: [ID]
+  orderby: [PostObjectsConnectionOrderbyInput]
+  parent: ID
+  parentIn: [ID]
+  parentNotIn: [ID]
+  password: String
+  search: String
+  stati: [PostStatus]
+  status: PostStatus
+  tag: String
+  tagId: String
+  tagIn: [ID]
+  tagNotIn: [ID]
+  tagSlugAnd: [String]
+  tagSlugIn: [String]
+  title: String
+}
+
+"""Where arguments for filtering page connections."""
+input PageConnectionWhereArgs {
+  author: Int
+  authorIn: [ID]
+  authorName: String
+  dateQuery: DateQueryInput
+  hasPassword: Boolean
+  id: Int
+  in: [ID]
+  menuOrder: Int
+  name: String
+  nameIn: [String]
+  notIn: [ID]
+  orderby: [PostObjectsConnectionOrderbyInput]
+  parent: ID
+  parentIn: [ID]
+  parentNotIn: [ID]
+  password: String
+  search: String
+  stati: [PostStatus]
+  status: PostStatus
+  title: String
+}
+
+"""Where arguments for user connections."""
+input UserConnectionWhereArgs {
+  exclude: [Int]
+  hasPublishedPosts: [ContentTypeEnum]
+  include: [Int]
+  login: String
+  loginIn: [String]
+  loginNotIn: [String]
+  nicename: String
+  nicenameIn: [String]
+  nicenameNotIn: [String]
+  orderby: [UsersConnectionOrderbyInput]
+  role: UserRoleEnum
+  roleIn: [UserRoleEnum]
+  roleNotIn: [UserRoleEnum]
+  search: String
+  searchColumns: [UsersConnectionSearchColumnEnum]
+}
+
+"""Ordering clause for user connections."""
+input UsersConnectionOrderbyInput {
+  field: UsersConnectionOrderbyEnum!
+  order: OrderEnum
+}
+
+"""Fields for ordering users."""
+enum UsersConnectionOrderbyEnum {
+  DISPLAY_NAME
+  EMAIL
+  LOGIN
+  LOGIN_IN
+  NICE_NAME
+  NICE_NAME_IN
+  REGISTERED
+  URL
+}
+
+"""Columns to search within for user search."""
+enum UsersConnectionSearchColumnEnum {
+  ADMIN_COLOR
+  CAPABILITIES
+  DESCRIPTION
+  DISPLAY_NAME
+  EMAIL
+  ID
+  LOGIN
+  NICE_NAME
+  REGISTERED
+  URL
+}
+
+"""Standard WordPress user roles."""
+enum UserRoleEnum {
+  ADMINISTRATOR
+  AUTHOR
+  CONTRIBUTOR
+  EDITOR
+  SUBSCRIBER
+}
+
+"""Where arguments for term/taxonomy connections."""
+input TermConnectionWhereArgs {
+  cacheDomain: String
+  childOf: Int
+  childOfIn: [Int]
+  descriptionLike: String
+  exclude: [ID]
+  excludeTree: [ID]
+  hideEmpty: Boolean
+  hierarchical: Boolean
+  include: [ID]
+  name: [String]
+  nameLike: String
+  objectIds: [ID]
+  orderby: TermObjectsConnectionOrderbyEnum
+  padCounts: Boolean
+  parent: Int
+  search: String
+  slug: [String]
+  termTaxonomId: [ID]
+  updateTermMetaCache: Boolean
+}
+
+"""Fields for ordering term connections."""
+enum TermObjectsConnectionOrderbyEnum {
+  COUNT
+  DESCRIPTION
+  NAME
+  SLUG
+  TERM_GROUP
+  TERM_ID
+  TERM_ORDER
+}
+
+"""Where arguments for comment connections."""
+input CommentConnectionWhereArgs {
+  authorEmail: String
+  authorIn: [ID]
+  authorNotIn: [ID]
+  authorUrl: String
+  commentIn: [ID]
+  commentNotIn: [ID]
+  commentType: String
+  commentTypeIn: [String]
+  commentTypeNotIn: String
+  contentAuthor: [ID]
+  contentAuthorIn: [ID]
+  contentAuthorNotIn: [ID]
+  contentId: ID
+  contentIdIn: [ID]
+  contentIdNotIn: [ID]
+  contentName: String
+  contentParent: Int
+  contentStatus: [PostStatus]
+  contentType: [ContentTypeEnum]
+  includeUnapproved: [ID]
+  karma: Int
+  order: OrderEnum
+  orderby: CommentsConnectionOrderbyEnum
+  parent: Int
+  parentIn: [ID]
+  parentNotIn: [ID]
+  search: String
+  status: String
+  userId: ID
+}
+
+"""Fields for ordering comments."""
+enum CommentsConnectionOrderbyEnum {
+  COMMENT_AGENT
+  COMMENT_APPROVED
+  COMMENT_AUTHOR
+  COMMENT_AUTHOR_EMAIL
+  COMMENT_AUTHOR_IP
+  COMMENT_AUTHOR_URL
+  COMMENT_CONTENT
+  COMMENT_DATE
+  COMMENT_DATE_GMT
+  COMMENT_ID
+  COMMENT_IN
+  COMMENT_KARMA
+  COMMENT_PARENT
+  COMMENT_POST_ID
+  COMMENT_TYPE
+  USER_ID
+}
+
+"""Input for creating a post."""
+input CreatePostInput {
+  authorId: ID
+  categories: PostCategoriesInput
+  clientMutationId: String
+  commentStatus: String
+  content: String
+  date: String
+  excerpt: String
+  menuOrder: Int
+  password: String
+  pingStatus: String
+  pinged: [String]
+  postFormats: PostPostFormatsInput
+  slug: String
+  status: PostStatus
+  tags: PostTagsInput
+  title: String
+  toPing: [String]
+}
+
+"""Input for updating a post."""
+input UpdatePostInput {
+  authorId: ID
+  categories: PostCategoriesInput
+  clientMutationId: String
+  commentStatus: String
+  content: String
+  date: String
+  excerpt: String
+  id: ID!
+  menuOrder: Int
+  password: String
+  pingStatus: String
+  pinged: [String]
+  postFormats: PostPostFormatsInput
+  slug: String
+  status: PostStatus
+  tags: PostTagsInput
+  title: String
+  toPing: [String]
+}
+
+"""Input for deleting a post."""
+input DeletePostInput {
+  clientMutationId: String
+  forceDelete: Boolean
+  id: ID!
+}
+
+"""Category assignment input for posts."""
+input PostCategoriesInput {
+  append: Boolean
+  nodes: [PostCategoriesNodeInput]
+}
+
+"""Individual category node for assignment."""
+input PostCategoriesNodeInput {
+  description: String
+  id: ID
+  name: String
+  slug: String
+}
+
+"""Tag assignment input for posts."""
+input PostTagsInput {
+  append: Boolean
+  nodes: [PostTagsNodeInput]
+}
+
+"""Individual tag node for assignment."""
+input PostTagsNodeInput {
+  description: String
+  id: ID
+  name: String
+  slug: String
+}
+
+"""Post format assignment input."""
+input PostPostFormatsInput {
+  append: Boolean
+  nodes: [PostPostFormatsNodeInput]
+}
+
+"""Individual post format node."""
+input PostPostFormatsNodeInput {
+  id: ID
+  name: String
+  slug: String
+}
+
+"""Input for creating a page."""
+input CreatePageInput {
+  authorId: ID
+  clientMutationId: String
+  commentStatus: String
+  content: String
+  date: String
+  menuOrder: Int
+  pageTemplate: String
+  parentId: ID
+  password: String
+  slug: String
+  status: PostStatus
+  title: String
+}
+
+"""Input for updating a page."""
+input UpdatePageInput {
+  authorId: ID
+  clientMutationId: String
+  commentStatus: String
+  content: String
+  date: String
+  id: ID!
+  menuOrder: Int
+  pageTemplate: String
+  parentId: ID
+  password: String
+  slug: String
+  status: PostStatus
+  title: String
+}
+
+"""Input for creating a comment."""
+input CreateCommentInput {
+  approved: String
+  author: String
+  authorEmail: String
+  authorUrl: String
+  clientMutationId: String
+  commentOn: Int
+  content: String
+  date: String
+  parent: ID
+  status: CommentStatus
+  type: String
+}
+
+"""Input for updating a comment."""
+input UpdateCommentInput {
+  approved: String
+  author: String
+  authorEmail: String
+  authorUrl: String
+  clientMutationId: String
+  commentOn: Int
+  content: String
+  date: String
+  id: ID!
+  parent: ID
+  status: CommentStatus
+  type: String
+}
+
+"""Input for creating a media item."""
+input CreateMediaItemInput {
+  altText: String
+  authorId: ID
+  caption: String
+  clientMutationId: String
+  commentStatus: String
+  date: String
+  dateGmt: String
+  description: String
+  filePath: String
+  fileType: MimeTypeEnum
+  parentId: ID
+  pingStatus: String
+  slug: String
+  status: MediaItemStatusEnum
+  title: String
+}
+
+"""Media item status values."""
+enum MediaItemStatusEnum {
+  AUTO_DRAFT
+  INHERIT
+  PRIVATE
+  TRASH
+}
+
+"""Input for creating a user."""
+input CreateUserInput {
+  aim: String
+  clientMutationId: String
+  description: String
+  displayName: String
+  email: String
+  firstName: String
+  jabber: String
+  lastName: String
+  locale: String
+  nicename: String
+  nickname: String
+  password: String
+  registered: String
+  richEditing: String
+  roles: [String]
+  username: String!
+  websiteUrl: String
+  yim: String
+}
+
+"""Input for updating a user."""
+input UpdateUserInput {
+  aim: String
+  clientMutationId: String
+  description: String
+  displayName: String
+  email: String
+  firstName: String
+  id: ID!
+  jabber: String
+  lastName: String
+  locale: String
+  nicename: String
+  nickname: String
+  password: String
+  registered: String
+  richEditing: String
+  roles: [String]
+  websiteUrl: String
+  yim: String
+}
+
+"""Input for updating site settings."""
+input UpdateSettingsInput {
+  clientMutationId: String
+  discussionSettingsDefaultCommentStatus: String
+  discussionSettingsDefaultPingStatus: String
+  generalSettingsDateFormat: String
+  generalSettingsDescription: String
+  generalSettingsEmail: String
+  generalSettingsLanguage: String
+  generalSettingsStartOfWeek: Int
+  generalSettingsTimeFormat: String
+  generalSettingsTimezone: String
+  generalSettingsTitle: String
+  generalSettingsUrl: String
+  readingSettingsPageForPosts: Int
+  readingSettingsPageOnFront: Int
+  readingSettingsPostsPerPage: Int
+  readingSettingsShowOnFront: String
+  writingSettingsDefaultCategory: Int
+  writingSettingsDefaultPostFormat: String
+  writingSettingsUseSmilies: Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Interfaces
+# ---------------------------------------------------------------------------
+
+"""Base interface for all globally identifiable nodes."""
+interface Node {
+  id: ID!
+}
+
+"""Interface for objects with a URI."""
+interface UniformResourceIdentifiable {
+  id: ID!
+  uri: String
+  isContentNode: Boolean!
+  isTermNode: Boolean!
+}
+
+"""Interface for all content type nodes."""
+interface ContentNode {
+  id: ID!
+  databaseId: Int!
+  contentType: ContentTypeToContentTypeConnectionEdge
+  contentTypeName: String!
+  date: String
+  dateGmt: String
+  desiredSlug: String
+  editingLockedBy: ContentNodeToEditLockConnectionEdge
+  enclosure: String
+  enqueuedScripts(first: Int, last: Int, after: String, before: String): ContentNodeToEnqueuedScriptConnection
+  enqueuedStylesheets(first: Int, last: Int, after: String, before: String): ContentNodeToEnqueuedStylesheetConnection
+  guid: String
+  isPreview: Boolean
+  isRestricted: Boolean
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+  link: String
+  modified: String
+  modifiedGmt: String
+  previewRevisionDatabaseId: Int
+  previewRevisionId: ID
+  slug: String
+  status: String
+  template: ContentTemplate
+  uri: String
+}
+
+"""Interface for content with a title field."""
+interface NodeWithTitle {
+  title(format: PostObjectFieldFormatEnum): String
+}
+
+"""Interface for content with body content."""
+interface NodeWithContent {
+  content(format: PostObjectFieldFormatEnum): String
+}
+
+"""Interface for content with an excerpt."""
+interface NodeWithExcerpt {
+  excerpt(format: PostObjectFieldFormatEnum): String
+}
+
+"""Interface for content with an author."""
+interface NodeWithAuthor {
+  author: NodeWithAuthorToUserConnectionEdge
+  authorDatabaseId: Int
+  authorId: ID
+}
+
+"""Interface for content with a featured image."""
+interface NodeWithFeaturedImage {
+  featuredImage: NodeWithFeaturedImageToMediaItemConnectionEdge
+  featuredImageDatabaseId: Int
+  featuredImageId: ID
+}
+
+"""Interface for content that supports comments."""
+interface NodeWithComments {
+  commentCount: Int
+  commentStatus: String
+  comments(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): NodeWithCommentsToCommentConnection
+}
+
+"""Interface for content with a page template."""
+interface NodeWithTemplate {
+  template: ContentTemplate
+}
+
+"""Interface for hierarchical content (pages, categories)."""
+interface HierarchicalNode {
+  parentId: ID
+  parentDatabaseId: Int
+}
+
+"""Interface for objects that can be previewed."""
+interface Previewable {
+  isPreview: Boolean
+  previewRevisionDatabaseId: Int
+  previewRevisionId: ID
+  preview: PostToPreviewConnectionEdge
+}
+
+"""Interface for term nodes (taxonomy terms)."""
+interface TermNode {
+  id: ID!
+  databaseId: Int!
+  count: Int
+  description: String
+  enqueuedScripts(first: Int, last: Int, after: String, before: String): TermNodeToEnqueuedScriptConnection
+  enqueuedStylesheets(first: Int, last: Int, after: String, before: String): TermNodeToEnqueuedStylesheetConnection
+  isContentNode: Boolean!
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  link: String
+  name: String
+  slug: String
+  taxonomyName: String
+  termGroupId: Int
+  termTaxonomyId: Int
+  uri: String
+}
+
+"""Enum for post object field format (rendered vs raw)."""
+enum PostObjectFieldFormatEnum {
+  RAW
+  RENDERED
+}
+
+"""Interface for content templates."""
+interface ContentTemplate {
+  templateName: String
+}
+
+# ---------------------------------------------------------------------------
+# Types: Page Info (Relay spec)
+# ---------------------------------------------------------------------------
+
+"""Pagination metadata for a connection."""
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+# ---------------------------------------------------------------------------
+# Types: Post
+# ---------------------------------------------------------------------------
+
+"""A WordPress post."""
+type Post implements Node & ContentNode & UniformResourceIdentifiable & NodeWithTitle & NodeWithContent & NodeWithExcerpt & NodeWithAuthor & NodeWithFeaturedImage & NodeWithComments & NodeWithTemplate & Previewable {
+  id: ID!
+  databaseId: Int!
+  authorDatabaseId: Int
+  authorId: ID
+  author: NodeWithAuthorToUserConnectionEdge
+  categories(first: Int, last: Int, after: String, before: String, where: TermConnectionWhereArgs): PostToCategoryConnection
+  commentCount: Int
+  commentStatus: String
+  comments(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): NodeWithCommentsToCommentConnection
+  content(format: PostObjectFieldFormatEnum): String
+  contentType: ContentTypeToContentTypeConnectionEdge
+  contentTypeName: String!
+  date: String
+  dateGmt: String
+  desiredSlug: String
+  editingLockedBy: ContentNodeToEditLockConnectionEdge
+  enclosure: String
+  excerpt(format: PostObjectFieldFormatEnum): String
+  featuredImage: NodeWithFeaturedImageToMediaItemConnectionEdge
+  featuredImageDatabaseId: Int
+  featuredImageId: ID
+  guid: String
+  isPreview: Boolean
+  isRestricted: Boolean
+  isSticky: Boolean!
+  isTermNode: Boolean!
+  isContentNode: Boolean!
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+  link: String
+  modified: String
+  modifiedGmt: String
+  pingStatus: String
+  pinged: [String]
+  postFormats(first: Int, last: Int, after: String, before: String, where: TermConnectionWhereArgs): PostToPostFormatConnection
+  preview: PostToPreviewConnectionEdge
+  previewRevisionDatabaseId: Int
+  previewRevisionId: ID
+  revisions(first: Int, last: Int, after: String, before: String, where: PostToRevisionConnectionWhereArgs): PostToRevisionConnection
+  slug: String
+  status: String
+  tags(first: Int, last: Int, after: String, before: String, where: TermConnectionWhereArgs): PostToTagConnection
+  template: ContentTemplate
+  title(format: PostObjectFieldFormatEnum): String
+  toPing: [String]
+  uri: String
+}
+
+"""Connection to multiple Post objects."""
+type PostConnection {
+  edges: [PostEdge!]!
+  nodes: [Post!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Post connection."""
+type PostEdge {
+  cursor: String
+  node: Post!
+}
+
+"""A post type definition."""
+type PostType implements Node {
+  id: ID!
+  canExport: Boolean
+  connectedTaxonomies(first: Int, last: Int, after: String, before: String): PostTypeToTaxonomyConnection
+  contentNodes(first: Int, last: Int, after: String, before: String, where: PostTypeToContentNodeConnectionWhereArgs): PostTypeToContentNodeConnection
+  deleteWithUser: Boolean
+  description: String
+  excludeFromSearch: Boolean
+  graphqlPluralName: String
+  graphqlSingleName: String
+  hasArchive: Boolean
+  hierarchical: Boolean
+  label: String
+  labels: PostTypeLabelDetails
+  menuIcon: String
+  menuPosition: Int
+  name: String
+  public: Boolean
+  publiclyQueryable: Boolean
+  restBase: String
+  restControllerClass: String
+  showInAdminBar: Boolean
+  showInGraphql: Boolean
+  showInMenu: Boolean
+  showInNavMenus: Boolean
+  showInRest: Boolean
+  showUi: Boolean
+  uri: String
+}
+
+"""Labels for a post type."""
+type PostTypeLabelDetails {
+  addNew: String
+  addNewItem: String
+  allItems: String
+  archives: String
+  attributes: String
+  editItem: String
+  featuredImage: String
+  filterItemsList: String
+  insertIntoItem: String
+  itemsList: String
+  itemsListNavigation: String
+  menuName: String
+  name: String
+  newItem: String
+  notFound: String
+  notFoundInTrash: String
+  parentItemColon: String
+  removeFeaturedImage: String
+  searchItems: String
+  setFeaturedImage: String
+  singularName: String
+  uploadedToThisItem: String
+  useFeaturedImage: String
+  viewItem: String
+  viewItems: String
+}
+
+"""A post revision."""
+type Revision implements Node & ContentNode & UniformResourceIdentifiable & NodeWithTitle & NodeWithContent & NodeWithExcerpt & NodeWithAuthor & NodeWithFeaturedImage & NodeWithTemplate {
+  id: ID!
+  databaseId: Int!
+  authorDatabaseId: Int
+  authorId: ID
+  author: NodeWithAuthorToUserConnectionEdge
+  content(format: PostObjectFieldFormatEnum): String
+  contentType: ContentTypeToContentTypeConnectionEdge
+  contentTypeName: String!
+  date: String
+  dateGmt: String
+  desiredSlug: String
+  enclosure: String
+  excerpt(format: PostObjectFieldFormatEnum): String
+  featuredImage: NodeWithFeaturedImageToMediaItemConnectionEdge
+  featuredImageDatabaseId: Int
+  featuredImageId: ID
+  guid: String
+  isContentNode: Boolean!
+  isPreview: Boolean
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+  link: String
+  modified: String
+  modifiedGmt: String
+  parentDatabaseId: Int
+  parentId: ID
+  slug: String
+  status: String
+  template: ContentTemplate
+  title(format: PostObjectFieldFormatEnum): String
+  uri: String
+}
+
+# ---------------------------------------------------------------------------
+# Types: Page
+# ---------------------------------------------------------------------------
+
+"""A WordPress page."""
+type Page implements Node & ContentNode & UniformResourceIdentifiable & NodeWithTitle & NodeWithContent & NodeWithExcerpt & NodeWithAuthor & NodeWithFeaturedImage & NodeWithComments & NodeWithTemplate & HierarchicalNode & Previewable {
+  id: ID!
+  databaseId: Int!
+  ancestors(first: Int, last: Int, after: String, before: String, where: HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs): HierarchicalContentNodeToContentNodeAncestorsConnection
+  author: NodeWithAuthorToUserConnectionEdge
+  authorDatabaseId: Int
+  authorId: ID
+  children(first: Int, last: Int, after: String, before: String, where: HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs): HierarchicalContentNodeToContentNodeChildrenConnection
+  commentCount: Int
+  commentStatus: String
+  comments(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): NodeWithCommentsToCommentConnection
+  content(format: PostObjectFieldFormatEnum): String
+  contentType: ContentTypeToContentTypeConnectionEdge
+  contentTypeName: String!
+  date: String
+  dateGmt: String
+  desiredSlug: String
+  editingLockedBy: ContentNodeToEditLockConnectionEdge
+  enclosure: String
+  excerpt(format: PostObjectFieldFormatEnum): String
+  featuredImage: NodeWithFeaturedImageToMediaItemConnectionEdge
+  featuredImageDatabaseId: Int
+  featuredImageId: ID
+  guid: String
+  isContentNode: Boolean!
+  isFrontPage: Boolean!
+  isPostsPage: Boolean!
+  isPreview: Boolean
+  isPrivacyPage: Boolean!
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+  link: String
+  menuOrder: Int
+  modified: String
+  modifiedGmt: String
+  pageTemplate: String
+  parent: HierarchicalContentNodeToParentContentNodeConnectionEdge
+  parentDatabaseId: Int
+  parentId: ID
+  preview: PostToPreviewConnectionEdge
+  previewRevisionDatabaseId: Int
+  previewRevisionId: ID
+  revisions(first: Int, last: Int, after: String, before: String): PageToRevisionConnection
+  slug: String
+  status: String
+  template: ContentTemplate
+  title(format: PostObjectFieldFormatEnum): String
+  uri: String
+}
+
+"""Connection to multiple Page objects."""
+type PageConnection {
+  edges: [PageEdge!]!
+  nodes: [Page!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Page connection."""
+type PageEdge {
+  cursor: String
+  node: Page!
+}
+
+# ---------------------------------------------------------------------------
+# Types: Media
+# ---------------------------------------------------------------------------
+
+"""A WordPress media item (attachment)."""
+type MediaItem implements Node & ContentNode & UniformResourceIdentifiable & NodeWithTitle & NodeWithAuthor & NodeWithComments & NodeWithTemplate {
+  id: ID!
+  databaseId: Int!
+  altText: String
+  author: NodeWithAuthorToUserConnectionEdge
+  authorDatabaseId: Int
+  authorId: ID
+  caption(format: PostObjectFieldFormatEnum): String
+  commentCount: Int
+  commentStatus: String
+  comments(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): NodeWithCommentsToCommentConnection
+  contentType: ContentTypeToContentTypeConnectionEdge
+  contentTypeName: String!
+  date: String
+  dateGmt: String
+  description(format: PostObjectFieldFormatEnum): String
+  desiredSlug: String
+  enclosure: String
+  fileSize(format: MediaItemSizeEnum): Int
+  guid: String
+  isContentNode: Boolean!
+  isPreview: Boolean
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+  link: String
+  mediaDetails: MediaDetails
+  mediaItemId: Int!
+  mediaItemUrl: String
+  mediaType: String
+  mimeType: String
+  modified: String
+  modifiedGmt: String
+  parentDatabaseId: Int
+  parentId: ID
+  sizes(size: MediaItemSizeEnum): String
+  slug: String
+  sourceUrl(size: MediaItemSizeEnum): String
+  srcSet(size: MediaItemSizeEnum): String
+  status: String
+  template: ContentTemplate
+  title(format: PostObjectFieldFormatEnum): String
+  uri: String
+}
+
+"""Size variants for media items."""
+enum MediaItemSizeEnum {
+  FULL
+  LARGE
+  MEDIUM
+  MEDIUM_LARGE
+  THUMBNAIL
+  ONE_THOUSAND_NINETY_SIX_X_TWO_THOUSAND
+  TWO_THOUSAND_FORTY_EIGHT_X_TWO_THOUSAND
+  WOOCOMMERCE_GALLERY_THUMBNAIL
+  WOOCOMMERCE_SINGLE
+  WOOCOMMERCE_THUMBNAIL
+}
+
+"""Detailed media file information."""
+type MediaDetails {
+  file: String
+  fileSize: Int
+  height: Int
+  meta: MediaItemMeta
+  sizes: [MediaSize]
+  width: Int
+}
+
+"""EXIF and metadata for a media item."""
+type MediaItemMeta {
+  aperture: Float
+  camera: String
+  caption: String
+  copyright: String
+  createdTimestamp: Int
+  credit: String
+  focalLength: Float
+  iso: Int
+  keywords: [String]
+  orientation: String
+  shutterSpeed: Float
+  title: String
+}
+
+"""A specific size variant of a media item."""
+type MediaSize {
+  file: String
+  fileSize: Int
+  height: String
+  mimeType: String
+  name: String
+  sourceUrl: String
+  width: String
+}
+
+"""Connection to multiple MediaItem objects."""
+type MediaItemConnection {
+  edges: [MediaItemEdge!]!
+  nodes: [MediaItem!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a MediaItem connection."""
+type MediaItemEdge {
+  cursor: String
+  node: MediaItem!
+}
+
+# ---------------------------------------------------------------------------
+# Types: Comment
+# ---------------------------------------------------------------------------
+
+"""A comment on a WordPress post."""
+type Comment implements Node {
+  id: ID!
+  agent: String
+  approved: Boolean
+  author: CommentToCommenterConnectionEdge
+  authorIp: String
+  commentedOn: CommentToContentNodeConnectionEdge
+  content(format: PostObjectFieldFormatEnum): String
+  databaseId: Int!
+  date: String
+  dateGmt: String
+  isRestricted: Boolean
+  karma: Int
+  parent: CommentToParentCommentConnectionEdge
+  parentDatabaseId: Int
+  parentId: ID
+  replies(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): CommentToCommentConnection
+  status: CommentStatus
+  type: String
+}
+
+"""Commenter — may be a registered user or guest author."""
+type CommentAuthor implements Node {
+  id: ID!
+  avatar: Avatar
+  databaseId: Int!
+  email: String
+  name: String
+  url: String
+}
+
+"""Connection to multiple Comment objects."""
+type CommentConnection {
+  edges: [CommentEdge!]!
+  nodes: [Comment!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Comment connection."""
+type CommentEdge {
+  cursor: String
+  node: Comment!
+}
+
+# ---------------------------------------------------------------------------
+# Types: Taxonomy & Terms
+# ---------------------------------------------------------------------------
+
+"""A registered WordPress taxonomy."""
+type Taxonomy implements Node {
+  id: ID!
+  connectedContentTypes(first: Int, last: Int, after: String, before: String): TaxonomyToContentTypeConnection
+  description: String
+  graphqlPluralName: String
+  graphqlSingleName: String
+  hierarchical: Boolean
+  label: String
+  name: String
+  public: Boolean
+  restBase: String
+  restControllerClass: String
+  showCloud: Boolean
+  showInAdminBar: Boolean
+  showInGraphql: Boolean
+  showInMenu: Boolean
+  showInNavMenus: Boolean
+  showInQuickEdit: Boolean
+  showInRest: Boolean
+  showUi: Boolean
+}
+
+"""Connection to multiple Taxonomy objects."""
+type TaxonomyConnection {
+  edges: [TaxonomyEdge!]!
+  nodes: [Taxonomy!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Taxonomy connection."""
+type TaxonomyEdge {
+  cursor: String
+  node: Taxonomy!
+}
+
+"""A category term."""
+type Category implements Node & TermNode & UniformResourceIdentifiable & HierarchicalNode {
+  id: ID!
+  ancestors(first: Int, last: Int, after: String, before: String): CategoryToAncestorsCategoryConnection
+  categoryId: Int
+  children(first: Int, last: Int, after: String, before: String, where: CategoryToCategoryConnectionWhereArgs): CategoryToCategoryConnection
+  contentNodes(first: Int, last: Int, after: String, before: String, where: CategoryToContentNodeConnectionWhereArgs): CategoryToContentNodeConnection
+  count: Int
+  databaseId: Int!
+  description: String
+  isContentNode: Boolean!
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  link: String
+  name: String
+  parent: CategoryToParentCategoryConnectionEdge
+  parentDatabaseId: Int
+  parentId: ID
+  posts(first: Int, last: Int, after: String, before: String, where: CategoryToPostConnectionWhereArgs): CategoryToPostConnection
+  slug: String
+  taxonomy: CategoryToTaxonomyConnectionEdge
+  taxonomyName: String
+  termGroupId: Int
+  termTaxonomyId: Int
+  uri: String
+}
+
+"""Connection to multiple Category objects."""
+type CategoryConnection {
+  edges: [CategoryEdge!]!
+  nodes: [Category!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Category connection."""
+type CategoryEdge {
+  cursor: String
+  node: Category!
+}
+
+"""A tag term."""
+type Tag implements Node & TermNode & UniformResourceIdentifiable {
+  id: ID!
+  contentNodes(first: Int, last: Int, after: String, before: String, where: TagToContentNodeConnectionWhereArgs): TagToContentNodeConnection
+  count: Int
+  databaseId: Int!
+  description: String
+  isContentNode: Boolean!
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  link: String
+  name: String
+  posts(first: Int, last: Int, after: String, before: String, where: TagToPostConnectionWhereArgs): TagToPostConnection
+  slug: String
+  tagId: Int
+  taxonomy: TagToTaxonomyConnectionEdge
+  taxonomyName: String
+  termGroupId: Int
+  termTaxonomyId: Int
+  uri: String
+}
+
+"""Connection to multiple Tag objects."""
+type TagConnection {
+  edges: [TagEdge!]!
+  nodes: [Tag!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Tag connection."""
+type TagEdge {
+  cursor: String
+  node: Tag!
+}
+
+"""A generic taxonomy term object."""
+type TermObject implements Node & TermNode & UniformResourceIdentifiable {
+  id: ID!
+  count: Int
+  databaseId: Int!
+  description: String
+  isContentNode: Boolean!
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  link: String
+  name: String
+  slug: String
+  taxonomyName: String
+  termGroupId: Int
+  termTaxonomyId: Int
+  uri: String
+}
+
+"""Connection to multiple TermNode objects."""
+type TermNodeConnection {
+  edges: [TermNodeEdge!]!
+  nodes: [TermNode!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a TermNode connection."""
+type TermNodeEdge {
+  cursor: String
+  node: TermNode!
+}
+
+"""A generic post object (for cross-type queries)."""
+type PostObject implements Node & ContentNode & UniformResourceIdentifiable {
+  id: ID!
+  contentTypeName: String!
+  databaseId: Int!
+  date: String
+  desiredSlug: String
+  guid: String
+  isContentNode: Boolean!
+  isPreview: Boolean
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  link: String
+  modified: String
+  slug: String
+  status: String
+  uri: String
+}
+
+"""Connection to ContentNode objects."""
+type ContentNodeConnection {
+  edges: [ContentNodeEdge!]!
+  nodes: [ContentNode!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a ContentNode connection."""
+type ContentNodeEdge {
+  cursor: String
+  node: ContentNode!
+}
+
+# ---------------------------------------------------------------------------
+# Types: User
+# ---------------------------------------------------------------------------
+
+"""A registered WordPress user."""
+type User implements Node & UniformResourceIdentifiable {
+  id: ID!
+  avatar(size: Int, forceDefault: Boolean, rating: AvatarRatingEnum): Avatar
+  capKey: String
+  capabilities: [String]
+  comments(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): UserToCommentConnection
+  databaseId: Int!
+  description: String
+  email: String
+  extraCapabilities: [String]
+  firstName: String
+  isContentNode: Boolean!
+  isJwtAuthSecretRevoked: Boolean!
+  isRestricted: Boolean
+  isTermNode: Boolean!
+  jwtAuthExpiration: String
+  jwtAuthToken: String
+  jwtRefreshToken: String
+  jwtUserSecret: String
+  lastName: String
+  locale: String
+  mediaItems(first: Int, last: Int, after: String, before: String, where: UserToMediaItemConnectionWhereArgs): UserToMediaItemConnection
+  name: String
+  nicename: String
+  nickname: String
+  pages(first: Int, last: Int, after: String, before: String, where: UserToPageConnectionWhereArgs): UserToPageConnection
+  posts(first: Int, last: Int, after: String, before: String, where: UserToPostConnectionWhereArgs): UserToPostConnection
+  registeredDate: String
+  revisions(first: Int, last: Int, after: String, before: String, where: UserToContentRevisionUnionConnectionWhereArgs): UserToRevisionsConnection
+  roles(first: Int, last: Int, after: String, before: String): UserToUserRoleConnection
+  slug: String
+  uri: String
+  url: String
+  userId: Int
+  username: String
+}
+
+"""Detailed user profile fields."""
+type UserDetails {
+  aim: String
+  description: String
+  displayName: String
+  email: String
+  firstName: String
+  id: ID!
+  jabber: String
+  lastName: String
+  locale: String
+  name: String
+  nickname: String
+  registeredDate: String
+  url: String
+  username: String
+  yim: String
+}
+
+"""A WordPress user role."""
+type UserRole implements Node {
+  id: ID!
+  capabilities: [String]
+  displayName: String
+  isRestricted: Boolean
+  name: String
+}
+
+"""Rating level for Gravatar avatars."""
+enum AvatarRatingEnum {
+  G
+  PG
+  R
+  X
+}
+
+"""A Gravatar avatar image."""
+type Avatar {
+  default: String
+  extraAttr: String
+  forceDefault: Boolean
+  foundAvatar: Boolean
+  height: Int
+  isRestricted: Boolean
+  rating: String
+  scheme: String
+  size: Int
+  url: String
+  width: Int
+}
+
+"""Connection to multiple User objects."""
+type UserConnection {
+  edges: [UserEdge!]!
+  nodes: [User!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a User connection."""
+type UserEdge {
+  cursor: String
+  node: User!
+}
+
+# ---------------------------------------------------------------------------
+# Types: Menu
+# ---------------------------------------------------------------------------
+
+"""A navigation menu."""
+type Menu implements Node {
+  id: ID!
+  count: Int
+  databaseId: Int!
+  isRestricted: Boolean
+  locations: [MenuLocationEnum]
+  menuId: Int
+  menuItems(first: Int, last: Int, after: String, before: String, where: MenuToMenuItemConnectionWhereArgs): MenuToMenuItemConnection
+  name: String
+  slug: String
+}
+
+"""A single item in a navigation menu."""
+type MenuItem implements Node {
+  id: ID!
+  childItems(first: Int, last: Int, after: String, before: String, where: MenuItemToMenuItemConnectionWhereArgs): MenuItemToMenuItemConnection
+  connectedNode: MenuItemToMenuItemLinkableConnectionEdge
+  cssClasses: [String]
+  databaseId: Int!
+  description: String
+  isRestricted: Boolean
+  label: String
+  linkRelationship: String
+  locations: [MenuLocationEnum]
+  menu: MenuItemToMenuConnectionEdge
+  menuItemId: Int
+  order: Int
+  parentDatabaseId: Int
+  parentId: ID
+  path: String
+  target: String
+  title: String
+  uri: String
+  url: String
+}
+
+"""Connection to multiple Menu objects."""
+type MenuConnection {
+  edges: [MenuEdge!]!
+  nodes: [Menu!]!
+  pageInfo: PageInfo!
+}
+
+"""Edge in a Menu connection."""
+type MenuEdge {
+  cursor: String
+  node: Menu!
+}
+
+# ---------------------------------------------------------------------------
+# Types: Plugin & Theme
+# ---------------------------------------------------------------------------
+
+"""A WordPress plugin."""
+type Plugin implements Node {
+  id: ID!
+  author: String
+  authorUri: String
+  description: String
+  isRestricted: Boolean
+  name: String
+  path: String
+  pluginUri: String
+  status: PluginStatus
+  version: String
+}
+
+"""A WordPress theme."""
+type Theme implements Node {
+  id: ID!
+  author: String
+  authorUri: String
+  description: String
+  isRestricted: Boolean
+  name: String
+  screenshot: String
+  slug: String
+  status: ThemeStatus
+  tags: [String]
+  themeUri: String
+  version: String
+}
+
+# ---------------------------------------------------------------------------
+# Types: Settings
+# ---------------------------------------------------------------------------
+
+"""Aggregated site settings."""
+type Settings {
+  discussionSettingsDefaultCommentStatus: String
+  discussionSettingsDefaultPingStatus: String
+  generalSettingsDateFormat: String
+  generalSettingsDescription: String
+  generalSettingsEmail: String
+  generalSettingsLanguage: String
+  generalSettingsStartOfWeek: Int
+  generalSettingsTimeFormat: String
+  generalSettingsTimezone: String
+  generalSettingsTitle: String
+  generalSettingsUrl: String
+  readingSettingsPageForPosts: Int
+  readingSettingsPageOnFront: Int
+  readingSettingsPostsPerPage: Int
+  readingSettingsShowOnFront: String
+  writingSettingsDefaultCategory: Int
+  writingSettingsDefaultPostFormat: String
+  writingSettingsUseSmilies: Boolean
+}
+
+"""Writing-specific settings."""
+type WritingSettings {
+  defaultCategory: Int
+  defaultPostFormat: String
+  useSmilies: Boolean
+}
+
+"""Reading-specific settings."""
+type ReadingSettings {
+  pageForPosts: Int
+  pageOnFront: Int
+  postsPerPage: Int
+  showOnFront: String
+}
+
+"""Discussion (comments) settings."""
+type DiscussionSettings {
+  defaultCommentStatus: String
+  defaultPingStatus: String
+}
+
+"""General site settings."""
+type GeneralSettings {
+  dateFormat: String
+  description: String
+  email: String
+  language: String
+  startOfWeek: Int
+  timeFormat: String
+  timezone: String
+  title: String
+  url: String
+}
+
+# ---------------------------------------------------------------------------
+# Types: Templates
+# ---------------------------------------------------------------------------
+
+"""Default post template."""
+type DefaultTemplate implements ContentTemplate {
+  templateName: String
+}
+
+"""Post template."""
+type PostTemplate implements ContentTemplate {
+  templateName: String
+}
+
+"""Page template."""
+type PageTemplate implements ContentTemplate {
+  templateName: String
+}
+
+"""Cover page template."""
+type CoverTemplate implements ContentTemplate {
+  templateName: String
+}
+
+"""Full-width page template."""
+type FullWidthTemplate implements ContentTemplate {
+  templateName: String
+}
+
+# ---------------------------------------------------------------------------
+# Stub Edge/Connection types referenced in interfaces/types above
+# (these complete the schema without duplicating full definitions)
+# ---------------------------------------------------------------------------
+
+type ContentTypeToContentTypeConnectionEdge { node: ContentType }
+type ContentType implements Node { id: ID! name: String graphqlSingleName: String graphqlPluralName: String }
+type ContentNodeToEditLockConnectionEdge { node: User lockTimestamp: String }
+type ContentNodeToEditLastConnectionEdge { node: User }
+type ContentNodeToEnqueuedScriptConnection { nodes: [EnqueuedScript] }
+type ContentNodeToEnqueuedStylesheetConnection { nodes: [EnqueuedStylesheet] }
+type EnqueuedScript implements Node { id: ID! handle: String src: String version: String }
+type EnqueuedStylesheet implements Node { id: ID! handle: String src: String version: String }
+
+type NodeWithAuthorToUserConnectionEdge { node: User }
+type NodeWithFeaturedImageToMediaItemConnectionEdge { node: MediaItem }
+type NodeWithCommentsToCommentConnection { edges: [CommentEdge!]! nodes: [Comment!]! pageInfo: PageInfo! }
+
+type PostToCategoryConnection { edges: [CategoryEdge!]! nodes: [Category!]! pageInfo: PageInfo! }
+type PostToTagConnection { edges: [TagEdge!]! nodes: [Tag!]! pageInfo: PageInfo! }
+type PostToPostFormatConnection { edges: [PostFormatEdge!]! nodes: [PostFormat!]! pageInfo: PageInfo! }
+type PostToPreviewConnectionEdge { node: Post }
+type PostToRevisionConnection { edges: [RevisionEdge!]! nodes: [Revision!]! pageInfo: PageInfo! }
+input PostToRevisionConnectionWhereArgs { authorIn: [ID] dateQuery: DateQueryInput hasPassword: Boolean }
+
+type PostFormat implements Node & TermNode & UniformResourceIdentifiable {
+  id: ID! databaseId: Int! count: Int description: String isContentNode: Boolean! isTermNode: Boolean!
+  link: String name: String posts(first: Int, last: Int): PostFormatToPostConnection slug: String
+  taxonomyName: String termGroupId: Int termTaxonomyId: Int uri: String
+}
+type PostFormatEdge { cursor: String node: PostFormat! }
+type PostFormatToPostConnection { edges: [PostEdge!]! nodes: [Post!]! pageInfo: PageInfo! }
+
+type RevisionEdge { cursor: String node: Revision! }
+
+type PageToRevisionConnection { edges: [RevisionEdge!]! nodes: [Revision!]! pageInfo: PageInfo! }
+
+type HierarchicalContentNodeToContentNodeAncestorsConnection { edges: [ContentNodeEdge!]! nodes: [ContentNode!]! pageInfo: PageInfo! }
+input HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs { contentTypes: [ContentTypeEnum] }
+type HierarchicalContentNodeToContentNodeChildrenConnection { edges: [ContentNodeEdge!]! nodes: [ContentNode!]! pageInfo: PageInfo! }
+input HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs { contentTypes: [ContentTypeEnum] }
+type HierarchicalContentNodeToParentContentNodeConnectionEdge { node: ContentNode }
+
+type CommentToCommenterConnectionEdge { node: CommentAuthor }
+type CommentToContentNodeConnectionEdge { node: ContentNode }
+type CommentToParentCommentConnectionEdge { node: Comment }
+type CommentToCommentConnection { edges: [CommentEdge!]! nodes: [Comment!]! pageInfo: PageInfo! }
+
+type TaxonomyToContentTypeConnection { edges: [ContentTypeEdge!]! nodes: [ContentType!]! pageInfo: PageInfo! }
+type ContentTypeEdge { cursor: String node: ContentType! }
+type PostTypeToTaxonomyConnection { edges: [TaxonomyEdge!]! nodes: [Taxonomy!]! pageInfo: PageInfo! }
+input PostTypeToContentNodeConnectionWhereArgs { contentTypes: [ContentTypeEnum] }
+type PostTypeToContentNodeConnection { edges: [ContentNodeEdge!]! nodes: [ContentNode!]! pageInfo: PageInfo! }
+
+type CategoryToAncestorsCategoryConnection { edges: [CategoryEdge!]! nodes: [Category!]! pageInfo: PageInfo! }
+input CategoryToCategoryConnectionWhereArgs { hideEmpty: Boolean }
+type CategoryToCategoryConnection { edges: [CategoryEdge!]! nodes: [Category!]! pageInfo: PageInfo! }
+input CategoryToContentNodeConnectionWhereArgs { contentTypes: [ContentTypeEnum] }
+type CategoryToContentNodeConnection { edges: [ContentNodeEdge!]! nodes: [ContentNode!]! pageInfo: PageInfo! }
+input CategoryToPostConnectionWhereArgs { stati: [PostStatus] }
+type CategoryToPostConnection { edges: [PostEdge!]! nodes: [Post!]! pageInfo: PageInfo! }
+type CategoryToParentCategoryConnectionEdge { node: Category }
+type CategoryToTaxonomyConnectionEdge { node: Taxonomy }
+
+input TagToContentNodeConnectionWhereArgs { contentTypes: [ContentTypeEnum] }
+type TagToContentNodeConnection { edges: [ContentNodeEdge!]! nodes: [ContentNode!]! pageInfo: PageInfo! }
+input TagToPostConnectionWhereArgs { stati: [PostStatus] }
+type TagToPostConnection { edges: [PostEdge!]! nodes: [Post!]! pageInfo: PageInfo! }
+type TagToTaxonomyConnectionEdge { node: Taxonomy }
+
+type UserToCommentConnection { edges: [CommentEdge!]! nodes: [Comment!]! pageInfo: PageInfo! }
+type UserToMediaItemConnection { edges: [MediaItemEdge!]! nodes: [MediaItem!]! pageInfo: PageInfo! }
+input UserToMediaItemConnectionWhereArgs { mimeType: MimeTypeEnum stati: [PostStatus] }
+type UserToPageConnection { edges: [PageEdge!]! nodes: [Page!]! pageInfo: PageInfo! }
+input UserToPageConnectionWhereArgs { stati: [PostStatus] }
+type UserToPostConnection { edges: [PostEdge!]! nodes: [Post!]! pageInfo: PageInfo! }
+input UserToPostConnectionWhereArgs { stati: [PostStatus] }
+type UserToRevisionsConnection { edges: [RevisionEdge!]! nodes: [Revision!]! pageInfo: PageInfo! }
+input UserToContentRevisionUnionConnectionWhereArgs { contentTypes: [ContentTypeEnum] }
+type UserToUserRoleConnection { edges: [UserRoleEdge!]! nodes: [UserRole!]! pageInfo: PageInfo! }
+type UserRoleEdge { cursor: String node: UserRole! }
+
+input MenuToMenuItemConnectionWhereArgs { id: Int location: MenuLocationEnum }
+type MenuToMenuItemConnection { edges: [MenuItemEdge!]! nodes: [MenuItem!]! pageInfo: PageInfo! }
+type MenuItemEdge { cursor: String node: MenuItem! }
+input MenuItemToMenuItemConnectionWhereArgs { id: Int }
+type MenuItemToMenuItemConnection { edges: [MenuItemEdge!]! nodes: [MenuItem!]! pageInfo: PageInfo! }
+type MenuItemToMenuItemLinkableConnectionEdge { node: MenuItemLinkable }
+interface MenuItemLinkable { id: ID! databaseId: Int! uri: String isRestricted: Boolean }
+type MenuItemToMenuConnectionEdge { node: Menu }
+
+type TermNodeToEnqueuedScriptConnection { nodes: [EnqueuedScript] }
+type TermNodeToEnqueuedStylesheetConnection { nodes: [EnqueuedStylesheet] }
+
+# ---------------------------------------------------------------------------
+# Mutation Payload Types
+# ---------------------------------------------------------------------------
+
+"""Payload from creating a post."""
+type CreatePostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+"""Payload from updating a post."""
+type UpdatePostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+"""Payload from deleting a post."""
+type DeletePostPayload {
+  clientMutationId: String
+  deletedId: ID
+  post: Post
+}
+
+"""Payload from creating a page."""
+type CreatePagePayload {
+  clientMutationId: String
+  page: Page
+}
+
+"""Payload from updating a page."""
+type UpdatePagePayload {
+  clientMutationId: String
+  page: Page
+}
+
+"""Payload from deleting a page."""
+type DeletePagePayload {
+  clientMutationId: String
+  deletedId: ID
+  page: Page
+}
+
+"""Payload from creating a comment."""
+type CreateCommentPayload {
+  clientMutationId: String
+  comment: Comment
+  success: Boolean
+}
+
+"""Payload from updating a comment."""
+type UpdateCommentPayload {
+  clientMutationId: String
+  comment: Comment
+}
+
+"""Payload from deleting a comment."""
+type DeleteCommentPayload {
+  clientMutationId: String
+  comment: Comment
+  deletedId: ID
+}
+
+"""Payload from creating a media item."""
+type CreateMediaItemPayload {
+  clientMutationId: String
+  mediaItem: MediaItem
+}
+
+"""Payload from creating a user."""
+type CreateUserPayload {
+  clientMutationId: String
+  user: User
+}
+
+"""Payload from updating a user."""
+type UpdateUserPayload {
+  clientMutationId: String
+  user: User
+}
+
+"""Payload from deleting a user."""
+type DeleteUserPayload {
+  clientMutationId: String
+  deletedId: ID
+  user: User
+}
+
+"""Payload from updating site settings."""
+type UpdateSettingsPayload {
+  allSettings: Settings
+  clientMutationId: String
+  discussionSettings: DiscussionSettings
+  generalSettings: GeneralSettings
+  readingSettings: ReadingSettings
+  writingSettings: WritingSettings
+}
+
+"""Payload from restoring a revision."""
+type RestoreCommentPayload {
+  clientMutationId: String
+  comment: Comment
+  restoredId: ID
+}
+
+# ---------------------------------------------------------------------------
+# Root Query
+# ---------------------------------------------------------------------------
+
+"""The root query type for reading WordPress data."""
+type RootQuery {
+  allSettings: Settings
+  categories(first: Int, last: Int, after: String, before: String, where: TermConnectionWhereArgs): CategoryConnection
+  category(id: ID!, idType: CategoryIdType): Category
+  comment(id: ID!): Comment
+  comments(first: Int, last: Int, after: String, before: String, where: CommentConnectionWhereArgs): CommentConnection
+  contentNode(id: ID!, idType: ContentNodeIdTypeEnum, asPreview: Boolean, contentType: ContentTypeEnum): ContentNode
+  contentNodes(first: Int, last: Int, after: String, before: String, where: ContentNodeConnectionWhereArgs): ContentNodeConnection
+  contentType(id: ID!, idType: ContentTypeIdTypeEnum): ContentType
+  contentTypes(first: Int, last: Int, after: String, before: String): ContentTypeConnection
+  discussionSettings: DiscussionSettings
+  generalSettings: GeneralSettings
+  mediaItem(id: ID!, idType: MediaItemIdType, asPreview: Boolean): MediaItem
+  mediaItems(first: Int, last: Int, after: String, before: String, where: MediaItemConnectionWhereArgs): MediaItemConnection
+  menu(id: ID!, idType: MenuNodeIdTypeEnum): Menu
+  menuItem(id: ID!, idType: MenuItemNodeIdTypeEnum): MenuItem
+  menuItems(first: Int, last: Int, after: String, before: String, where: MenuItemConnectionWhereArgs): MenuConnection
+  menus(first: Int, last: Int, after: String, before: String, where: MenuConnectionWhereArgs): MenuConnection
+  node(id: ID): Node
+  nodeByUri(uri: String!): UniformResourceIdentifiable
+  page(id: ID!, idType: PageIdType, asPreview: Boolean): Page
+  pages(first: Int, last: Int, after: String, before: String, where: PageConnectionWhereArgs): PageConnection
+  plugin(id: ID!): Plugin
+  plugins(first: Int, last: Int, after: String, before: String, where: PluginConnectionWhereArgs): PluginConnection
+  post(id: ID!, idType: PostIdType, asPreview: Boolean): Post
+  posts(first: Int, last: Int, after: String, before: String, where: PostConnectionWhereArgs): PostConnection
+  readingSettings: ReadingSettings
+  registeredScripts(first: Int, last: Int, after: String, before: String): EnqueuedScriptConnection
+  registeredStylesheets(first: Int, last: Int, after: String, before: String): EnqueuedStylesheetConnection
+  revisions(first: Int, last: Int, after: String, before: String, where: ContentNodeConnectionWhereArgs): ContentNodeConnection
+  tag(id: ID!, idType: TagIdType): Tag
+  tags(first: Int, last: Int, after: String, before: String, where: TermConnectionWhereArgs): TagConnection
+  taxonomies(first: Int, last: Int, after: String, before: String): TaxonomyConnection
+  taxonomy(id: ID!, idType: TaxonomyIdTypeEnum): Taxonomy
+  termNode(id: ID!, idType: TermNodeIdTypeEnum, taxonomy: TaxonomyEnum): TermNode
+  termNodes(first: Int, last: Int, after: String, before: String, where: TermNodeConnectionWhereArgs): TermNodeConnection
+  theme(id: ID!): Theme
+  themes(first: Int, last: Int, after: String, before: String): ThemeConnection
+  user(id: ID!, idType: UserNodeIdTypeEnum): User
+  userRole(id: ID!): UserRole
+  userRoles(first: Int, last: Int, after: String, before: String): UserRoleConnection
+  users(first: Int, last: Int, after: String, before: String, where: UserConnectionWhereArgs): UserConnection
+  viewer: User
+  writingSettings: WritingSettings
+}
+
+"""ID type for fetching categories."""
+enum CategoryIdType { DATABASE_ID ID NAME SLUG URI }
+"""ID type for fetching content nodes."""
+enum ContentNodeIdTypeEnum { DATABASE_ID ID URI }
+"""ID type for content types."""
+enum ContentTypeIdTypeEnum { ID NAME }
+"""ID type for fetching media items."""
+enum MediaItemIdType { DATABASE_ID ID SLUG SOURCE_URL URI }
+"""ID type for menus."""
+enum MenuNodeIdTypeEnum { DATABASE_ID ID LOCATION NAME SLUG }
+"""ID type for menu items."""
+enum MenuItemNodeIdTypeEnum { DATABASE_ID ID }
+"""ID type for pages."""
+enum PageIdType { DATABASE_ID ID URI SLUG }
+"""ID type for posts."""
+enum PostIdType { DATABASE_ID ID SLUG URI }
+"""ID type for tags."""
+enum TagIdType { DATABASE_ID ID NAME SLUG URI }
+"""ID type for taxonomies."""
+enum TaxonomyIdTypeEnum { ID NAME }
+"""ID type for term nodes."""
+enum TermNodeIdTypeEnum { DATABASE_ID ID NAME SLUG URI }
+"""ID type for users."""
+enum UserNodeIdTypeEnum { DATABASE_ID EMAIL ID SLUG URI USERNAME }
+
+input ContentNodeConnectionWhereArgs { contentTypes: [ContentTypeEnum] stati: [PostStatus] }
+input MediaItemConnectionWhereArgs { mimeType: MimeTypeEnum stati: [PostStatus] }
+input MenuItemConnectionWhereArgs { id: Int location: MenuLocationEnum }
+input MenuConnectionWhereArgs { id: Int location: MenuLocationEnum slug: String }
+input PluginConnectionWhereArgs { stati: [PluginStatus] }
+input TermNodeConnectionWhereArgs { taxonomies: [TaxonomyEnum] }
+
+type ContentTypeConnection { edges: [ContentTypeEdge!]! nodes: [ContentType!]! pageInfo: PageInfo! }
+type PluginConnection { edges: [PluginEdge!]! nodes: [Plugin!]! pageInfo: PageInfo! }
+type PluginEdge { cursor: String node: Plugin! }
+type ThemeConnection { edges: [ThemeEdge!]! nodes: [Theme!]! pageInfo: PageInfo! }
+type ThemeEdge { cursor: String node: Theme! }
+type UserRoleConnection { edges: [UserRoleEdge!]! nodes: [UserRole!]! pageInfo: PageInfo! }
+type EnqueuedScriptConnection { edges: [EnqueuedScriptEdge!]! nodes: [EnqueuedScript!]! pageInfo: PageInfo! }
+type EnqueuedScriptEdge { cursor: String node: EnqueuedScript! }
+type EnqueuedStylesheetConnection { edges: [EnqueuedStylesheetEdge!]! nodes: [EnqueuedStylesheet!]! pageInfo: PageInfo! }
+type EnqueuedStylesheetEdge { cursor: String node: EnqueuedStylesheet! }
+
+# ---------------------------------------------------------------------------
+# Root Mutation
+# ---------------------------------------------------------------------------
+
+"""The root mutation type for writing WordPress data."""
+type RootMutation {
+  createCategory(input: CreateTermInput!): CreateCategoryPayload
+  createComment(input: CreateCommentInput!): CreateCommentPayload
+  createMediaItem(input: CreateMediaItemInput!): CreateMediaItemPayload
+  createPage(input: CreatePageInput!): CreatePagePayload
+  createPost(input: CreatePostInput!): CreatePostPayload
+  createPostFormat(input: CreateTermInput!): CreatePostFormatPayload
+  createTag(input: CreateTermInput!): CreateTagPayload
+  createUser(input: CreateUserInput!): CreateUserPayload
+  deleteCategory(input: DeleteTermInput!): DeleteCategoryPayload
+  deleteComment(input: DeleteCommentInput!): DeleteCommentPayload
+  deleteMediaItem(input: DeleteMediaItemInput!): DeleteMediaItemPayload
+  deletePage(input: DeletePageInput!): DeletePagePayload
+  deletePost(input: DeletePostInput!): DeletePostPayload
+  deletePostFormat(input: DeleteTermInput!): DeletePostFormatPayload
+  deleteTag(input: DeleteTermInput!): DeleteTagPayload
+  deleteUser(input: DeleteUserInput!): DeleteUserPayload
+  generateAuthorizationCode(input: GenerateAuthorizationCodeInput!): GenerateAuthorizationCodePayload
+  increaseCount(count: Int): Int
+  refreshJwtAuthToken(input: RefreshJwtAuthTokenInput!): RefreshJwtAuthTokenPayload
+  registerUser(input: RegisterUserInput!): RegisterUserPayload
+  resetUserPassword(input: ResetUserPasswordInput!): ResetUserPasswordPayload
+  restoreComment(input: RestoreCommentInput!): RestoreCommentPayload
+  sendPasswordResetEmail(input: SendPasswordResetEmailInput!): SendPasswordResetEmailPayload
+  updateCategory(input: UpdateTermInput!): UpdateCategoryPayload
+  updateComment(input: UpdateCommentInput!): UpdateCommentPayload
+  updateMediaItem(input: UpdateMediaItemInput!): UpdateMediaItemPayload
+  updatePage(input: UpdatePageInput!): UpdatePagePayload
+  updatePost(input: UpdatePostInput!): UpdatePostPayload
+  updatePostFormat(input: UpdateTermInput!): UpdatePostFormatPayload
+  updateSettings(input: UpdateSettingsInput!): UpdateSettingsPayload
+  updateTag(input: UpdateTermInput!): UpdateTagPayload
+  updateUser(input: UpdateUserInput!): UpdateUserPayload
+}
+
+input CreateTermInput { aliasOf: String clientMutationId: String description: String name: String! parentId: ID slug: String }
+input UpdateTermInput { aliasOf: String clientMutationId: String description: String id: ID! name: String parentId: ID slug: String }
+input DeleteTermInput { clientMutationId: String id: ID! }
+input DeleteCommentInput { clientMutationId: String forceDelete: Boolean id: ID! }
+input DeleteMediaItemInput { clientMutationId: String forceDelete: Boolean id: ID! }
+input DeletePageInput { clientMutationId: String forceDelete: Boolean id: ID! }
+input DeleteUserInput { clientMutationId: String id: ID! reassignId: ID }
+input GenerateAuthorizationCodeInput { clientId: String clientMutationId: String clientSecret: String redirectUri: String username: String password: String }
+input RefreshJwtAuthTokenInput { clientMutationId: String jwtRefreshToken: String! }
+input RegisterUserInput { aim: String clientMutationId: String description: String displayName: String email: String firstName: String jabber: String lastName: String locale: String nicename: String nickname: String password: String registered: String richEditing: String username: String! websiteUrl: String yim: String }
+input ResetUserPasswordInput { clientMutationId: String key: String login: String password: String }
+input RestoreCommentInput { clientMutationId: String id: ID! }
+input SendPasswordResetEmailInput { clientMutationId: String username: String! }
+input UpdateMediaItemInput { altText: String authorId: ID caption: String clientMutationId: String commentStatus: String date: String dateGmt: String description: String filePath: String fileType: MimeTypeEnum id: ID! parentId: ID pingStatus: String slug: String status: MediaItemStatusEnum title: String }
+
+type CreateCategoryPayload { category: Category clientMutationId: String }
+type CreatePostFormatPayload { postFormat: PostFormat clientMutationId: String }
+type CreateTagPayload { tag: Tag clientMutationId: String }
+type DeleteCategoryPayload { category: Category clientMutationId: String deletedId: ID }
+type DeleteMediaItemPayload { clientMutationId: String deletedId: ID mediaItem: MediaItem }
+type DeletePagePayload { clientMutationId: String deletedId: ID page: Page }
+type DeletePostFormatPayload { clientMutationId: String deletedId: ID postFormat: PostFormat }
+type DeleteTagPayload { clientMutationId: String deletedId: ID tag: Tag }
+type DeleteUserPayload { clientMutationId: String deletedId: ID user: User }
+type GenerateAuthorizationCodePayload { clientMutationId: String code: String error: String }
+type RefreshJwtAuthTokenPayload { authToken: String clientMutationId: String }
+type RegisterUserPayload { clientMutationId: String user: User }
+type ResetUserPasswordPayload { clientMutationId: String user: User }
+type SendPasswordResetEmailPayload { clientMutationId: String user: User }
+type UpdateCategoryPayload { category: Category clientMutationId: String }
+type UpdateMediaItemPayload { clientMutationId: String mediaItem: MediaItem }
+type UpdatePostFormatPayload { clientMutationId: String postFormat: PostFormat }
+type UpdateTagPayload { clientMutationId: String tag: Tag }
+
+# ---------------------------------------------------------------------------
+# Schema Declaration
+# ---------------------------------------------------------------------------
+
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}

@@ -1,10 +1,12 @@
 aid: wordpress
 name: WordPress
-description: WordPress is an open-source content management system (CMS) that powers a significant portion of websites on
-  the internet. Its REST API enables applications to interact with WordPress sites by sending and receiving data as JSON,
-  allowing developers to build decoupled frontends, mobile apps, and integrations in any language. The extensive plugin and
-  theme ecosystem, block editor, and AI capabilities make it accessible for building everything from personal blogs to complex
-  enterprise websites.
+description: WordPress is an open-source content management system (CMS) that powers
+  a significant portion of websites on the internet. Its REST API enables applications
+  to interact with WordPress sites by sending and receiving data as JSON, allowing
+  developers to build decoupled frontends, mobile apps, and integrations in any language.
+  The extensive plugin and theme ecosystem, block editor, and AI capabilities make
+  it accessible for building everything from personal blogs to complex enterprise
+  websites.
 type: Index
 url: https://developer.wordpress.org/rest-api/
 tags:
@@ -18,9 +20,11 @@ specificationVersion: '0.19'
 apis:
 - aid: wordpress:rest-api
   name: WordPress REST API
-  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites
-    remotely by sending and receiving JSON objects. The REST API is the backbone of the WordPress Block Editor (Gutenberg)
-    and enables building decoupled applications, headless CMS setups, and third-party integrations.
+  description: The WordPress REST API provides endpoints for WordPress data types
+    that allow developers to interact with sites remotely by sending and receiving
+    JSON objects. The REST API is the backbone of the WordPress Block Editor (Gutenberg)
+    and enables building decoupled applications, headless CMS setups, and third-party
+    integrations.
   humanURL: https://developer.wordpress.org/rest-api/
   baseURL: https://{site}/wp-json
   tags:
@@ -68,38 +72,13 @@ apis:
     url: json-schema/wordpress-search-result-schema.json
   - type: JSONSchema
     url: json-schema/wordpress-rendered-content-schema.json
-  - type: NaftikoCapability
-    url: capabilities/rest-block-types.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-blocks.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-categories.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-comments.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-media.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-pages.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-plugins.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-post-types.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-posts.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-search.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-settings.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-tags.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-themes.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-users.yaml
+  - url: graphql/wordpress-graphql.md
+    type: GraphQL
 - aid: wordpress:wp-cli
   name: WP-CLI
-  description: WP-CLI is the command-line interface for WordPress. It provides commands for managing WordPress installations,
-    plugins, themes, users, content, and more without using a web browser. WP-CLI is widely used for automation, deployment,
+  description: WP-CLI is the command-line interface for WordPress. It provides commands
+    for managing WordPress installations, plugins, themes, users, content, and more
+    without using a web browser. WP-CLI is widely used for automation, deployment,
     and development workflows.
   humanURL: https://wp-cli.org/
   tags:
@@ -118,9 +97,10 @@ apis:
     url: https://wp-cli.org/
 - aid: wordpress:block-editor-api
   name: WordPress Block Editor API
-  description: The Block Editor API (Gutenberg) enables developers to create custom blocks, block patterns, block templates,
-    and editor plugins for the WordPress Block Editor. It includes JavaScript and PHP APIs for registering block types, modifying
-    editor behavior, and extending the editing experience.
+  description: The Block Editor API (Gutenberg) enables developers to create custom
+    blocks, block patterns, block templates, and editor plugins for the WordPress
+    Block Editor. It includes JavaScript and PHP APIs for registering block types,
+    modifying editor behavior, and extending the editing experience.
   humanURL: https://developer.wordpress.org/block-editor/
   tags:
   - Block Editor
@@ -138,8 +118,9 @@ apis:
     url: https://developer.wordpress.org/block-editor/getting-started/
 - aid: wordpress:ai-api
   name: WordPress AI API
-  description: WordPress AI API provides a provider-agnostic interface for integrating generative AI capabilities into WordPress
-    plugins and themes. It supports multiple AI providers (OpenAI, Google, Anthropic) through a unified PHP client interface
+  description: WordPress AI API provides a provider-agnostic interface for integrating
+    generative AI capabilities into WordPress plugins and themes. It supports multiple
+    AI providers (OpenAI, Google, Anthropic) through a unified PHP client interface
     and includes an MCP adapter for bridging to the Model Context Protocol.
   humanURL: https://github.com/WordPress/wp-ai-client
   tags:
@@ -156,12 +137,15 @@ apis:
     url: https://github.com/WordPress/mcp-adapter
     title: MCP Adapter
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/wordpress/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:
   - url: arazzo/wordpress-assign-post-to-author-workflow.yml
     name: WordPress Assign Post to Author
-    summary: Resolve a user by role, confirm them, and publish a post under their byline.
+    summary: Resolve a user by role, confirm them, and publish a post under their
+      byline.
   - url: arazzo/wordpress-attach-featured-media-to-post-workflow.yml
     name: WordPress Attach Featured Media to Post
     summary: Find an image in the media library and publish a post that features it.
@@ -225,53 +209,65 @@ common:
 - type: Features
   data:
   - name: REST API
-    description: JSON-based REST API for interacting with WordPress content including posts, pages, media, users, and custom
-      post types
+    description: JSON-based REST API for interacting with WordPress content including
+      posts, pages, media, users, and custom post types
   - name: Block Editor
-    description: Gutenberg block editor with JavaScript and PHP APIs for creating custom blocks and extending the editing
-      experience
+    description: Gutenberg block editor with JavaScript and PHP APIs for creating
+      custom blocks and extending the editing experience
   - name: Application Passwords
-    description: Built-in authentication mechanism for third-party applications using per-application passwords with granular
-      scoping
+    description: Built-in authentication mechanism for third-party applications using
+      per-application passwords with granular scoping
   - name: WP-CLI
-    description: Command-line interface for managing WordPress installations, automating tasks, and running deployments
+    description: Command-line interface for managing WordPress installations, automating
+      tasks, and running deployments
   - name: Plugin API
-    description: Hooks and filters system for extending WordPress functionality through plugins without modifying core code
+    description: Hooks and filters system for extending WordPress functionality through
+      plugins without modifying core code
   - name: Multisite
-    description: WordPress Multisite enables running a network of sites from a single WordPress installation with shared users
-      and plugins
+    description: WordPress Multisite enables running a network of sites from a single
+      WordPress installation with shared users and plugins
   - name: WordPress Playground
-    description: Run WordPress in the browser via WebAssembly PHP for development, testing, and demonstrations
+    description: Run WordPress in the browser via WebAssembly PHP for development,
+      testing, and demonstrations
   - name: AI Integration
-    description: Provider-agnostic PHP AI client SDK and MCP adapter for integrating generative AI capabilities into WordPress
+    description: Provider-agnostic PHP AI client SDK and MCP adapter for integrating
+      generative AI capabilities into WordPress
 - type: UseCases
   data:
   - name: Headless CMS
-    description: Use WordPress as a headless CMS with the REST API to deliver content to any frontend framework like Next.js,
-      Nuxt, or React
+    description: Use WordPress as a headless CMS with the REST API to deliver content
+      to any frontend framework like Next.js, Nuxt, or React
   - name: Mobile Applications
-    description: Build iOS and Android apps that read and write WordPress content using the REST API
+    description: Build iOS and Android apps that read and write WordPress content
+      using the REST API
   - name: Content Automation
-    description: Automate content creation, publishing, and management using WP-CLI in CI/CD pipelines
+    description: Automate content creation, publishing, and management using WP-CLI
+      in CI/CD pipelines
   - name: Custom Block Development
-    description: Create custom Gutenberg blocks for unique editorial experiences and complex page layouts
+    description: Create custom Gutenberg blocks for unique editorial experiences and
+      complex page layouts
   - name: Third-Party Integrations
-    description: Connect WordPress to external services like CRMs, analytics platforms, and e-commerce systems via the REST
-      API
+    description: Connect WordPress to external services like CRMs, analytics platforms,
+      and e-commerce systems via the REST API
   - name: AI-Powered Content
-    description: Enhance WordPress with AI content generation, writing assistance, and intelligent recommendations
+    description: Enhance WordPress with AI content generation, writing assistance,
+      and intelligent recommendations
 - type: Integrations
   data:
   - name: WooCommerce
-    description: E-commerce plugin with its own REST API that extends WordPress for online stores
+    description: E-commerce plugin with its own REST API that extends WordPress for
+      online stores
   - name: Jetpack
-    description: WordPress.com connectivity plugin providing security, performance, and marketing tools
+    description: WordPress.com connectivity plugin providing security, performance,
+      and marketing tools
   - name: Advanced Custom Fields
-    description: Custom field framework for extending WordPress content models with structured data
+    description: Custom field framework for extending WordPress content models with
+      structured data
   - name: Elementor
     description: Visual page builder with REST API extensions for custom integrations
   - name: OpenAI
-    description: AI provider integration via WordPress AI API for content generation and assistance
+    description: AI provider integration via WordPress AI API for content generation
+      and assistance
   - name: Anthropic
     description: AI provider integration via WordPress AI API using Claude models
   - name: Google AI
