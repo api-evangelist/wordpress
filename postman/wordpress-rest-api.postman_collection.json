@@ -1,0 +1,3857 @@
+{
+  "info": {
+    "_postman_id": "20130267-7fc2-480c-af02-5b165fcd082f",
+    "name": "WordPress REST API",
+    "description": "The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.\n\nContact Support:\n Name: WordPress Developer Resources",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:20:47.000Z",
+    "updatedAt": "2026-06-05T13:20:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-20130267-7fc2-480c-af02-5b165fcd082f"
+  },
+  "item": [
+    {
+      "name": "wp",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "posts",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "WordPress Get Post",
+                      "id": "670b1d7e-6f5a-4e5c-80bd-200b03e87901",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts/:id?context=view",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope under which the request is made.",
+                              "key": "context",
+                              "value": "view"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5e1fff88-afae-40ae-bfc9-be25772a1f48",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the post."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a single post by ID from the WordPress site."
+                      },
+                      "response": [
+                        {
+                          "id": "9d43d518-0926-4fdd-99b1-ec522e9009b8",
+                          "name": "A single post",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id?context=view",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Scope under which the request is made.",
+                                  "key": "context",
+                                  "value": "view"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"date_gmt\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"slug\": \"<string>\",\n  \"status\": \"pending\",\n  \"type\": \"<string>\",\n  \"link\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"excerpt\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"comment_status\": \"closed\",\n  \"ping_status\": \"open\",\n  \"sticky\": \"<boolean>\",\n  \"template\": \"<string>\",\n  \"format\": \"status\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-9d43d518-0926-4fdd-99b1-ec522e9009b8"
+                        },
+                        {
+                          "id": "ca6f1cc9-cd5a-47d3-b0ad-ea4463dc0dee",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id?context=view",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Scope under which the request is made.",
+                                  "key": "context",
+                                  "value": "view"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-ca6f1cc9-cd5a-47d3-b0ad-ea4463dc0dee"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-670b1d7e-6f5a-4e5c-80bd-200b03e87901"
+                    },
+                    {
+                      "name": "WordPress Update Post",
+                      "id": "8c135865-b3ab-48f2-8e32-fd835670dd03",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "095889f6-85b8-4a89-afdd-28d6aec398c5",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the post."
+                            }
+                          ]
+                        },
+                        "description": "Updates an existing post by ID. Requires authentication."
+                      },
+                      "response": [
+                        {
+                          "id": "6b7fc527-a7cb-4bfe-a10f-f8993adb59da",
+                          "name": "Post updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"date_gmt\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"slug\": \"<string>\",\n  \"status\": \"pending\",\n  \"type\": \"<string>\",\n  \"link\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"excerpt\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"comment_status\": \"closed\",\n  \"ping_status\": \"open\",\n  \"sticky\": \"<boolean>\",\n  \"template\": \"<string>\",\n  \"format\": \"status\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-6b7fc527-a7cb-4bfe-a10f-f8993adb59da"
+                        },
+                        {
+                          "id": "9a08acf6-8ecd-4e72-b1e6-402ff5844bf1",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-9a08acf6-8ecd-4e72-b1e6-402ff5844bf1"
+                        },
+                        {
+                          "id": "64787a7d-5e07-43ee-90b5-a63392c99c1e",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-64787a7d-5e07-43ee-90b5-a63392c99c1e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-8c135865-b3ab-48f2-8e32-fd835670dd03"
+                    },
+                    {
+                      "name": "WordPress Delete Post",
+                      "id": "358e770a-8d49-469d-8fe5-d8f7ad659fd4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts/:id?force=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to bypass trash and force deletion.",
+                              "key": "force",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "4a6ac8b8-2778-428f-a9e0-62844c702e7e",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the post."
+                            }
+                          ]
+                        },
+                        "description": "Deletes a post by ID. Requires authentication with appropriate user capabilities."
+                      },
+                      "response": [
+                        {
+                          "id": "0a0c46cb-7a07-4869-96aa-af24c1f33906",
+                          "name": "Post deleted (moved to trash or permanently deleted)",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id?force=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to bypass trash and force deletion.",
+                                  "key": "force",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"date_gmt\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"slug\": \"<string>\",\n  \"status\": \"pending\",\n  \"type\": \"<string>\",\n  \"link\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"excerpt\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"comment_status\": \"closed\",\n  \"ping_status\": \"open\",\n  \"sticky\": \"<boolean>\",\n  \"template\": \"<string>\",\n  \"format\": \"status\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-0a0c46cb-7a07-4869-96aa-af24c1f33906"
+                        },
+                        {
+                          "id": "25cba102-33e1-4c31-b840-884ef988402d",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/posts/:id?force=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "posts",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to bypass trash and force deletion.",
+                                  "key": "force",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-25cba102-33e1-4c31-b840-884ef988402d"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-358e770a-8d49-469d-8fe5-d8f7ad659fd4"
+                    }
+                  ],
+                  "id": "214627dd-332d-4706-aa4e-e90d9a7755e6",
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-214627dd-332d-4706-aa4e-e90d9a7755e6"
+                },
+                {
+                  "name": "WordPress List Posts",
+                  "id": "ed887df5-6695-4080-87c1-7552fa6c4b58",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/posts?context=view&page=1&per_page=10&search=<string>&status=publish&author=<integer>&author=<integer>&categories=<integer>&categories=<integer>&tags=<integer>&tags=<integer>&orderby=date&order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "posts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Scope under which the request is made; determines fields present in response.",
+                          "key": "context",
+                          "value": "view"
+                        },
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items to be returned in result set.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit results to those matching a string.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit result set to posts assigned one or more statuses.",
+                          "key": "status",
+                          "value": "publish"
+                        },
+                        {
+                          "description": "Limit result set to posts assigned to specific authors.",
+                          "key": "author",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to posts assigned to specific authors.",
+                          "key": "author",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to items with specific terms assigned in the categories taxonomy.",
+                          "key": "categories",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to items with specific terms assigned in the categories taxonomy.",
+                          "key": "categories",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to items with specific terms assigned in the tags taxonomy.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to items with specific terms assigned in the tags taxonomy.",
+                          "key": "tags",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Sort collection by object attribute.",
+                          "key": "orderby",
+                          "value": "date"
+                        },
+                        {
+                          "description": "Order sort attribute ascending or descending.",
+                          "key": "order",
+                          "value": "desc"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of posts from the WordPress site. Supports filtering, ordering, and pagination."
+                  },
+                  "response": [
+                    {
+                      "id": "4adbb073-09db-4910-8d0e-756bcf7bafd8",
+                      "name": "A list of posts",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts?context=view&page=1&per_page=10&search=<string>&status=publish&author=<integer>&categories=<integer>&tags=<integer>&orderby=date&order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope under which the request is made; determines fields present in response.",
+                              "key": "context",
+                              "value": "view"
+                            },
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned in result set.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit results to those matching a string.",
+                              "key": "search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result set to posts assigned one or more statuses.",
+                              "key": "status",
+                              "value": "publish"
+                            },
+                            {
+                              "description": "Limit result set to posts assigned to specific authors.",
+                              "key": "author",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limit result set to items with specific terms assigned in the categories taxonomy.",
+                              "key": "categories",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limit result set to items with specific terms assigned in the tags taxonomy.",
+                              "key": "tags",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort collection by object attribute.",
+                              "key": "orderby",
+                              "value": "date"
+                            },
+                            {
+                              "description": "Order sort attribute ascending or descending.",
+                              "key": "order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Total number of items in the collection",
+                            "type": "text/plain"
+                          },
+                          "key": "X-WP-Total",
+                          "value": "<integer>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Total number of pages available",
+                            "type": "text/plain"
+                          },
+                          "key": "X-WP-TotalPages",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"date\": \"<dateTime>\",\n    \"date_gmt\": \"<dateTime>\",\n    \"modified\": \"<dateTime>\",\n    \"slug\": \"<string>\",\n    \"status\": \"publish\",\n    \"type\": \"<string>\",\n    \"link\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"excerpt\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"author\": \"<integer>\",\n    \"featured_media\": \"<integer>\",\n    \"comment_status\": \"closed\",\n    \"ping_status\": \"open\",\n    \"sticky\": \"<boolean>\",\n    \"template\": \"<string>\",\n    \"format\": \"aside\",\n    \"categories\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"tags\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  },\n  {\n    \"id\": \"<integer>\",\n    \"date\": \"<dateTime>\",\n    \"date_gmt\": \"<dateTime>\",\n    \"modified\": \"<dateTime>\",\n    \"slug\": \"<string>\",\n    \"status\": \"private\",\n    \"type\": \"<string>\",\n    \"link\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"excerpt\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"author\": \"<integer>\",\n    \"featured_media\": \"<integer>\",\n    \"comment_status\": \"closed\",\n    \"ping_status\": \"closed\",\n    \"sticky\": \"<boolean>\",\n    \"template\": \"<string>\",\n    \"format\": \"status\",\n    \"categories\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"tags\": [\n      \"<integer>\",\n      \"<integer>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-4adbb073-09db-4910-8d0e-756bcf7bafd8"
+                    },
+                    {
+                      "id": "a3fbe921-0e7d-4a6d-81fd-6e9bb1847ed4",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts?context=view&page=1&per_page=10&search=<string>&status=publish&author=<integer>&categories=<integer>&tags=<integer>&orderby=date&order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Scope under which the request is made; determines fields present in response.",
+                              "key": "context",
+                              "value": "view"
+                            },
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned in result set.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit results to those matching a string.",
+                              "key": "search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result set to posts assigned one or more statuses.",
+                              "key": "status",
+                              "value": "publish"
+                            },
+                            {
+                              "description": "Limit result set to posts assigned to specific authors.",
+                              "key": "author",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limit result set to items with specific terms assigned in the categories taxonomy.",
+                              "key": "categories",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limit result set to items with specific terms assigned in the tags taxonomy.",
+                              "key": "tags",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Sort collection by object attribute.",
+                              "key": "orderby",
+                              "value": "date"
+                            },
+                            {
+                              "description": "Order sort attribute ascending or descending.",
+                              "key": "order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-a3fbe921-0e7d-4a6d-81fd-6e9bb1847ed4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-ed887df5-6695-4080-87c1-7552fa6c4b58"
+                },
+                {
+                  "name": "WordPress Create Post",
+                  "id": "5145c9c6-1b81-4b2f-bf89-1b7d9131e5f3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/posts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "posts"
+                      ]
+                    },
+                    "description": "Creates a new post on the WordPress site. Requires authentication with appropriate user capabilities."
+                  },
+                  "response": [
+                    {
+                      "id": "06615c89-c93d-4dcf-9656-1219f47be83e",
+                      "name": "Post created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"date_gmt\": \"<dateTime>\",\n  \"modified\": \"<dateTime>\",\n  \"slug\": \"<string>\",\n  \"status\": \"pending\",\n  \"type\": \"<string>\",\n  \"link\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"excerpt\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"comment_status\": \"closed\",\n  \"ping_status\": \"open\",\n  \"sticky\": \"<boolean>\",\n  \"template\": \"<string>\",\n  \"format\": \"status\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-06615c89-c93d-4dcf-9656-1219f47be83e"
+                    },
+                    {
+                      "id": "8c0c0c44-46c3-4a18-a7a9-e6f305b279a0",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-8c0c0c44-46c3-4a18-a7a9-e6f305b279a0"
+                    },
+                    {
+                      "id": "44bb6819-856d-4194-b14f-c3f2e3bd9a52",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"future\",\n  \"excerpt\": \"<string>\",\n  \"author\": \"<integer>\",\n  \"featured_media\": \"<integer>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"tags\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/posts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "posts"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-44bb6819-856d-4194-b14f-c3f2e3bd9a52"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-5145c9c6-1b81-4b2f-bf89-1b7d9131e5f3"
+                }
+              ],
+              "id": "8cda5c84-6f4e-4aa1-839f-cd8f959609a2",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-8cda5c84-6f4e-4aa1-839f-cd8f959609a2"
+            },
+            {
+              "name": "pages",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "WordPress Get Page",
+                      "id": "2aba7099-9d88-40d9-8329-a9500b46c67e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/pages/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "pages",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "38960883-efc3-42f1-b679-c5b19065ca37",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the page."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a single page by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "c0f0a1b6-7f67-42c0-b1d5-c500b987c441",
+                          "name": "A single page",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/pages/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "pages",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"status\": \"pending\",\n  \"type\": \"<string>\",\n  \"link\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"excerpt\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"author\": \"<integer>\",\n  \"parent\": \"<integer>\",\n  \"menu_order\": \"<integer>\",\n  \"template\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-c0f0a1b6-7f67-42c0-b1d5-c500b987c441"
+                        },
+                        {
+                          "id": "4ff9c539-8991-4af0-a957-778aaa647240",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/pages/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "pages",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-4ff9c539-8991-4af0-a957-778aaa647240"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-2aba7099-9d88-40d9-8329-a9500b46c67e"
+                    }
+                  ],
+                  "id": "494bb4f8-23d6-4fd7-aeab-0ffbae062aac",
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-494bb4f8-23d6-4fd7-aeab-0ffbae062aac"
+                },
+                {
+                  "name": "WordPress List Pages",
+                  "id": "ba6efe80-1732-48df-aa3e-aedf749cf2fe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/pages?page=1&per_page=10&status=publish&parent=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "pages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items to be returned.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit result set to pages with a specific status.",
+                          "key": "status",
+                          "value": "publish"
+                        },
+                        {
+                          "description": "Limit result set to pages with a specific parent ID.",
+                          "key": "parent",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of pages from the WordPress site."
+                  },
+                  "response": [
+                    {
+                      "id": "6fb86d28-3f62-4873-a10f-39d7b19894f5",
+                      "name": "A list of pages",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/pages?page=1&per_page=10&status=publish&parent=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "pages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit result set to pages with a specific status.",
+                              "key": "status",
+                              "value": "publish"
+                            },
+                            {
+                              "description": "Limit result set to pages with a specific parent ID.",
+                              "key": "parent",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"date\": \"<dateTime>\",\n    \"status\": \"private\",\n    \"type\": \"<string>\",\n    \"link\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"excerpt\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"author\": \"<integer>\",\n    \"parent\": \"<integer>\",\n    \"menu_order\": \"<integer>\",\n    \"template\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"date\": \"<dateTime>\",\n    \"status\": \"draft\",\n    \"type\": \"<string>\",\n    \"link\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"excerpt\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"author\": \"<integer>\",\n    \"parent\": \"<integer>\",\n    \"menu_order\": \"<integer>\",\n    \"template\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-6fb86d28-3f62-4873-a10f-39d7b19894f5"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-ba6efe80-1732-48df-aa3e-aedf749cf2fe"
+                },
+                {
+                  "name": "WordPress Create Page",
+                  "id": "dd4c2da0-197d-4ded-aa52-3c0738e796e2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"private\",\n  \"parent\": \"<integer>\",\n  \"menu_order\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/pages",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "pages"
+                      ]
+                    },
+                    "description": "Creates a new page. Requires authentication."
+                  },
+                  "response": [
+                    {
+                      "id": "77311426-57bf-4339-b9a0-e7afc8c819bc",
+                      "name": "Page created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"private\",\n  \"parent\": \"<integer>\",\n  \"menu_order\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/pages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "pages"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"status\": \"pending\",\n  \"type\": \"<string>\",\n  \"link\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"excerpt\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"author\": \"<integer>\",\n  \"parent\": \"<integer>\",\n  \"menu_order\": \"<integer>\",\n  \"template\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-77311426-57bf-4339-b9a0-e7afc8c819bc"
+                    },
+                    {
+                      "id": "60e909cd-b987-4e69-bd8a-9b58968ed649",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"status\": \"private\",\n  \"parent\": \"<integer>\",\n  \"menu_order\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/pages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "pages"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-60e909cd-b987-4e69-bd8a-9b58968ed649"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-dd4c2da0-197d-4ded-aa52-3c0738e796e2"
+                }
+              ],
+              "id": "ca5ae9cc-c969-4a26-adaf-227991cefc73",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-ca5ae9cc-c969-4a26-adaf-227991cefc73"
+            },
+            {
+              "name": "media",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "WordPress Get Media Item",
+                      "id": "9a0b748e-a7d5-4391-8b03-ba3c2a72e161",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/media/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "media",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b4fcd663-6409-439f-ba79-83db432d29a8",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the media item."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a single media item by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "319df4e4-dbf4-40a8-a3d2-b301570e935c",
+                          "name": "A single media item",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/media/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "media",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"date\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"mime_type\": \"<string>\",\n  \"title\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"alt_text\": \"<string>\",\n  \"source_url\": \"<string>\",\n  \"media_type\": \"file\",\n  \"media_details\": {\n    \"width\": \"<integer>\",\n    \"height\": \"<integer>\",\n    \"file\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-319df4e4-dbf4-40a8-a3d2-b301570e935c"
+                        },
+                        {
+                          "id": "251a5eea-5431-4682-8be2-37c9bd51f50f",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/media/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "media",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-251a5eea-5431-4682-8be2-37c9bd51f50f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-9a0b748e-a7d5-4391-8b03-ba3c2a72e161"
+                    }
+                  ],
+                  "id": "77563aaf-cdba-405c-bfca-14c4a2abb3eb",
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-77563aaf-cdba-405c-bfca-14c4a2abb3eb"
+                },
+                {
+                  "name": "WordPress List Media",
+                  "id": "7c5cdfb9-0c91-4184-9e3c-c2939707db80",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/media?page=1&per_page=10&media_type=text&mime_type=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "media"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items to be returned.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit result set to attachments of a particular media type.",
+                          "key": "media_type",
+                          "value": "text"
+                        },
+                        {
+                          "description": "Limit result set to attachments of a specific MIME type.",
+                          "key": "mime_type",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of media items from the media library."
+                  },
+                  "response": [
+                    {
+                      "id": "6a6dfde3-ceca-4028-903f-f4f738d0f94a",
+                      "name": "A list of media items",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/media?page=1&per_page=10&media_type=text&mime_type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "media"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit result set to attachments of a particular media type.",
+                              "key": "media_type",
+                              "value": "text"
+                            },
+                            {
+                              "description": "Limit result set to attachments of a specific MIME type.",
+                              "key": "mime_type",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"date\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"mime_type\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"alt_text\": \"<string>\",\n    \"source_url\": \"<string>\",\n    \"media_type\": \"file\",\n    \"media_details\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"file\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<integer>\",\n    \"date\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"mime_type\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"alt_text\": \"<string>\",\n    \"source_url\": \"<string>\",\n    \"media_type\": \"image\",\n    \"media_details\": {\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\",\n      \"file\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-6a6dfde3-ceca-4028-903f-f4f738d0f94a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-7c5cdfb9-0c91-4184-9e3c-c2939707db80"
+                }
+              ],
+              "id": "1af8f0a8-6318-4b12-b256-8af717e75656",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-1af8f0a8-6318-4b12-b256-8af717e75656"
+            },
+            {
+              "name": "comments",
+              "item": [
+                {
+                  "name": "WordPress List Comments",
+                  "id": "cc98aecd-3b39-4272-bf84-0c46bcbeab8f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/comments?page=1&per_page=10&post=<integer>&post=<integer>&status=approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "comments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items to be returned.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit result set to comments assigned to specific post IDs.",
+                          "key": "post",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to comments assigned to specific post IDs.",
+                          "key": "post",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit result set to comments assigned a specific status.",
+                          "key": "status",
+                          "value": "approve"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of comments. Public endpoint returns approved comments."
+                  },
+                  "response": [
+                    {
+                      "id": "b0c08d19-e777-46c9-862f-a59f267884b9",
+                      "name": "A list of comments",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/comments?page=1&per_page=10&post=<integer>&status=approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "comments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit result set to comments assigned to specific post IDs.",
+                              "key": "post",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Limit result set to comments assigned a specific status.",
+                              "key": "status",
+                              "value": "approve"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"post\": \"<integer>\",\n    \"parent\": \"<integer>\",\n    \"author\": \"<integer>\",\n    \"author_name\": \"<string>\",\n    \"author_email\": \"<email>\",\n    \"date\": \"<dateTime>\",\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"status\": \"hold\",\n    \"type\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"post\": \"<integer>\",\n    \"parent\": \"<integer>\",\n    \"author\": \"<integer>\",\n    \"author_name\": \"<string>\",\n    \"author_email\": \"<email>\",\n    \"date\": \"<dateTime>\",\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"status\": \"hold\",\n    \"type\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-b0c08d19-e777-46c9-862f-a59f267884b9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-cc98aecd-3b39-4272-bf84-0c46bcbeab8f"
+                },
+                {
+                  "name": "WordPress Create Comment",
+                  "id": "11f56f8b-7680-467d-9171-e08ac987fee3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"post\": \"<integer>\",\n  \"content\": \"<string>\",\n  \"parent\": \"<integer>\",\n  \"author_name\": \"<string>\",\n  \"author_email\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/comments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "comments"
+                      ]
+                    },
+                    "description": "Creates a new comment on a post."
+                  },
+                  "response": [
+                    {
+                      "id": "cba4bb9c-3cdb-416d-be89-0c0072e6cb41",
+                      "name": "Comment created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"post\": \"<integer>\",\n  \"content\": \"<string>\",\n  \"parent\": \"<integer>\",\n  \"author_name\": \"<string>\",\n  \"author_email\": \"<email>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/comments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "comments"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"post\": \"<integer>\",\n  \"parent\": \"<integer>\",\n  \"author\": \"<integer>\",\n  \"author_name\": \"<string>\",\n  \"author_email\": \"<email>\",\n  \"date\": \"<dateTime>\",\n  \"content\": {\n    \"rendered\": \"<string>\",\n    \"protected\": \"<boolean>\"\n  },\n  \"status\": \"trash\",\n  \"type\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-cba4bb9c-3cdb-416d-be89-0c0072e6cb41"
+                    },
+                    {
+                      "id": "a608aab6-81fc-4819-a655-26ea5c517b32",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"post\": \"<integer>\",\n  \"content\": \"<string>\",\n  \"parent\": \"<integer>\",\n  \"author_name\": \"<string>\",\n  \"author_email\": \"<email>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/comments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "comments"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-a608aab6-81fc-4819-a655-26ea5c517b32"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-11f56f8b-7680-467d-9171-e08ac987fee3"
+                }
+              ],
+              "id": "455b5300-bd39-48d4-a2f0-c5af637a43ef",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-455b5300-bd39-48d4-a2f0-c5af637a43ef"
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "WordPress Get User",
+                      "id": "bbf923ab-9610-4d80-ac33-4f50f84d592f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/users/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "users",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a9444928-4c61-4e42-8d04-e9eb4b41fbd7",
+                              "key": "id",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the user."
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a single user by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "3be859fa-0103-4268-93b6-51312a797809",
+                          "name": "A single user",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/users/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "users",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"description\": \"<string>\",\n  \"link\": \"<string>\",\n  \"avatar_urls\": {\n    \"ete82\": \"<string>\",\n    \"ad_5c\": \"<string>\",\n    \"Lorem_92\": \"<string>\"\n  },\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-3be859fa-0103-4268-93b6-51312a797809"
+                        },
+                        {
+                          "id": "b282828d-6725-4ccb-ae8e-bd191179276f",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "wordpress_logged_in",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/wp/v2/users/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "wp",
+                                "v2",
+                                "users",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-06-05T13:20:47.000Z",
+                          "updatedAt": "2026-06-05T13:20:47.000Z",
+                          "uid": "35240-b282828d-6725-4ccb-ae8e-bd191179276f"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-bbf923ab-9610-4d80-ac33-4f50f84d592f"
+                    }
+                  ],
+                  "id": "e2dccd25-ba7f-4e56-b775-dcb8cfe24f9b",
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-e2dccd25-ba7f-4e56-b775-dcb8cfe24f9b"
+                },
+                {
+                  "name": "WordPress List Users",
+                  "id": "e988436a-57c5-4cce-af78-a0aac624a9ba",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/users?page=1&per_page=10&roles=<string>&roles=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "users"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items to be returned.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit result set to users matching at least one specific role.",
+                          "key": "roles",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit result set to users matching at least one specific role.",
+                          "key": "roles",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of users. Requires authentication for most contexts."
+                  },
+                  "response": [
+                    {
+                      "id": "238f87b3-1581-4f5b-8bb6-d9539835b956",
+                      "name": "A list of users",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/users?page=1&per_page=10&roles=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit result set to users matching at least one specific role.",
+                              "key": "roles",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"description\": \"<string>\",\n    \"link\": \"<string>\",\n    \"avatar_urls\": {\n      \"tempord\": \"<string>\"\n    },\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"description\": \"<string>\",\n    \"link\": \"<string>\",\n    \"avatar_urls\": {\n      \"ut_9d4\": \"<string>\",\n      \"ut__\": \"<string>\"\n    },\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-238f87b3-1581-4f5b-8bb6-d9539835b956"
+                    },
+                    {
+                      "id": "2924df67-f55b-4c1a-afad-e947edf09c85",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/users?page=1&per_page=10&roles=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to be returned.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit result set to users matching at least one specific role.",
+                              "key": "roles",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-2924df67-f55b-4c1a-afad-e947edf09c85"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-e988436a-57c5-4cce-af78-a0aac624a9ba"
+                }
+              ],
+              "id": "8b66818f-edf6-48f1-b2e6-e88cbb51eaab",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-8b66818f-edf6-48f1-b2e6-e88cbb51eaab"
+            },
+            {
+              "name": "categories",
+              "item": [
+                {
+                  "name": "WordPress List Categories",
+                  "id": "21ffd43b-b8a8-430c-8963-b09a4a499c27",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/categories?page=1&per_page=10&search=<string>&hide_empty=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "categories"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit results to matching categories.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to hide terms not assigned to any posts.",
+                          "key": "hide_empty",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of post categories."
+                  },
+                  "response": [
+                    {
+                      "id": "76ff20c2-bef8-41a0-bf8b-1773fd51ccbb",
+                      "name": "A list of categories",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/categories?page=1&per_page=10&search=<string>&hide_empty=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "categories"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit results to matching categories.",
+                              "key": "search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Whether to hide terms not assigned to any posts.",
+                              "key": "hide_empty",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"link\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"taxonomy\": \"<string>\",\n    \"parent\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"link\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"taxonomy\": \"<string>\",\n    \"parent\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-76ff20c2-bef8-41a0-bf8b-1773fd51ccbb"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-21ffd43b-b8a8-430c-8963-b09a4a499c27"
+                },
+                {
+                  "name": "WordPress Create Category",
+                  "id": "c15e5d4b-1a88-49ca-b883-380d158ecec5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"parent\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "categories"
+                      ]
+                    },
+                    "description": "Creates a new category. Requires authentication."
+                  },
+                  "response": [
+                    {
+                      "id": "2c5d7a7a-1268-4060-bcc6-19805a4d5e89",
+                      "name": "Category created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"parent\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/categories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "categories"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<integer>\",\n  \"count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"link\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"taxonomy\": \"<string>\",\n  \"parent\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-2c5d7a7a-1268-4060-bcc6-19805a4d5e89"
+                    },
+                    {
+                      "id": "f2cd67e9-411a-43a7-8adc-32e9a5a4b8d4",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"parent\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/categories",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "categories"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-f2cd67e9-411a-43a7-8adc-32e9a5a4b8d4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-c15e5d4b-1a88-49ca-b883-380d158ecec5"
+                }
+              ],
+              "id": "72cf95d4-6b16-4c28-81a9-9a54dd5879b4",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-72cf95d4-6b16-4c28-81a9-9a54dd5879b4"
+            },
+            {
+              "name": "tags",
+              "item": [
+                {
+                  "name": "WordPress List Tags",
+                  "id": "7c7c0b00-f310-4fed-bcf7-b5915c09617c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/tags?page=1&per_page=10&search=<string>&hide_empty=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "tags"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items.",
+                          "key": "per_page",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Limit results to matching tags.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to hide terms not assigned to any posts.",
+                          "key": "hide_empty",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of post tags."
+                  },
+                  "response": [
+                    {
+                      "id": "50358053-45e7-4027-afb5-0c6b6f636f74",
+                      "name": "A list of tags",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/tags?page=1&per_page=10&search=<string>&hide_empty=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "tags"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items.",
+                              "key": "per_page",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Limit results to matching tags.",
+                              "key": "search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Whether to hide terms not assigned to any posts.",
+                              "key": "hide_empty",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"link\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"taxonomy\": \"<string>\",\n    \"parent\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"link\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"taxonomy\": \"<string>\",\n    \"parent\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-50358053-45e7-4027-afb5-0c6b6f636f74"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-7c7c0b00-f310-4fed-bcf7-b5915c09617c"
+                }
+              ],
+              "id": "94147e2a-bc1a-4611-b128-f4bb227d4793",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-94147e2a-bc1a-4611-b128-f4bb227d4793"
+            },
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "WordPress Search Content",
+                  "id": "34bf9b69-a14f-480b-96f7-ccf2e6d25304",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/search?search=<string>&type=post&subtype=<string>&page=1&per_page=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Limit results to those matching a string.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit results to items of an object type.",
+                          "key": "type",
+                          "value": "post"
+                        },
+                        {
+                          "description": "Limit results to items of one or more object subtypes.",
+                          "key": "subtype",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items to return.",
+                          "key": "per_page",
+                          "value": "10"
+                        }
+                      ]
+                    },
+                    "description": "Searches across WordPress content types including posts, pages, and other objects."
+                  },
+                  "response": [
+                    {
+                      "id": "cb5c522e-1d84-4031-a8f5-23168ffaff62",
+                      "name": "Search results",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/search?search=<string>&type=post&subtype=<string>&page=1&per_page=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Limit results to those matching a string.",
+                              "key": "search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit results to items of an object type.",
+                              "key": "type",
+                              "value": "post"
+                            },
+                            {
+                              "description": "Limit results to items of one or more object subtypes.",
+                              "key": "subtype",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items to return.",
+                              "key": "per_page",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"url\": \"<string>\",\n    \"type\": \"<string>\",\n    \"subtype\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"url\": \"<string>\",\n    \"type\": \"<string>\",\n    \"subtype\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-cb5c522e-1d84-4031-a8f5-23168ffaff62"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-34bf9b69-a14f-480b-96f7-ccf2e6d25304"
+                }
+              ],
+              "id": "74191696-5549-435c-bcf2-3712c7a57f10",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-74191696-5549-435c-bcf2-3712c7a57f10"
+            },
+            {
+              "name": "settings",
+              "item": [
+                {
+                  "name": "WordPress Get Settings",
+                  "id": "10fb897f-78e4-4142-be7d-679dc5e42c57",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "settings"
+                      ]
+                    },
+                    "description": "Retrieves registered site settings. Requires authentication."
+                  },
+                  "response": [
+                    {
+                      "id": "01995db3-b29d-487e-b620-3c618565221c",
+                      "name": "Site settings",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "settings"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"email\": \"<email>\",\n  \"timezone\": \"<string>\",\n  \"date_format\": \"<string>\",\n  \"time_format\": \"<string>\",\n  \"start_of_week\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"use_smilies\": \"<boolean>\",\n  \"default_category\": \"<integer>\",\n  \"posts_per_page\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-01995db3-b29d-487e-b620-3c618565221c"
+                    },
+                    {
+                      "id": "82b2aa8d-3320-4d37-b785-fe244d77eff4",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/settings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "settings"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-82b2aa8d-3320-4d37-b785-fe244d77eff4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-10fb897f-78e4-4142-be7d-679dc5e42c57"
+                }
+              ],
+              "id": "93e705ef-5f12-450d-905a-39a546634b7e",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-93e705ef-5f12-450d-905a-39a546634b7e"
+            },
+            {
+              "name": "themes",
+              "item": [
+                {
+                  "name": "WordPress List Themes",
+                  "id": "161f7b7b-1c18-46ea-845c-c9a373d3a311",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/themes?status=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "themes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limit result set to themes assigned one or more statuses.",
+                          "key": "status",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of installed themes. Requires authentication."
+                  },
+                  "response": [
+                    {
+                      "id": "11f7471d-b84f-42f1-9f26-b83eed37d847",
+                      "name": "A list of themes",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/themes?status=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "themes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limit result set to themes assigned one or more statuses.",
+                              "key": "status",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"stylesheet\": \"<string>\",\n    \"template\": \"<string>\",\n    \"name\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"description\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"status\": \"<string>\",\n    \"version\": \"<string>\",\n    \"author\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"author_uri\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"theme_uri\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    }\n  },\n  {\n    \"stylesheet\": \"<string>\",\n    \"template\": \"<string>\",\n    \"name\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"description\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"status\": \"<string>\",\n    \"version\": \"<string>\",\n    \"author\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"author_uri\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"theme_uri\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    }\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-11f7471d-b84f-42f1-9f26-b83eed37d847"
+                    },
+                    {
+                      "id": "4010f2b6-8d58-426c-908e-6f7a460885a4",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/themes?status=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "themes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limit result set to themes assigned one or more statuses.",
+                              "key": "status",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-4010f2b6-8d58-426c-908e-6f7a460885a4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-161f7b7b-1c18-46ea-845c-c9a373d3a311"
+                }
+              ],
+              "id": "a0e6db21-3f1e-4c66-b892-299224de62a1",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-a0e6db21-3f1e-4c66-b892-299224de62a1"
+            },
+            {
+              "name": "plugins",
+              "item": [
+                {
+                  "name": "WordPress List Plugins",
+                  "id": "4e0a7c6c-e337-480e-9ccb-547c8f7248a6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/plugins",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "plugins"
+                      ]
+                    },
+                    "description": "Retrieves a collection of installed plugins. Requires administrator authentication."
+                  },
+                  "response": [
+                    {
+                      "id": "57bdd8f5-de8b-413a-99a2-199bfaf36ed6",
+                      "name": "A list of plugins",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/plugins",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "plugins"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"plugin\": \"<string>\",\n    \"status\": \"active\",\n    \"name\": \"<string>\",\n    \"plugin_uri\": \"<string>\",\n    \"author\": \"<string>\",\n    \"author_uri\": \"<string>\",\n    \"description\": {\n      \"raw\": \"<string>\",\n      \"rendered\": \"<string>\"\n    },\n    \"version\": \"<string>\"\n  },\n  {\n    \"plugin\": \"<string>\",\n    \"status\": \"inactive\",\n    \"name\": \"<string>\",\n    \"plugin_uri\": \"<string>\",\n    \"author\": \"<string>\",\n    \"author_uri\": \"<string>\",\n    \"description\": {\n      \"raw\": \"<string>\",\n      \"rendered\": \"<string>\"\n    },\n    \"version\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-57bdd8f5-de8b-413a-99a2-199bfaf36ed6"
+                    },
+                    {
+                      "id": "bd95e1a2-75a0-4c96-b3da-c21c5bb0ced3",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/plugins",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "plugins"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-bd95e1a2-75a0-4c96-b3da-c21c5bb0ced3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-4e0a7c6c-e337-480e-9ccb-547c8f7248a6"
+                }
+              ],
+              "id": "fd409ff6-812c-46eb-8481-0977ece31a38",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-fd409ff6-812c-46eb-8481-0977ece31a38"
+            },
+            {
+              "name": "types",
+              "item": [
+                {
+                  "name": "WordPress List Post Types",
+                  "id": "6d91a5fe-38c5-40ef-81df-72761d7dd094",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "types"
+                      ]
+                    },
+                    "description": "Retrieves a collection of all registered post types."
+                  },
+                  "response": [
+                    {
+                      "id": "134b5e27-e221-49d3-b318-74fae8bc07ff",
+                      "name": "An object of registered post types",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "types"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"do3\": {\n    \"capabilities\": {\n      \"ea_c3d\": \"<string>\"\n    },\n    \"description\": \"<string>\",\n    \"hierarchical\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"rest_base\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"taxonomies\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"dolor_3_8\": {\n    \"capabilities\": {\n      \"irure_0\": \"<string>\",\n      \"nulla_ea\": \"<string>\",\n      \"nostrud_b\": \"<string>\",\n      \"amet38c\": \"<string>\"\n    },\n    \"description\": \"<string>\",\n    \"hierarchical\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"rest_base\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"taxonomies\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-134b5e27-e221-49d3-b318-74fae8bc07ff"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-6d91a5fe-38c5-40ef-81df-72761d7dd094"
+                }
+              ],
+              "id": "39784715-bd5e-4228-8722-6ba328beb5de",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-39784715-bd5e-4228-8722-6ba328beb5de"
+            },
+            {
+              "name": "blocks",
+              "item": [
+                {
+                  "name": "WordPress List Reusable Blocks",
+                  "id": "a5258cff-2263-4a66-a3fd-54355590c494",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/blocks?page=1&per_page=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "blocks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Current page of the collection.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Maximum number of items.",
+                          "key": "per_page",
+                          "value": "10"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a collection of reusable blocks."
+                  },
+                  "response": [
+                    {
+                      "id": "72aba8b4-93fe-41e0-b849-264d467bfc77",
+                      "name": "A list of reusable blocks",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/blocks?page=1&per_page=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "blocks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items.",
+                              "key": "per_page",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    }\n  },\n  {\n    \"id\": \"<integer>\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"title\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    },\n    \"content\": {\n      \"rendered\": \"<string>\",\n      \"protected\": \"<boolean>\"\n    }\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-72aba8b4-93fe-41e0-b849-264d467bfc77"
+                    },
+                    {
+                      "id": "35620380-ca24-4b29-b839-a80b6837f66e",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/blocks?page=1&per_page=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "blocks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Current page of the collection.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Maximum number of items.",
+                              "key": "per_page",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"status\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-35620380-ca24-4b29-b839-a80b6837f66e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-a5258cff-2263-4a66-a3fd-54355590c494"
+                }
+              ],
+              "id": "f420f244-b488-4bcc-9400-b558657dab90",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-f420f244-b488-4bcc-9400-b558657dab90"
+            },
+            {
+              "name": "block-types",
+              "item": [
+                {
+                  "name": "WordPress List Block Types",
+                  "id": "c1e9d65c-34d5-4e36-b1dd-5eca9f69d99d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wp/v2/block-types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wp",
+                        "v2",
+                        "block-types"
+                      ]
+                    },
+                    "description": "Retrieves all registered block types with their attributes and supports."
+                  },
+                  "response": [
+                    {
+                      "id": "9783f73d-ee6d-480c-a869-eac77b0b9af0",
+                      "name": "A list of registered block types",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "wordpress_logged_in",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wp/v2/block-types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wp",
+                            "v2",
+                            "block-types"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"category\": \"<string>\",\n    \"attributes\": {\n      \"Ut2\": {},\n      \"dolore0\": {},\n      \"sed_\": {},\n      \"nulla2\": {}\n    },\n    \"is_dynamic\": \"<boolean>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"category\": \"<string>\",\n    \"attributes\": {\n      \"dolor_1\": {}\n    },\n    \"is_dynamic\": \"<boolean>\"\n  }\n]",
+                      "createdAt": "2026-06-05T13:20:47.000Z",
+                      "updatedAt": "2026-06-05T13:20:47.000Z",
+                      "uid": "35240-9783f73d-ee6d-480c-a869-eac77b0b9af0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:20:47.000Z",
+                  "updatedAt": "2026-06-05T13:20:47.000Z",
+                  "uid": "35240-c1e9d65c-34d5-4e36-b1dd-5eca9f69d99d"
+                }
+              ],
+              "id": "06436365-b51b-4bb3-a80c-c05e4d6fd342",
+              "createdAt": "2026-06-05T13:20:47.000Z",
+              "updatedAt": "2026-06-05T13:20:47.000Z",
+              "uid": "35240-06436365-b51b-4bb3-a80c-c05e4d6fd342"
+            }
+          ],
+          "id": "71494cd2-b646-4f7a-bf48-5dd7c2e59cb5",
+          "createdAt": "2026-06-05T13:20:47.000Z",
+          "updatedAt": "2026-06-05T13:20:47.000Z",
+          "uid": "35240-71494cd2-b646-4f7a-bf48-5dd7c2e59cb5"
+        }
+      ],
+      "id": "90ee246f-cc02-457c-9d57-af8bb4751fa2",
+      "createdAt": "2026-06-05T13:20:47.000Z",
+      "updatedAt": "2026-06-05T13:20:47.000Z",
+      "uid": "35240-90ee246f-cc02-457c-9d57-af8bb4751fa2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "wordpress_logged_in",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "site",
+      "value": "example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{site}}/wp-json"
+    }
+  ]
+}

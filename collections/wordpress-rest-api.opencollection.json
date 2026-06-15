@@ -1,0 +1,740 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/posts",
+            "params": [
+              {
+                "name": "context",
+                "value": "view",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "WordPress tutorial",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "status",
+                "value": "publish",
+                "type": "query",
+                "description": "Limit result set to posts assigned one or more statuses."
+              },
+              {
+                "name": "author",
+                "value": "1",
+                "type": "query",
+                "description": "Limit result set to posts assigned to specific authors."
+              },
+              {
+                "name": "categories",
+                "value": "5",
+                "type": "query",
+                "description": "Limit result set to items with specific terms assigned in the categories taxonomy."
+              },
+              {
+                "name": "tags",
+                "value": "12",
+                "type": "query",
+                "description": "Limit result set to items with specific terms assigned in the tags taxonomy."
+              },
+              {
+                "name": "orderby",
+                "value": "date",
+                "type": "query",
+                "description": "Sort collection by object attribute."
+              },
+              {
+                "name": "order",
+                "value": "desc",
+                "type": "query",
+                "description": "Order sort attribute ascending or descending."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of posts from the WordPress site. Supports filtering, ordering, and pagination."
+        },
+        {
+          "info": {
+            "name": "WordPress Create Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site}/wp-json/wp/v2/posts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new post on the WordPress site. Requires authentication with appropriate user capabilities."
+        },
+        {
+          "info": {
+            "name": "WordPress Get Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              },
+              {
+                "name": "context",
+                "value": "view",
+                "type": "query",
+                "description": "Scope under which the request is made."
+              }
+            ]
+          },
+          "docs": "Retrieves a single post by ID from the WordPress site."
+        },
+        {
+          "info": {
+            "name": "WordPress Update Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{site}/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing post by ID. Requires authentication."
+        },
+        {
+          "info": {
+            "name": "WordPress Delete Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{site}/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              },
+              {
+                "name": "force",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to bypass trash and force deletion."
+              }
+            ]
+          },
+          "docs": "Deletes a post by ID. Requires authentication with appropriate user capabilities."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/pages",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned."
+              },
+              {
+                "name": "status",
+                "value": "publish",
+                "type": "query",
+                "description": "Limit result set to pages with a specific status."
+              },
+              {
+                "name": "parent",
+                "value": "0",
+                "type": "query",
+                "description": "Limit result set to pages with a specific parent ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of pages from the WordPress site."
+        },
+        {
+          "info": {
+            "name": "WordPress Create Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site}/wp-json/wp/v2/pages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new page. Requires authentication."
+        },
+        {
+          "info": {
+            "name": "WordPress Get Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/pages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "2",
+                "type": "path",
+                "description": "Unique identifier for the page."
+              }
+            ]
+          },
+          "docs": "Retrieves a single page by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/media",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned."
+              },
+              {
+                "name": "media_type",
+                "value": "image",
+                "type": "query",
+                "description": "Limit result set to attachments of a particular media type."
+              },
+              {
+                "name": "mime_type",
+                "value": "image/jpeg",
+                "type": "query",
+                "description": "Limit result set to attachments of a specific MIME type."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of media items from the media library."
+        },
+        {
+          "info": {
+            "name": "WordPress Get Media Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "45",
+                "type": "path",
+                "description": "Unique identifier for the media item."
+              }
+            ]
+          },
+          "docs": "Retrieves a single media item by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/comments",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned."
+              },
+              {
+                "name": "post",
+                "value": "123",
+                "type": "query",
+                "description": "Limit result set to comments assigned to specific post IDs."
+              },
+              {
+                "name": "status",
+                "value": "approve",
+                "type": "query",
+                "description": "Limit result set to comments assigned a specific status."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of comments. Public endpoint returns approved comments."
+        },
+        {
+          "info": {
+            "name": "WordPress Create Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site}/wp-json/wp/v2/comments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new comment on a post."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned."
+              },
+              {
+                "name": "roles",
+                "value": "administrator,editor",
+                "type": "query",
+                "description": "Limit result set to users matching at least one specific role."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of users. Requires authentication for most contexts."
+        },
+        {
+          "info": {
+            "name": "WordPress Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Unique identifier for the user."
+              }
+            ]
+          },
+          "docs": "Retrieves a single user by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/categories",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items."
+              },
+              {
+                "name": "search",
+                "value": "technology",
+                "type": "query",
+                "description": "Limit results to matching categories."
+              },
+              {
+                "name": "hide_empty",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to hide terms not assigned to any posts."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of post categories."
+        },
+        {
+          "info": {
+            "name": "WordPress Create Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site}/wp-json/wp/v2/categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new category. Requires authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/tags",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items."
+              },
+              {
+                "name": "search",
+                "value": "api",
+                "type": "query",
+                "description": "Limit results to matching tags."
+              },
+              {
+                "name": "hide_empty",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to hide terms not assigned to any posts."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of post tags."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress Search Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/search",
+            "params": [
+              {
+                "name": "search",
+                "value": "WordPress API",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "type",
+                "value": "post",
+                "type": "query",
+                "description": "Limit results to items of an object type."
+              },
+              {
+                "name": "subtype",
+                "value": "post",
+                "type": "query",
+                "description": "Limit results to items of one or more object subtypes."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "Searches across WordPress content types including posts, pages, and other objects."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress Get Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/settings"
+          },
+          "docs": "Retrieves registered site settings. Requires authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/themes",
+            "params": [
+              {
+                "name": "status",
+                "value": "active",
+                "type": "query",
+                "description": "Limit result set to themes assigned one or more statuses."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of installed themes. Requires authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/plugins"
+          },
+          "docs": "Retrieves a collection of installed plugins. Requires administrator authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Post Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Post Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/types"
+          },
+          "docs": "Retrieves a collection of all registered post types."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Reusable Blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/blocks",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of reusable blocks."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Block Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Block Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/block-types"
+          },
+          "docs": "Retrieves all registered block types with their attributes and supports."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
