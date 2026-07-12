@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wordpress-rest-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: wordpress_logged_in
+  description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+  sources:
+  - openapi/wordpress-rest-api-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+  sources:
+  - openapi/wordpress-rest-api-openapi.yml
