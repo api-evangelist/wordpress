@@ -1,5 +1,23 @@
+# wordpress — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - path-params-casing: snake @ 100% (n=6)
+#   - query-params-casing: snake @ 100% (n=43)
+#   - operationid-casing: camel @ 100% (n=24)
+#   - schema-names-casing: pascal @ 100% (n=19)
+#   - schema-properties-casing: snake @ 100% (n=146)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - error-schema-defined: ErrorResponse
+#   - pagination params observed: ['page', 'per_page']
+#   - merge: kept 41 existing, added 5 measured, upgraded 0
+#   - added: path-params-casing, query-params-casing, schema-names-casing, schema-properties-casing, error-schema-defined
+extends:
+  - spectral:oas
 rules:
-  # INFO / METADATA
   info-title-wordpress-prefix:
     message: API title must begin with "WordPress"
     severity: warn
@@ -7,8 +25,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^WordPress'
-
+        match: ^WordPress
   info-description-required:
     message: Info object must have a non-empty description
     severity: error
@@ -16,7 +33,6 @@ rules:
     then:
       field: description
       function: truthy
-
   info-version-required:
     message: Info object must have a version
     severity: error
@@ -24,7 +40,6 @@ rules:
     then:
       field: version
       function: truthy
-
   info-contact-required:
     message: Info object should have contact information
     severity: warn
@@ -32,7 +47,6 @@ rules:
     then:
       field: contact
       function: truthy
-
   info-license-required:
     message: Info object should have license information
     severity: warn
@@ -40,8 +54,6 @@ rules:
     then:
       field: license
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     message: Must use OpenAPI 3.0.x
     severity: error
@@ -49,9 +61,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^3\.0\.'
-
-  # SERVERS
+        match: ^3\.0\.
   servers-defined:
     message: At least one server must be defined
     severity: error
@@ -59,7 +69,6 @@ rules:
     then:
       field: servers
       function: truthy
-
   servers-https-only:
     message: Server URLs must use HTTPS
     severity: warn
@@ -67,9 +76,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^https://'
-
-  # PATHS — NAMING CONVENTIONS
+        match: ^https://
   paths-kebab-case:
     message: Path segments must use kebab-case
     severity: warn
@@ -77,8 +84,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^(/[a-z0-9{][a-z0-9\-._{}]*)*$'
-
+        match: ^(/[a-z0-9{][a-z0-9\-._{}]*)*$
   paths-no-trailing-slash:
     message: Paths must not end with a trailing slash
     severity: warn
@@ -86,8 +92,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: '/$'
-
+        notMatch: /$
   paths-version-prefix:
     message: WordPress REST API paths should start with /wp/v2/
     severity: info
@@ -95,9 +100,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^/wp/v[0-9]+/'
-
-  # OPERATIONS
+        match: ^/wp/v[0-9]+/
   operation-summary-required:
     message: Operations must have a summary
     severity: error
@@ -105,7 +108,6 @@ rules:
     then:
       field: summary
       function: truthy
-
   operation-description-required:
     message: Operations must have a description
     severity: warn
@@ -113,7 +115,6 @@ rules:
     then:
       field: description
       function: truthy
-
   operation-id-required:
     message: Operations must have an operationId
     severity: error
@@ -121,7 +122,6 @@ rules:
     then:
       field: operationId
       function: truthy
-
   operation-id-camel-case:
     message: operationId must use camelCase
     severity: warn
@@ -129,8 +129,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[a-z][a-zA-Z0-9]*$'
-
+        match: ^[a-z][a-zA-Z0-9]*$
   operation-tags-required:
     message: Operations must have at least one tag
     severity: warn
@@ -138,7 +137,6 @@ rules:
     then:
       field: tags
       function: truthy
-
   operation-summary-wordpress-prefix:
     message: Operation summaries must start with "WordPress"
     severity: warn
@@ -146,9 +144,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^WordPress'
-
-  # TAGS
+        match: ^WordPress
   tags-defined:
     message: Global tags array must be defined
     severity: info
@@ -156,7 +152,6 @@ rules:
     then:
       field: tags
       function: truthy
-
   tag-description-required:
     message: Tags must have a description
     severity: info
@@ -164,8 +159,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     message: Parameters must have a description
     severity: warn
@@ -173,7 +166,6 @@ rules:
     then:
       field: description
       function: truthy
-
   parameter-snake-case:
     message: Parameter names should use snake_case
     severity: info
@@ -181,8 +173,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[a-z][a-z0-9_]*$'
-
+        match: ^[a-z][a-z0-9_]*$
   parameter-schema-required:
     message: Parameters must have a schema
     severity: error
@@ -190,8 +181,6 @@ rules:
     then:
       field: schema
       function: truthy
-
-  # REQUEST BODIES
   request-body-description:
     message: Request bodies should have a description
     severity: info
@@ -199,7 +188,6 @@ rules:
     then:
       field: description
       function: truthy
-
   request-body-json-content:
     message: Request bodies should use application/json content type
     severity: warn
@@ -207,8 +195,6 @@ rules:
     then:
       field: application/json
       function: truthy
-
-  # RESPONSES
   response-success-required:
     message: Operations must have a success response (2xx)
     severity: error
@@ -219,10 +205,12 @@ rules:
         schema:
           type: object
           anyOf:
-            - required: ['200']
-            - required: ['201']
-            - required: ['204']
-
+          - required:
+            - '200'
+          - required:
+            - '201'
+          - required:
+            - '204'
   response-description-required:
     message: All responses must have a description
     severity: error
@@ -230,7 +218,6 @@ rules:
     then:
       field: description
       function: truthy
-
   response-401-for-auth:
     message: Authenticated endpoints should document 401 response
     severity: info
@@ -238,7 +225,6 @@ rules:
     then:
       field: '401'
       function: truthy
-
   response-404-for-get-by-id:
     message: GET by ID endpoints should document 404 response
     severity: info
@@ -246,8 +232,6 @@ rules:
     then:
       field: '404'
       function: truthy
-
-  # SCHEMAS — PROPERTY NAMING
   schema-description-required:
     message: Top-level schemas must have a description
     severity: warn
@@ -255,7 +239,6 @@ rules:
     then:
       field: description
       function: truthy
-
   schema-type-defined:
     message: Schemas must have a type defined
     severity: warn
@@ -263,7 +246,6 @@ rules:
     then:
       field: type
       function: truthy
-
   schema-property-snake-case:
     message: Schema properties should use snake_case
     severity: info
@@ -271,8 +253,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '^[a-z][a-z0-9_]*$'
-
+        match: ^[a-z][a-z0-9_]*$
   schema-property-description:
     message: Schema properties should have descriptions
     severity: info
@@ -280,7 +261,6 @@ rules:
     then:
       field: description
       function: truthy
-
   schema-property-example:
     message: Schema properties should have examples
     severity: info
@@ -288,8 +268,6 @@ rules:
     then:
       field: example
       function: truthy
-
-  # SECURITY
   security-schemes-defined:
     message: Security schemes must be defined in components
     severity: warn
@@ -297,7 +275,6 @@ rules:
     then:
       field: securitySchemes
       function: truthy
-
   security-scheme-description:
     message: Security schemes must have a description
     severity: warn
@@ -305,8 +282,6 @@ rules:
     then:
       field: description
       function: truthy
-
-  # HTTP METHOD CONVENTIONS
   get-no-request-body:
     message: GET operations must not have a request body
     severity: error
@@ -314,7 +289,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
   delete-no-request-body:
     message: DELETE operations should not have a request body
     severity: warn
@@ -322,7 +296,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
   post-should-have-request-body:
     message: POST operations creating resources should have a request body
     severity: info
@@ -330,8 +303,6 @@ rules:
     then:
       field: requestBody
       function: truthy
-
-  # MICROCKS COMPATIBILITY
   operation-microcks-extension:
     message: Operations should have x-microcks-operation extension for mock compatibility
     severity: info
@@ -339,8 +310,6 @@ rules:
     then:
       field: x-microcks-operation
       function: truthy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     message: Descriptions must not be empty strings
     severity: warn
@@ -348,11 +317,52 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: '.+'
-
+        match: .+
   pagination-parameters-standard:
     message: Pagination parameters should use page and per_page (WordPress convention)
     severity: info
     given: $.paths[*][get].parameters[?(@.name == 'limit')]
     then:
       function: undefined
+  path-params-casing:
+    description: Path parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: snake
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  error-schema-defined:
+    description: A shared error schema (ErrorResponse) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: ErrorResponse
+      function: truthy
