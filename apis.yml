@@ -137,6 +137,8 @@ apis:
     url: https://github.com/WordPress/mcp-adapter
     title: MCP Adapter
 common:
+- type: AgenticAccess
+  url: agentic-access/wordpress-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/wordpress-vulnerability-disclosure.yml
 - type: DomainSecurity
