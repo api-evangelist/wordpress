@@ -1,0 +1,248 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Media API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Media
+  description: Manage WordPress media library
+paths:
+  /wp/v2/media:
+    get:
+      operationId: listMedia
+      summary: WordPress List Media
+      description: Retrieves a collection of media items from the media library.
+      tags:
+      - Media
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned.
+        schema:
+          type: integer
+          default: 10
+        example: 10
+      - name: media_type
+        in: query
+        description: Limit result set to attachments of a particular media type.
+        schema:
+          type: string
+          enum:
+          - image
+          - video
+          - text
+          - application
+          - audio
+        example: image
+      - name: mime_type
+        in: query
+        description: Limit result set to attachments of a specific MIME type.
+        schema:
+          type: string
+        example: image/jpeg
+      responses:
+        '200':
+          description: A list of media items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaItem'
+              examples:
+                ListMedia200Example:
+                  summary: Default listMedia 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: 45
+                    date: '2026-03-10T09:00:00'
+                    status: inherit
+                    type: attachment
+                    mime_type: image/jpeg
+                    source_url: https://example.com/wp-content/uploads/2026/03/photo.jpg
+                    title:
+                      rendered: photo
+                    alt_text: A sample photo
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /wp/v2/media/{id}:
+    get:
+      operationId: getMedia
+      summary: WordPress Get Media Item
+      description: Retrieves a single media item by ID.
+      tags:
+      - Media
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the media item.
+        schema:
+          type: integer
+        example: 45
+      responses:
+        '200':
+          description: A single media item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaItem'
+              examples:
+                GetMedia200Example:
+                  summary: Default getMedia 200 response
+                  x-microcks-default: true
+                  value:
+                    id: 45
+                    status: inherit
+                    mime_type: image/jpeg
+                    source_url: https://example.com/wp-content/uploads/2026/03/photo.jpg
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
+    MediaItem:
+      type: object
+      description: A WordPress media attachment object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the media item
+          example: 45
+        date:
+          type: string
+          format: date-time
+          description: The date the media was uploaded
+          example: '2026-03-10T09:00:00'
+        status:
+          type: string
+          description: A named status for the object
+          example: inherit
+        type:
+          type: string
+          description: Type of Post for the object
+          example: attachment
+        mime_type:
+          type: string
+          description: The MIME type of the attachment
+          example: image/jpeg
+        title:
+          $ref: '#/components/schemas/RenderedContent'
+        alt_text:
+          type: string
+          description: Alternative text to display when attachment is not displayed
+          example: A sample photo
+        source_url:
+          type: string
+          description: URL to the original attachment file
+          example: https://example.com/wp-content/uploads/2026/03/photo.jpg
+        media_type:
+          type: string
+          description: Attachment type (image, video, audio, etc.)
+          enum:
+          - image
+          - file
+          example: image
+        media_details:
+          type: object
+          description: Details about the media file including sizes
+          properties:
+            width:
+              type: integer
+              example: 1920
+            height:
+              type: integer
+              example: 1080
+            file:
+              type: string
+              example: 2026/03/photo.jpg
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                code: rest_post_invalid_id
+                message: Invalid post ID.
+                data:
+                  status: 404
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

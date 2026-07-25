@@ -1,0 +1,322 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Pages API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Pages
+  description: Manage WordPress pages
+paths:
+  /wp/v2/pages:
+    get:
+      operationId: listPages
+      summary: WordPress List Pages
+      description: Retrieves a collection of pages from the WordPress site.
+      tags:
+      - Pages
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned.
+        schema:
+          type: integer
+          default: 10
+        example: 10
+      - name: status
+        in: query
+        description: Limit result set to pages with a specific status.
+        schema:
+          type: string
+          default: publish
+        example: publish
+      - name: parent
+        in: query
+        description: Limit result set to pages with a specific parent ID.
+        schema:
+          type: integer
+        example: 0
+      responses:
+        '200':
+          description: A list of pages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Page'
+              examples:
+                ListPages200Example:
+                  summary: Default listPages 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: 2
+                    date: '2026-01-01T00:00:00'
+                    status: publish
+                    type: page
+                    title:
+                      rendered: About
+                    content:
+                      rendered: <p>About this site.</p>
+                      protected: false
+                    parent: 0
+                    menu_order: 0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createPage
+      summary: WordPress Create Page
+      description: Creates a new page. Requires authentication.
+      tags:
+      - Pages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageInput'
+      responses:
+        '201':
+          description: Page created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+              examples:
+                CreatePage201Example:
+                  summary: Default createPage 201 response
+                  x-microcks-default: true
+                  value:
+                    id: 10
+                    status: publish
+                    title:
+                      rendered: New Page
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /wp/v2/pages/{id}:
+    get:
+      operationId: getPage
+      summary: WordPress Get Page
+      description: Retrieves a single page by ID.
+      tags:
+      - Pages
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the page.
+        schema:
+          type: integer
+        example: 2
+      responses:
+        '200':
+          description: A single page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+              examples:
+                GetPage200Example:
+                  summary: Default getPage 200 response
+                  x-microcks-default: true
+                  value:
+                    id: 2
+                    status: publish
+                    title:
+                      rendered: About
+                    content:
+                      rendered: <p>About this site.</p>
+                      protected: false
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
+    Page:
+      type: object
+      description: A WordPress page object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the page
+          example: 2
+        date:
+          type: string
+          format: date-time
+          description: The date the page was published in site timezone
+          example: '2026-01-01T00:00:00'
+        status:
+          type: string
+          description: A named status for the page
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+          - trash
+          example: publish
+        type:
+          type: string
+          description: Type of post
+          example: page
+        link:
+          type: string
+          description: URL to the page
+          example: https://example.com/about/
+        title:
+          $ref: '#/components/schemas/RenderedContent'
+        content:
+          $ref: '#/components/schemas/RenderedContent'
+        excerpt:
+          $ref: '#/components/schemas/RenderedContent'
+        author:
+          type: integer
+          description: The ID for the author of the page
+          example: 1
+        parent:
+          type: integer
+          description: The ID for the parent of the page
+          example: 0
+        menu_order:
+          type: integer
+          description: The order of the page in relation to other pages
+          example: 0
+        template:
+          type: string
+          description: The theme file used to display the page
+          example: ''
+    PageInput:
+      type: object
+      description: Input schema for creating or updating a page
+      properties:
+        title:
+          type: string
+          description: The title for the page
+          example: New Page
+        content:
+          type: string
+          description: The content for the page
+          example: Page content goes here.
+        status:
+          type: string
+          enum:
+          - publish
+          - draft
+          - private
+          example: publish
+        parent:
+          type: integer
+          description: The ID for the parent page
+          example: 0
+        menu_order:
+          type: integer
+          description: The order of the page
+          example: 0
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                code: rest_post_invalid_id
+                message: Invalid post ID.
+                data:
+                  status: 404
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

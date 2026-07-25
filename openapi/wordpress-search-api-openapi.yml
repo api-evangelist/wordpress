@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Search API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Search
+  description: Search across WordPress content
+paths:
+  /wp/v2/search:
+    get:
+      operationId: searchContent
+      summary: WordPress Search Content
+      description: Searches across WordPress content types including posts, pages, and other objects.
+      tags:
+      - Search
+      parameters:
+      - name: search
+        in: query
+        required: true
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+        example: WordPress API
+      - name: type
+        in: query
+        description: Limit results to items of an object type.
+        schema:
+          type: string
+          enum:
+          - post
+          - term
+          - post-format
+          default: post
+        example: post
+      - name: subtype
+        in: query
+        description: Limit results to items of one or more object subtypes.
+        schema:
+          type: string
+        example: post
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to return.
+        schema:
+          type: integer
+          default: 10
+        example: 10
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+              examples:
+                SearchContent200Example:
+                  summary: Default searchContent 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: 123
+                    title: My First WordPress Post
+                    url: https://example.com/2026/04/my-first-post/
+                    type: post
+                    subtype: post
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SearchResult:
+      type: object
+      description: A search result object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the search result
+          example: 123
+        title:
+          type: string
+          description: The title for the search result
+          example: My First WordPress Post
+        url:
+          type: string
+          description: URL for the search result
+          example: https://example.com/2026/04/my-first-post/
+        type:
+          type: string
+          description: The type of the search result
+          example: post
+        subtype:
+          type: string
+          description: The subtype of the search result
+          example: post
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

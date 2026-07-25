@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Block Types
+  description: Query registered block types
+paths:
+  /wp/v2/block-types:
+    get:
+      operationId: listBlockTypes
+      summary: WordPress List Block Types
+      description: Retrieves all registered block types with their attributes and supports.
+      tags:
+      - Block Types
+      responses:
+        '200':
+          description: A list of registered block types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BlockType'
+              examples:
+                ListBlockTypes200Example:
+                  summary: Default listBlockTypes 200 response
+                  x-microcks-default: true
+                  value:
+                  - name: core/paragraph
+                    title: Paragraph
+                    description: Start with the basic building block of narrative.
+                    category: text
+                    attributes:
+                      content:
+                        type: string
+                        default: ''
+                      dropCap:
+                        type: boolean
+                        default: false
+                    is_dynamic: false
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    BlockType:
+      type: object
+      description: A registered WordPress block type
+      properties:
+        name:
+          type: string
+          description: Unique name identifying the block type
+          example: core/paragraph
+        title:
+          type: string
+          description: Human-readable block type label
+          example: Paragraph
+        description:
+          type: string
+          description: Short description for the block type
+          example: Start with the basic building block of narrative.
+        category:
+          type: string
+          description: Block category
+          example: text
+        attributes:
+          type: object
+          description: Block attributes
+          additionalProperties:
+            type: object
+        is_dynamic:
+          type: boolean
+          description: Whether the block is dynamic
+          example: false
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

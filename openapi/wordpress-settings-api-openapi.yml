@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Settings API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Settings
+  description: Manage site settings
+paths:
+  /wp/v2/settings:
+    get:
+      operationId: getSettings
+      summary: WordPress Get Settings
+      description: Retrieves registered site settings. Requires authentication.
+      tags:
+      - Settings
+      responses:
+        '200':
+          description: Site settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+              examples:
+                GetSettings200Example:
+                  summary: Default getSettings 200 response
+                  x-microcks-default: true
+                  value:
+                    title: My WordPress Site
+                    description: Just another WordPress site
+                    url: https://example.com
+                    email: admin@example.com
+                    timezone: America/New_York
+                    date_format: F j, Y
+                    time_format: g:i a
+                    start_of_week: 1
+                    language: en_US
+                    use_smilies: true
+                    default_category: 1
+                    default_post_format: ''
+                    posts_per_page: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Settings:
+      type: object
+      description: WordPress site settings
+      properties:
+        title:
+          type: string
+          description: Site title
+          example: My WordPress Site
+        description:
+          type: string
+          description: Site tagline
+          example: Just another WordPress site
+        url:
+          type: string
+          description: Site URL
+          example: https://example.com
+        email:
+          type: string
+          format: email
+          description: Administrator email address
+          example: admin@example.com
+        timezone:
+          type: string
+          description: Site timezone string
+          example: America/New_York
+        date_format:
+          type: string
+          description: Date format for the site
+          example: F j, Y
+        time_format:
+          type: string
+          description: Time format for the site
+          example: g:i a
+        start_of_week:
+          type: integer
+          description: Day of the week that the week should start on (0=Sunday, 1=Monday)
+          example: 1
+        language:
+          type: string
+          description: WordPress locale code
+          example: en_US
+        use_smilies:
+          type: boolean
+          description: Whether smilies should automatically be converted to graphics
+          example: true
+        default_category:
+          type: integer
+          description: Default post category ID
+          example: 1
+        posts_per_page:
+          type: integer
+          description: Number of posts per page
+          example: 10
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

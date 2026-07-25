@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Themes API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Themes
+  description: Manage WordPress themes
+paths:
+  /wp/v2/themes:
+    get:
+      operationId: listThemes
+      summary: WordPress List Themes
+      description: Retrieves a collection of installed themes. Requires authentication.
+      tags:
+      - Themes
+      parameters:
+      - name: status
+        in: query
+        description: Limit result set to themes assigned one or more statuses.
+        schema:
+          type: string
+        example: active
+      responses:
+        '200':
+          description: A list of themes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theme'
+              examples:
+                ListThemes200Example:
+                  summary: Default listThemes 200 response
+                  x-microcks-default: true
+                  value:
+                  - stylesheet: twentytwentyfive
+                    template: twentytwentyfive
+                    name:
+                      rendered: Twenty Twenty-Five
+                    description:
+                      rendered: Bringing together a refined craftsmanship and an eye for fresh perspectives, Twenty Twenty-Five is built to help you share your ideas by diving into the details that make your content shine.
+                    status: active
+                    version: '1.3'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
+    Theme:
+      type: object
+      description: A WordPress theme object
+      properties:
+        stylesheet:
+          type: string
+          description: The theme's stylesheet
+          example: twentytwentyfive
+        template:
+          type: string
+          description: The theme's template
+          example: twentytwentyfive
+        name:
+          $ref: '#/components/schemas/RenderedContent'
+        description:
+          $ref: '#/components/schemas/RenderedContent'
+        status:
+          type: string
+          description: A named status for the theme
+          example: active
+        version:
+          type: string
+          description: The theme's current version
+          example: '1.3'
+        author:
+          $ref: '#/components/schemas/RenderedContent'
+        author_uri:
+          $ref: '#/components/schemas/RenderedContent'
+        theme_uri:
+          $ref: '#/components/schemas/RenderedContent'
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

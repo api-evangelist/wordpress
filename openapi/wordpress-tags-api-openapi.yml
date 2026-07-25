@@ -1,0 +1,139 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Tags API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Tags
+  description: Manage post tags
+paths:
+  /wp/v2/tags:
+    get:
+      operationId: listTags
+      summary: WordPress List Tags
+      description: Retrieves a collection of post tags.
+      tags:
+      - Tags
+      parameters:
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items.
+        schema:
+          type: integer
+          default: 10
+        example: 10
+      - name: search
+        in: query
+        description: Limit results to matching tags.
+        schema:
+          type: string
+        example: api
+      - name: hide_empty
+        in: query
+        description: Whether to hide terms not assigned to any posts.
+        schema:
+          type: boolean
+          default: false
+        example: false
+      responses:
+        '200':
+          description: A list of tags
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Term'
+              examples:
+                ListTags200Example:
+                  summary: Default listTags 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: 12
+                    count: 5
+                    description: ''
+                    link: https://example.com/tag/api/
+                    name: API
+                    slug: api
+                    taxonomy: post_tag
+                    parent: 0
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Term:
+      type: object
+      description: A WordPress taxonomy term (category or tag)
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the term
+          example: 1
+        count:
+          type: integer
+          description: Number of published posts for the term
+          example: 12
+        description:
+          type: string
+          description: HTML description of the term
+          example: ''
+        link:
+          type: string
+          description: URL of the term
+          example: https://example.com/category/uncategorized/
+        name:
+          type: string
+          description: HTML title for the term
+          example: Uncategorized
+        slug:
+          type: string
+          description: An alphanumeric identifier for the term
+          example: uncategorized
+        taxonomy:
+          type: string
+          description: Type attribution for the term
+          example: category
+        parent:
+          type: integer
+          description: The parent term ID
+          example: 0
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

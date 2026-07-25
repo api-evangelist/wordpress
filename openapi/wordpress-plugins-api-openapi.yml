@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Plugins API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Plugins
+  description: Manage WordPress plugins
+paths:
+  /wp/v2/plugins:
+    get:
+      operationId: listPlugins
+      summary: WordPress List Plugins
+      description: Retrieves a collection of installed plugins. Requires administrator authentication.
+      tags:
+      - Plugins
+      responses:
+        '200':
+          description: A list of plugins
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plugin'
+              examples:
+                ListPlugins200Example:
+                  summary: Default listPlugins 200 response
+                  x-microcks-default: true
+                  value:
+                  - plugin: akismet/akismet
+                    status: active
+                    name: Akismet Anti-Spam
+                    plugin_uri: https://akismet.com/
+                    author: Automattic
+                    author_uri: https://automattic.com/
+                    description:
+                      raw: Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam.
+                      rendered: Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam.
+                    version: 5.3.4
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Plugin:
+      type: object
+      description: A WordPress plugin object
+      properties:
+        plugin:
+          type: string
+          description: The plugin file, relative to the plugins directory
+          example: akismet/akismet
+        status:
+          type: string
+          description: The plugin activation status
+          enum:
+          - active
+          - inactive
+          example: active
+        name:
+          type: string
+          description: The plugin name
+          example: Akismet Anti-Spam
+        plugin_uri:
+          type: string
+          description: The plugin's website address
+          example: https://akismet.com/
+        author:
+          type: string
+          description: The plugin author's name
+          example: Automattic
+        author_uri:
+          type: string
+          description: Profile page for the plugin author
+          example: https://automattic.com/
+        description:
+          type: object
+          description: The plugin description
+          properties:
+            raw:
+              type: string
+              example: Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam.
+            rendered:
+              type: string
+              example: Used by millions, Akismet is quite possibly the best way in the world to protect your blog from spam.
+        version:
+          type: string
+          description: The plugin version number
+          example: 5.3.4
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

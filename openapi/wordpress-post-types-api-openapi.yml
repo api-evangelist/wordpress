@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Post Types API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Post Types
+  description: Query registered post types
+paths:
+  /wp/v2/types:
+    get:
+      operationId: listPostTypes
+      summary: WordPress List Post Types
+      description: Retrieves a collection of all registered post types.
+      tags:
+      - Post Types
+      responses:
+        '200':
+          description: An object of registered post types
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/PostType'
+              examples:
+                ListPostTypes200Example:
+                  summary: Default listPostTypes 200 response
+                  x-microcks-default: true
+                  value:
+                    post:
+                      capabilities:
+                        create_posts: create_posts
+                      description: ''
+                      hierarchical: false
+                      name: Posts
+                      rest_base: posts
+                      slug: post
+                      taxonomies:
+                      - category
+                      - post_tag
+                    page:
+                      capabilities:
+                        create_posts: create_posts
+                      description: ''
+                      hierarchical: true
+                      name: Pages
+                      rest_base: pages
+                      slug: page
+                      taxonomies: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PostType:
+      type: object
+      description: A WordPress registered post type
+      properties:
+        capabilities:
+          type: object
+          description: All capabilities used by the post type
+          additionalProperties:
+            type: string
+        description:
+          type: string
+          description: A human-readable description of the post type
+          example: ''
+        hierarchical:
+          type: boolean
+          description: Whether or not the post type should have children
+          example: false
+        name:
+          type: string
+          description: Human-readable name of the post type, e.g., Posts
+          example: Posts
+        rest_base:
+          type: string
+          description: REST base route for the post type
+          example: posts
+        slug:
+          type: string
+          description: An alphanumeric identifier for the post type
+          example: post
+        taxonomies:
+          type: array
+          description: All taxonomies associated with the post type
+          items:
+            type: string
+          example:
+          - category
+          - post_tag
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin

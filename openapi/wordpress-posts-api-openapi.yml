@@ -1,0 +1,624 @@
+openapi: 3.0.3
+info:
+  title: WordPress REST Block Types Posts API
+  description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
+  version: v2
+  contact:
+    name: WordPress Developer Resources
+    url: https://developer.wordpress.org/rest-api/
+  license:
+    name: GPL-2.0-or-later
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  x-generated-from: documentation
+servers:
+- url: https://{site}/wp-json
+  description: WordPress site REST API root
+  variables:
+    site:
+      default: example.com
+      description: Your WordPress site hostname
+security:
+- cookieAuth: []
+- basicAuth: []
+- applicationPassword: []
+tags:
+- name: Posts
+  description: Manage WordPress posts
+paths:
+  /wp/v2/posts:
+    get:
+      operationId: listPosts
+      summary: WordPress List Posts
+      description: Retrieves a collection of posts from the WordPress site. Supports filtering, ordering, and pagination.
+      tags:
+      - Posts
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        example: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+        example: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+        example: 10
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+        example: WordPress tutorial
+      - name: status
+        in: query
+        description: Limit result set to posts assigned one or more statuses.
+        schema:
+          type: string
+          default: publish
+        example: publish
+      - name: author
+        in: query
+        description: Limit result set to posts assigned to specific authors.
+        schema:
+          type: array
+          items:
+            type: integer
+        example:
+        - 1
+      - name: categories
+        in: query
+        description: Limit result set to items with specific terms assigned in the categories taxonomy.
+        schema:
+          type: array
+          items:
+            type: integer
+        example:
+        - 5
+      - name: tags
+        in: query
+        description: Limit result set to items with specific terms assigned in the tags taxonomy.
+        schema:
+          type: array
+          items:
+            type: integer
+        example:
+        - 12
+      - name: orderby
+        in: query
+        description: Sort collection by object attribute.
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+        example: date
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        example: desc
+      responses:
+        '200':
+          description: A list of posts
+          headers:
+            X-WP-Total:
+              description: Total number of items in the collection
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+              examples:
+                ListPosts200Example:
+                  summary: Default listPosts 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: 123
+                    date: '2026-04-15T10:30:00'
+                    date_gmt: '2026-04-15T10:30:00'
+                    status: publish
+                    type: post
+                    link: https://example.com/2026/04/my-first-post/
+                    title:
+                      rendered: My First WordPress Post
+                    content:
+                      rendered: <p>Welcome to my WordPress site.</p>
+                      protected: false
+                    excerpt:
+                      rendered: <p>Welcome to my WordPress site.</p>
+                      protected: false
+                    author: 1
+                    featured_media: 0
+                    comment_status: open
+                    ping_status: open
+                    sticky: false
+                    template: ''
+                    format: standard
+                    categories:
+                    - 1
+                    tags: []
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createPost
+      summary: WordPress Create Post
+      description: Creates a new post on the WordPress site. Requires authentication with appropriate user capabilities.
+      tags:
+      - Posts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+            examples:
+              CreatePostRequestExample:
+                summary: Default createPost request
+                x-microcks-default: true
+                value:
+                  title: My New Post
+                  content: This is the post content.
+                  status: publish
+                  categories:
+                  - 1
+      responses:
+        '201':
+          description: Post created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                CreatePost201Example:
+                  summary: Default createPost 201 response
+                  x-microcks-default: true
+                  value:
+                    id: 124
+                    date: '2026-05-03T12:00:00'
+                    status: publish
+                    type: post
+                    title:
+                      rendered: My New Post
+                    content:
+                      rendered: <p>This is the post content.</p>
+                      protected: false
+                    author: 1
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /wp/v2/posts/{id}:
+    get:
+      operationId: getPost
+      summary: WordPress Get Post
+      description: Retrieves a single post by ID from the WordPress site.
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the post.
+        schema:
+          type: integer
+        example: 123
+      - name: context
+        in: query
+        description: Scope under which the request is made.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        example: view
+      responses:
+        '200':
+          description: A single post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                GetPost200Example:
+                  summary: Default getPost 200 response
+                  x-microcks-default: true
+                  value:
+                    id: 123
+                    date: '2026-04-15T10:30:00'
+                    status: publish
+                    type: post
+                    link: https://example.com/2026/04/my-first-post/
+                    title:
+                      rendered: My First WordPress Post
+                    content:
+                      rendered: <p>Welcome to my WordPress site.</p>
+                      protected: false
+                    author: 1
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updatePost
+      summary: WordPress Update Post
+      description: Updates an existing post by ID. Requires authentication.
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the post.
+        schema:
+          type: integer
+        example: 123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+      responses:
+        '200':
+          description: Post updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                UpdatePost200Example:
+                  summary: Default updatePost 200 response
+                  x-microcks-default: true
+                  value:
+                    id: 123
+                    status: publish
+                    title:
+                      rendered: My Updated Post
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deletePost
+      summary: WordPress Delete Post
+      description: Deletes a post by ID. Requires authentication with appropriate user capabilities.
+      tags:
+      - Posts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Unique identifier for the post.
+        schema:
+          type: integer
+        example: 123
+      - name: force
+        in: query
+        description: Whether to bypass trash and force deletion.
+        schema:
+          type: boolean
+          default: false
+        example: false
+      responses:
+        '200':
+          description: Post deleted (moved to trash or permanently deleted)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                DeletePost200Example:
+                  summary: Default deletePost 200 response
+                  x-microcks-default: true
+                  value:
+                    id: 123
+                    status: trash
+                    title:
+                      rendered: My First WordPress Post
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Post:
+      type: object
+      description: A WordPress post object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the post
+          example: 123
+        date:
+          type: string
+          format: date-time
+          description: The date the post was published in site timezone
+          example: '2026-04-15T10:30:00'
+        date_gmt:
+          type: string
+          format: date-time
+          description: The date the post was published in GMT
+          example: '2026-04-15T10:30:00'
+        modified:
+          type: string
+          format: date-time
+          description: The date the post was last modified in site timezone
+          example: '2026-04-20T14:00:00'
+        slug:
+          type: string
+          description: An alphanumeric identifier for the post
+          example: my-first-wordpress-post
+        status:
+          type: string
+          description: A named status for the post
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+          - trash
+          example: publish
+        type:
+          type: string
+          description: Type of post
+          example: post
+        link:
+          type: string
+          description: URL to the post
+          example: https://example.com/2026/04/my-first-post/
+        title:
+          $ref: '#/components/schemas/RenderedContent'
+        content:
+          $ref: '#/components/schemas/RenderedContent'
+        excerpt:
+          $ref: '#/components/schemas/RenderedContent'
+        author:
+          type: integer
+          description: The ID for the author of the post
+          example: 1
+        featured_media:
+          type: integer
+          description: The ID of the featured media for the post
+          example: 45
+        comment_status:
+          type: string
+          description: Whether or not comments are open on the post
+          enum:
+          - open
+          - closed
+          example: open
+        ping_status:
+          type: string
+          description: Whether or not the post can be pinged
+          enum:
+          - open
+          - closed
+          example: open
+        sticky:
+          type: boolean
+          description: Whether or not the post should be treated as sticky
+          example: false
+        template:
+          type: string
+          description: The theme file to use to display the post
+          example: ''
+        format:
+          type: string
+          description: The format for the post
+          enum:
+          - standard
+          - aside
+          - chat
+          - gallery
+          - link
+          - image
+          - quote
+          - status
+          - video
+          - audio
+          example: standard
+        categories:
+          type: array
+          description: The terms assigned to the post in the category taxonomy
+          items:
+            type: integer
+          example:
+          - 1
+        tags:
+          type: array
+          description: The terms assigned to the post in the post_tag taxonomy
+          items:
+            type: integer
+          example:
+          - 12
+    PostInput:
+      type: object
+      description: Input schema for creating or updating a post
+      properties:
+        title:
+          type: string
+          description: The title for the post
+          example: My New Post
+        content:
+          type: string
+          description: The content for the post
+          example: This is the post content.
+        status:
+          type: string
+          description: A named status for the post
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+          example: publish
+        excerpt:
+          type: string
+          description: The excerpt for the post
+          example: A short excerpt
+        author:
+          type: integer
+          description: The ID for the author of the post
+          example: 1
+        featured_media:
+          type: integer
+          description: The ID of the featured media for the post
+          example: 45
+        categories:
+          type: array
+          description: The terms assigned in the category taxonomy
+          items:
+            type: integer
+          example:
+          - 1
+        tags:
+          type: array
+          description: The terms assigned in the post_tag taxonomy
+          items:
+            type: integer
+          example:
+          - 12
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            BadRequest400Example:
+              summary: Bad request example
+              x-microcks-default: true
+              value:
+                code: rest_invalid_param
+                message: Invalid parameter.
+                data:
+                  status: 400
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                code: rest_post_invalid_id
+                message: Invalid post ID.
+                data:
+                  status: 404
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: wordpress_logged_in
+      description: WordPress cookie authentication with nonce (X-WP-Nonce header required)
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using Application Passwords (WordPress 5.6+)
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: Application Passwords - generate per-application passwords from user profile in WordPress admin
