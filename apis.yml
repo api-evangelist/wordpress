@@ -1,4 +1,18 @@
 aid: wordpress
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wordpress.png
 name: WordPress
 description: WordPress is an open-source content management system (CMS) that powers
   a significant portion of websites on the internet. Its REST API enables applications
@@ -18,22 +32,78 @@ created: '2025'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: wordpress:rest-api
-  name: WordPress REST API
-  description: The WordPress REST API provides endpoints for WordPress data types
-    that allow developers to interact with sites remotely by sending and receiving
-    JSON objects. The REST API is the backbone of the WordPress Block Editor (Gutenberg)
-    and enables building decoupled applications, headless CMS setups, and third-party
-    integrations.
+- aid: wordpress:wp-cli
+  name: WP-CLI
+  description: >-
+    WP-CLI is the command-line interface for WordPress. It provides commands for managing WordPress installations,
+    plugins, themes, users, content, and more without using a web browser. WP-CLI is widely used for automation,
+    deployment, and development workflows.
+  humanURL: https://wp-cli.org/
+  tags:
+  - CLI
+  - Command Line
+  - DevOps
+  - WordPress
+  properties:
+  - type: Documentation
+    url: https://wp-cli.org/
+  - type: APIReference
+    url: https://developer.wordpress.org/cli/commands/
+  - type: GitHubRepository
+    url: https://github.com/wp-cli/wp-cli
+  - type: CLI
+    url: https://wp-cli.org/
+- aid: wordpress:block-editor-api
+  name: WordPress Block Editor API
+  description: >-
+    The Block Editor API (Gutenberg) enables developers to create custom blocks, block patterns, block
+    templates, and editor plugins for the WordPress Block Editor. It includes JavaScript and PHP APIs
+    for registering block types, modifying editor behavior, and extending the editing experience.
+  humanURL: https://developer.wordpress.org/block-editor/
+  tags:
+  - Block Editor
+  - Gutenberg
+  - JavaScript
+  - WordPress
+  properties:
+  - type: Documentation
+    url: https://developer.wordpress.org/block-editor/
+  - type: APIReference
+    url: https://developer.wordpress.org/block-editor/reference-guides/
+  - type: GitHubRepository
+    url: https://github.com/WordPress/gutenberg
+  - type: GettingStarted
+    url: https://developer.wordpress.org/block-editor/getting-started/
+- aid: wordpress:ai-api
+  name: WordPress AI API
+  description: >-
+    WordPress AI API provides a provider-agnostic interface for integrating generative AI capabilities
+    into WordPress plugins and themes. It supports multiple AI providers (OpenAI, Google, Anthropic) through
+    a unified PHP client interface and includes an MCP adapter for bridging to the Model Context Protocol.
+  humanURL: https://github.com/WordPress/wp-ai-client
+  tags:
+  - AI
+  - Generative AI
+  - MCP
+  - WordPress
+  properties:
+  - type: Documentation
+    url: https://github.com/WordPress/wp-ai-client
+  - type: GitHubRepository
+    url: https://github.com/WordPress/wp-ai-client
+  - type: Tools
+    url: https://github.com/WordPress/mcp-adapter
+    title: MCP Adapter
+- aid: wordpress:wordpress-block-types-api
+  name: WordPress Block Types API
+  description: Query registered block types
   humanURL: https://developer.wordpress.org/rest-api/
   baseURL: https://{site}/wp-json
   tags:
-  - CMS
-  - Content
-  - Posts
-  - REST
-  - WordPress
+  - Block Types
   properties:
+  - type: OpenAPI
+    url: openapi/wordpress-block-types-api-openapi.yml
   - type: Documentation
     url: https://developer.wordpress.org/rest-api/
   - type: APIReference
@@ -42,8 +112,6 @@ apis:
     url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
   - type: GettingStarted
     url: https://developer.wordpress.org/rest-api/using-the-rest-api/
-  - type: OpenAPI
-    url: openapi/wordpress-rest-api-openapi.yml
   - type: JSONSchema
     url: json-schema/wordpress-post-schema.json
   - type: JSONSchema
@@ -72,70 +140,632 @@ apis:
     url: json-schema/wordpress-search-result-schema.json
   - type: JSONSchema
     url: json-schema/wordpress-rendered-content-schema.json
-  - url: graphql/wordpress-graphql.md
-    type: GraphQL
-- aid: wordpress:wp-cli
-  name: WP-CLI
-  description: WP-CLI is the command-line interface for WordPress. It provides commands
-    for managing WordPress installations, plugins, themes, users, content, and more
-    without using a web browser. WP-CLI is widely used for automation, deployment,
-    and development workflows.
-  humanURL: https://wp-cli.org/
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-blocks-api
+  name: WordPress Blocks API
+  description: Manage reusable blocks
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
   tags:
-  - CLI
-  - Command Line
-  - DevOps
-  - WordPress
+  - Blocks
   properties:
+  - type: OpenAPI
+    url: openapi/wordpress-blocks-api-openapi.yml
   - type: Documentation
-    url: https://wp-cli.org/
+    url: https://developer.wordpress.org/rest-api/
   - type: APIReference
-    url: https://developer.wordpress.org/cli/commands/
-  - type: GitHubRepository
-    url: https://github.com/wp-cli/wp-cli
-  - type: CLI
-    url: https://wp-cli.org/
-- aid: wordpress:block-editor-api
-  name: WordPress Block Editor API
-  description: The Block Editor API (Gutenberg) enables developers to create custom
-    blocks, block patterns, block templates, and editor plugins for the WordPress
-    Block Editor. It includes JavaScript and PHP APIs for registering block types,
-    modifying editor behavior, and extending the editing experience.
-  humanURL: https://developer.wordpress.org/block-editor/
-  tags:
-  - Block Editor
-  - Gutenberg
-  - JavaScript
-  - WordPress
-  properties:
-  - type: Documentation
-    url: https://developer.wordpress.org/block-editor/
-  - type: APIReference
-    url: https://developer.wordpress.org/block-editor/reference-guides/
-  - type: GitHubRepository
-    url: https://github.com/WordPress/gutenberg
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
   - type: GettingStarted
-    url: https://developer.wordpress.org/block-editor/getting-started/
-- aid: wordpress:ai-api
-  name: WordPress AI API
-  description: WordPress AI API provides a provider-agnostic interface for integrating
-    generative AI capabilities into WordPress plugins and themes. It supports multiple
-    AI providers (OpenAI, Google, Anthropic) through a unified PHP client interface
-    and includes an MCP adapter for bridging to the Model Context Protocol.
-  humanURL: https://github.com/WordPress/wp-ai-client
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-categories-api
+  name: WordPress Categories API
+  description: Manage post categories
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
   tags:
-  - AI
-  - Generative AI
-  - MCP
-  - WordPress
+  - Categories
   properties:
+  - type: OpenAPI
+    url: openapi/wordpress-categories-api-openapi.yml
   - type: Documentation
-    url: https://github.com/WordPress/wp-ai-client
-  - type: GitHubRepository
-    url: https://github.com/WordPress/wp-ai-client
-  - type: Tools
-    url: https://github.com/WordPress/mcp-adapter
-    title: MCP Adapter
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-comments-api
+  name: WordPress Comments API
+  description: Manage WordPress comments
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-media-api
+  name: WordPress Media API
+  description: Manage WordPress media library
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-media-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-pages-api
+  name: WordPress Pages API
+  description: Manage WordPress pages
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-plugins-api
+  name: WordPress Plugins API
+  description: Manage WordPress plugins
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-plugins-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-post-types-api
+  name: WordPress Post Types API
+  description: Query registered post types
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Post Types
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-post-types-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-posts-api
+  name: WordPress Posts API
+  description: Manage WordPress posts
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-posts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-search-api
+  name: WordPress Search API
+  description: Search across WordPress content
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-search-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-settings-api
+  name: WordPress Settings API
+  description: Manage site settings
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-settings-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-tags-api
+  name: WordPress Tags API
+  description: Manage post tags
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-tags-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-themes-api
+  name: WordPress Themes API
+  description: Manage WordPress themes
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Themes
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-themes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
+- aid: wordpress:wordpress-users-api
+  name: WordPress Users API
+  description: Manage WordPress users
+  humanURL: https://developer.wordpress.org/rest-api/
+  baseURL: https://{site}/wp-json
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/wordpress-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+  - type: APIReference
+    url: https://developer.wordpress.org/rest-api/reference/
+  - type: Authentication
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+  - type: GettingStarted
+    url: https://developer.wordpress.org/rest-api/using-the-rest-api/
+  - type: JSONSchema
+    url: json-schema/wordpress-post-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-page-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-media-item-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-user-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-term-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-settings-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-theme-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-plugin-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-block-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-post-type-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/wordpress-rendered-content-schema.json
+  - type: GraphQL
+    url: graphql/wordpress-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/wordpress-agentic-access.yml
