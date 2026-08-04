@@ -1,0 +1,40 @@
+{
+  "provider": "wordpress",
+  "sources": [
+    "wordpress-block-types-api-openapi.yml",
+    "wordpress-blocks-api-openapi.yml",
+    "wordpress-categories-api-openapi.yml",
+    "wordpress-comments-api-openapi.yml",
+    "wordpress-media-api-openapi.yml",
+    "wordpress-pages-api-openapi.yml",
+    "wordpress-plugins-api-openapi.yml",
+    "wordpress-post-types-api-openapi.yml",
+    "wordpress-posts-api-openapi.yml",
+    "wordpress-search-api-openapi.yml",
+    "wordpress-settings-api-openapi.yml",
+    "wordpress-tags-api-openapi.yml",
+    "wordpress-themes-api-openapi.yml",
+    "wordpress-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "wordpress-block-types-api-openapi.yml",
+    "wordpress-blocks-api-openapi.yml",
+    "wordpress-categories-api-openapi.yml",
+    "wordpress-comments-api-openapi.yml",
+    "wordpress-media-api-openapi.yml",
+    "wordpress-pages-api-openapi.yml",
+    "wordpress-plugins-api-openapi.yml",
+    "wordpress-post-types-api-openapi.yml",
+    "wordpress-posts-api-openapi.yml",
+    "wordpress-search-api-openapi.yml",
+    "wordpress-settings-api-openapi.yml",
+    "wordpress-tags-api-openapi.yml",
+    "wordpress-themes-api-openapi.yml",
+    "wordpress-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
