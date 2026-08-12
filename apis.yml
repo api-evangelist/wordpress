@@ -767,6 +767,9 @@ apis:
   - type: GraphQL
     url: graphql/wordpress-graphql.md
 common:
+- type: License
+  name: MIT
+  url: https://github.com/wp-cli/wp-cli/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/wordpress-agentic-access.yml
 - type: VulnerabilityDisclosure
