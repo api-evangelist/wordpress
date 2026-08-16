@@ -5,7 +5,7 @@
       "source": "https://developer.wordpress.org/news/feed/",
       "feed_url": "https://developer.wordpress.org/news/feed/",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 24,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 25,
+  "fetched": "2026-08-15T12:11:08Z"
 }
