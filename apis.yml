@@ -30,7 +30,7 @@ tags:
 - WordPress
 created: '2025'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: wordpress:wp-cli
   name: WP-CLI
