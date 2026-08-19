@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "74c4d00e-9b19-4157-b0a5-34fd121d53c4",
+      "name": "Block Types",
+      "description": {
+        "content": "Query registered block types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "865937d3-0845-4990-a71d-ea6554926bef",
+          "name": "WordPress List Block Types",
+          "request": {
+            "name": "WordPress List Block Types",
+            "description": {
+              "content": "Retrieves all registered block types with their attributes and supports.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wp",
+                "v2",
+                "block-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your WordPress site hostname",
+                  "type": "any",
+                  "value": "{{site}}",
+                  "key": "site"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efe81c8f-95e1-4e71-b2c6-f853b1ebb582",
+              "name": "A list of registered block types",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wp",
+                    "v2",
+                    "block-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your WordPress site hostname",
+                      "type": "any",
+                      "value": "{{site}}",
+                      "key": "site"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "wordpress_logged_in",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"core/paragraph\",\n    \"title\": \"Paragraph\",\n    \"description\": \"Start with the basic building block of narrative.\",\n    \"category\": \"text\",\n    \"attributes\": {\n      \"content\": {\n        \"type\": \"string\",\n        \"default\": \"\"\n      },\n      \"dropCap\": {\n        \"type\": \"boolean\",\n        \"default\": false\n      }\n    },\n    \"is_dynamic\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your WordPress site hostname",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example.com",
+      "key": "site"
+    },
+    {
+      "type": "string",
+      "value": "https://{{site}}/wp-json",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "wordpress_logged_in"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6f38af3c-451c-458e-b3fa-e62ade5cc63a",
+    "name": "WordPress REST Block Types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.\n\nContact Support:\n Name: WordPress Developer Resources",
+      "type": "text/plain"
+    }
+  }
+}

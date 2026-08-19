@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST Block Types API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Block Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Block Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/block-types"
+          },
+          "docs": "Retrieves all registered block types with their attributes and supports."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

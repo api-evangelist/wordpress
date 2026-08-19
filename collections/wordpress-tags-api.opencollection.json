@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST Block Types Tags API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/tags",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items."
+              },
+              {
+                "name": "search",
+                "value": "api",
+                "type": "query",
+                "description": "Limit results to matching tags."
+              },
+              {
+                "name": "hide_empty",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to hide terms not assigned to any posts."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of post tags."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST Block Types Blocks API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Reusable Blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/blocks",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of reusable blocks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

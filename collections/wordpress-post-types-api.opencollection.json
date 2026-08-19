@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST Block Types Post Types API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Post Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Post Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/types"
+          },
+          "docs": "Retrieves a collection of all registered post types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

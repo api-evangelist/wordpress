@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST Block Types Media API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/media",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned."
+              },
+              {
+                "name": "media_type",
+                "value": "image",
+                "type": "query",
+                "description": "Limit result set to attachments of a particular media type."
+              },
+              {
+                "name": "mime_type",
+                "value": "image/jpeg",
+                "type": "query",
+                "description": "Limit result set to attachments of a specific MIME type."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of media items from the media library."
+        },
+        {
+          "info": {
+            "name": "WordPress Get Media Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/media/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "45",
+                "type": "path",
+                "description": "Unique identifier for the media item."
+              }
+            ]
+          },
+          "docs": "Retrieves a single media item by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

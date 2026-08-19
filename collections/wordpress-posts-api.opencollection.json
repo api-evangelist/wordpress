@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress REST Block Types Posts API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "wordpress_logged_in",
+      "value": "{{wordpress_logged_in}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "WordPress List Posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/posts",
+            "params": [
+              {
+                "name": "context",
+                "value": "view",
+                "type": "query",
+                "description": "Scope under which the request is made; determines fields present in response."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Current page of the collection."
+              },
+              {
+                "name": "per_page",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of items to be returned in result set."
+              },
+              {
+                "name": "search",
+                "value": "WordPress tutorial",
+                "type": "query",
+                "description": "Limit results to those matching a string."
+              },
+              {
+                "name": "status",
+                "value": "publish",
+                "type": "query",
+                "description": "Limit result set to posts assigned one or more statuses."
+              },
+              {
+                "name": "author",
+                "value": "1",
+                "type": "query",
+                "description": "Limit result set to posts assigned to specific authors."
+              },
+              {
+                "name": "categories",
+                "value": "5",
+                "type": "query",
+                "description": "Limit result set to items with specific terms assigned in the categories taxonomy."
+              },
+              {
+                "name": "tags",
+                "value": "12",
+                "type": "query",
+                "description": "Limit result set to items with specific terms assigned in the tags taxonomy."
+              },
+              {
+                "name": "orderby",
+                "value": "date",
+                "type": "query",
+                "description": "Sort collection by object attribute."
+              },
+              {
+                "name": "order",
+                "value": "desc",
+                "type": "query",
+                "description": "Order sort attribute ascending or descending."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of posts from the WordPress site. Supports filtering, ordering, and pagination."
+        },
+        {
+          "info": {
+            "name": "WordPress Create Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{site}/wp-json/wp/v2/posts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new post on the WordPress site. Requires authentication with appropriate user capabilities."
+        },
+        {
+          "info": {
+            "name": "WordPress Get Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{site}/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              },
+              {
+                "name": "context",
+                "value": "view",
+                "type": "query",
+                "description": "Scope under which the request is made."
+              }
+            ]
+          },
+          "docs": "Retrieves a single post by ID from the WordPress site."
+        },
+        {
+          "info": {
+            "name": "WordPress Update Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{site}/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing post by ID. Requires authentication."
+        },
+        {
+          "info": {
+            "name": "WordPress Delete Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{site}/wp-json/wp/v2/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "123",
+                "type": "path",
+                "description": "Unique identifier for the post."
+              },
+              {
+                "name": "force",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to bypass trash and force deletion."
+              }
+            ]
+          },
+          "docs": "Deletes a post by ID. Requires authentication with appropriate user capabilities."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
