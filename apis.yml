@@ -26,6 +26,11 @@ url: https://developer.wordpress.org/rest-api/
 tags:
 - CMS
 - Content Management
+- Open-Source
+- WordPress
+tags_raw:
+- CMS
+- Content Management
 - Open Source
 - WordPress
 created: '2025'
@@ -82,6 +87,11 @@ apis:
     a unified PHP client interface and includes an MCP adapter for bridging to the Model Context Protocol.
   humanURL: https://github.com/WordPress/wp-ai-client
   tags:
+  - Artificial Intelligence
+  - Generative AI
+  - MCP
+  - WordPress
+  tags_raw:
   - AI
   - Generative AI
   - MCP
@@ -100,6 +110,8 @@ apis:
   humanURL: https://developer.wordpress.org/rest-api/
   baseURL: https://{site}/wp-json
   tags:
+  - block-types
+  tags_raw:
   - Block Types
   properties:
   - type: OpenAPI
@@ -724,6 +736,8 @@ apis:
   humanURL: https://developer.wordpress.org/rest-api/
   baseURL: https://{site}/wp-json
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
