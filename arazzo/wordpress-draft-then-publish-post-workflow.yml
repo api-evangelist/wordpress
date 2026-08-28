@@ -12,8 +12,8 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordpressRestApi
-  url: ../openapi/wordpress-rest-api-openapi.yml
+- name: postsApi
+  url: ../openapi/wordpress-posts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: draft-then-publish-post

@@ -13,8 +13,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordpressRestApi
-  url: ../openapi/wordpress-rest-api-openapi.yml
+- name: postsApi
+  url: ../openapi/wordpress-posts-api-openapi.yml
+  type: openapi
+- name: usersApi
+  url: ../openapi/wordpress-users-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: assign-post-to-author

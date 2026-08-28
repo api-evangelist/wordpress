@@ -11,8 +11,11 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordpressRestApi
-  url: ../openapi/wordpress-rest-api-openapi.yml
+- name: categoriesApi
+  url: ../openapi/wordpress-categories-api-openapi.yml
+  type: openapi
+- name: postsApi
+  url: ../openapi/wordpress-posts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: categorize-and-publish-post

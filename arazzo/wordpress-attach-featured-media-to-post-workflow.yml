@@ -14,8 +14,11 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordpressRestApi
-  url: ../openapi/wordpress-rest-api-openapi.yml
+- name: mediaApi
+  url: ../openapi/wordpress-media-api-openapi.yml
+  type: openapi
+- name: postsApi
+  url: ../openapi/wordpress-posts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: attach-featured-media-to-post

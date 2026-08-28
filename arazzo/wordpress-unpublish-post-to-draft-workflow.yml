@@ -12,8 +12,8 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordpressRestApi
-  url: ../openapi/wordpress-rest-api-openapi.yml
+- name: postsApi
+  url: ../openapi/wordpress-posts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: unpublish-post-to-draft

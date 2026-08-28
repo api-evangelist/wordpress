@@ -12,8 +12,8 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: wordpressRestApi
-  url: ../openapi/wordpress-rest-api-openapi.yml
+- name: pagesApi
+  url: ../openapi/wordpress-pages-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-subpage-under-parent
