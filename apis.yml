@@ -124,7 +124,7 @@ apis:
   humanURL: https://developer.wordpress.org/rest-api/
   baseURL: https://{site}/wp-json
   tags:
-  - block-types
+  - Block Types
   tags_raw:
   - Block Types
   properties:
