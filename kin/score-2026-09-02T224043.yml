@@ -1,0 +1,52 @@
+# Kin Score artifact — wordpress — 2026-09-02T224043
+# The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
+---
+kin_score:
+  slug: wordpress
+  schema_version: 0.18.0
+  scored_at: '2026-09-02'
+  run_ts: 2026-09-02T224043
+  composite: 46.6
+  band: developing
+  facets:
+    discoverability: 57.4
+    contract_quality: 38.7
+    governance: 28.8
+    operational_transparency: 36.8
+    developer_ergonomics: 76.2
+    commercial_clarity: 36.8
+    contract_governance: 28.8
+    access_clarity: 36.8
+  agent_readiness:
+    score: 31.9
+    band: agent-ready
+    dimensions:
+      spec_presence: true
+      agentic_access: derived
+      reversibility_documented: false
+      mcp_server: documented
+      auth_clarity: bearer
+      idempotency: false
+      error_semantics: false
+      openapi_examples: verified
+      rate_limit_signal: documented
+      event_surface_described: false
+      agent_skills: true
+      well_known_catalog: false
+      consent_identity: false
+      agent_card: false
+      dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
+  open_source:
+    applies: true
+    score: 50.0
+  provenance:
+    agentic_access: derived
+    contracts:
+      total: 15
+      derived: 15
+      coverage: 100.0
+      callable: 0.0
