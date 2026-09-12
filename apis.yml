@@ -796,6 +796,8 @@ apis:
   - type: GraphQL
     url: graphql/wordpress-graphql.md
 common:
+- type: Website
+  url: https://www.wordpress.org/
 - type: IssueTracker
   url: https://github.com/wp-cli/wp-cli/issues
 - type: Releases
