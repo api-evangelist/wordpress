@@ -1,20 +1,7 @@
 {
   "provider": "wordpress",
   "sources": [
-    "wordpress-block-types-api-openapi.yml",
-    "wordpress-blocks-api-openapi.yml",
-    "wordpress-categories-api-openapi.yml",
-    "wordpress-comments-api-openapi.yml",
-    "wordpress-media-api-openapi.yml",
-    "wordpress-pages-api-openapi.yml",
-    "wordpress-plugins-api-openapi.yml",
-    "wordpress-post-types-api-openapi.yml",
-    "wordpress-posts-api-openapi.yml",
-    "wordpress-search-api-openapi.yml",
-    "wordpress-settings-api-openapi.yml",
-    "wordpress-tags-api-openapi.yml",
-    "wordpress-themes-api-openapi.yml",
-    "wordpress-users-api-openapi.yml"
+    "_ae-authored/wordpress-rest-api-openapi.yml"
   ],
   "outputs": [
     "wordpress-block-types-api-openapi.yml",
@@ -36,21 +23,24 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "wordpress-block-types-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-blocks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-categories-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-comments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-media-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-pages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-plugins-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-post-types-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-posts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-search-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-settings-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-tags-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-themes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "wordpress-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wordpress-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "wordpress-block-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-post-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-themes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "wordpress-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

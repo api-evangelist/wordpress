@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WordPress REST Block Types Comments API
+  title: WordPress REST Comments API
   description: The WordPress REST API provides endpoints for WordPress data types that allow developers to interact with sites remotely by sending and receiving JSON objects. It is the backbone of the WordPress Block Editor and enables headless CMS, mobile apps, and third-party integrations.
   version: v2
   contact:
@@ -156,18 +156,6 @@ components:
           type: string
           description: The content for the comment
           example: Thanks for sharing!
-    RenderedContent:
-      type: object
-      description: A rendered content object containing raw and rendered versions
-      properties:
-        rendered:
-          type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
     Comment:
       type: object
       description: A WordPress comment object
@@ -218,6 +206,18 @@ components:
           type: string
           description: Type of the comment
           example: comment
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
     ErrorResponse:
       type: object
       description: A WordPress REST API error response
