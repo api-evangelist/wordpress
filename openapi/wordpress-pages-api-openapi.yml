@@ -162,6 +162,53 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PageInput:
+      type: object
+      description: Input schema for creating or updating a page
+      properties:
+        title:
+          type: string
+          description: The title for the page
+          example: New Page
+        content:
+          type: string
+          description: The content for the page
+          example: Page content goes here.
+        status:
+          type: string
+          enum:
+          - publish
+          - draft
+          - private
+          example: publish
+        parent:
+          type: integer
+          description: The ID for the parent page
+          example: 0
+        menu_order:
+          type: integer
+          description: The order of the page
+          example: 0
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
     Page:
       type: object
       description: A WordPress page object
@@ -216,33 +263,6 @@ components:
           type: string
           description: The theme file used to display the page
           example: ''
-    PageInput:
-      type: object
-      description: Input schema for creating or updating a page
-      properties:
-        title:
-          type: string
-          description: The title for the page
-          example: New Page
-        content:
-          type: string
-          description: The content for the page
-          example: Page content goes here.
-        status:
-          type: string
-          enum:
-          - publish
-          - draft
-          - private
-          example: publish
-        parent:
-          type: integer
-          description: The ID for the parent page
-          example: 0
-        menu_order:
-          type: integer
-          description: The order of the page
-          example: 0
     RenderedContent:
       type: object
       description: A rendered content object containing raw and rendered versions
@@ -255,26 +275,6 @@ components:
           type: boolean
           description: Whether the content is protected with a password
           example: false
-    ErrorResponse:
-      type: object
-      description: A WordPress REST API error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: rest_forbidden
-        message:
-          type: string
-          description: Human-readable error message
-          example: Sorry, you are not allowed to do that.
-        data:
-          type: object
-          description: Additional data about the error
-          properties:
-            status:
-              type: integer
-              description: HTTP status code
-              example: 403
   responses:
     NotFound:
       description: Resource not found

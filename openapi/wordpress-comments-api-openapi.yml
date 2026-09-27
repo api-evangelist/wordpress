@@ -127,7 +127,43 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            BadRequest400Example:
+              summary: Bad request example
+              x-microcks-default: true
+              value:
+                code: rest_invalid_param
+                message: Invalid parameter.
+                data:
+                  status: 400
   schemas:
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
     CommentInput:
       type: object
       description: Input schema for creating a comment
@@ -156,6 +192,18 @@ components:
           type: string
           description: The content for the comment
           example: Thanks for sharing!
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
     Comment:
       type: object
       description: A WordPress comment object
@@ -206,54 +254,6 @@ components:
           type: string
           description: Type of the comment
           example: comment
-    RenderedContent:
-      type: object
-      description: A rendered content object containing raw and rendered versions
-      properties:
-        rendered:
-          type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
-    ErrorResponse:
-      type: object
-      description: A WordPress REST API error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: rest_forbidden
-        message:
-          type: string
-          description: Human-readable error message
-          example: Sorry, you are not allowed to do that.
-        data:
-          type: object
-          description: Additional data about the error
-          properties:
-            status:
-              type: integer
-              description: HTTP status code
-              example: 403
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            BadRequest400Example:
-              summary: Bad request example
-              x-microcks-default: true
-              value:
-                code: rest_invalid_param
-                message: Invalid parameter.
-                data:
-                  status: 400
   securitySchemes:
     cookieAuth:
       type: apiKey

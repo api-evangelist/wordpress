@@ -68,18 +68,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RenderedContent:
-      type: object
-      description: A rendered content object containing raw and rendered versions
-      properties:
-        rendered:
-          type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
     ErrorResponse:
       type: object
       description: A WordPress REST API error response
@@ -130,6 +118,18 @@ components:
           $ref: '#/components/schemas/RenderedContent'
         theme_uri:
           $ref: '#/components/schemas/RenderedContent'
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
   responses:
     Unauthorized:
       description: Authentication required

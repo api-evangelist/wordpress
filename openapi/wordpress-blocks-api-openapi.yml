@@ -75,6 +75,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
     RenderedContent:
       type: object
       description: A rendered content object containing raw and rendered versions
@@ -107,26 +127,6 @@ components:
           $ref: '#/components/schemas/RenderedContent'
         content:
           $ref: '#/components/schemas/RenderedContent'
-    ErrorResponse:
-      type: object
-      description: A WordPress REST API error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: rest_forbidden
-        message:
-          type: string
-          description: Human-readable error message
-          example: Sorry, you are not allowed to do that.
-        data:
-          type: object
-          description: Additional data about the error
-          properties:
-            status:
-              type: integer
-              description: HTTP status code
-              example: 403
   responses:
     Unauthorized:
       description: Authentication required
