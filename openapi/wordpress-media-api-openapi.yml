@@ -129,26 +129,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
+    RenderedContent:
       type: object
-      description: A WordPress REST API error response
+      description: A rendered content object containing raw and rendered versions
       properties:
-        code:
+        rendered:
           type: string
-          description: Error code
-          example: rest_forbidden
-        message:
-          type: string
-          description: Human-readable error message
-          example: Sorry, you are not allowed to do that.
-        data:
-          type: object
-          description: Additional data about the error
-          properties:
-            status:
-              type: integer
-              description: HTTP status code
-              example: 403
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
     MediaItem:
       type: object
       description: A WordPress media attachment object
@@ -204,18 +196,26 @@ components:
             file:
               type: string
               example: 2026/03/photo.jpg
-    RenderedContent:
+    ErrorResponse:
       type: object
-      description: A rendered content object containing raw and rendered versions
+      description: A WordPress REST API error response
       properties:
-        rendered:
+        code:
           type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
   responses:
     NotFound:
       description: Resource not found

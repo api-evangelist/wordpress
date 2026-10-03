@@ -127,23 +127,57 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            BadRequest400Example:
-              summary: Bad request example
-              x-microcks-default: true
-              value:
-                code: rest_invalid_param
-                message: Invalid parameter.
-                data:
-                  status: 400
   schemas:
+    Comment:
+      type: object
+      description: A WordPress comment object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the comment
+          example: 1
+        post:
+          type: integer
+          description: The ID of the associated post
+          example: 123
+        parent:
+          type: integer
+          description: The ID for the parent of the comment
+          example: 0
+        author:
+          type: integer
+          description: The ID of the user object, if author was a user
+          example: 0
+        author_name:
+          type: string
+          description: Display name for the comment author
+          example: John Doe
+        author_email:
+          type: string
+          format: email
+          description: Email address for the comment author
+          example: john@example.com
+        date:
+          type: string
+          format: date-time
+          description: The date the comment was published
+          example: '2026-04-16T08:00:00'
+        content:
+          $ref: '#/components/schemas/RenderedContent'
+        status:
+          type: string
+          description: State of the comment
+          enum:
+          - approved
+          - unapproved
+          - hold
+          - spam
+          - trash
+          example: approved
+        type:
+          type: string
+          description: Type of the comment
+          example: comment
     ErrorResponse:
       type: object
       description: A WordPress REST API error response
@@ -204,56 +238,22 @@ components:
           type: boolean
           description: Whether the content is protected with a password
           example: false
-    Comment:
-      type: object
-      description: A WordPress comment object
-      properties:
-        id:
-          type: integer
-          description: Unique identifier for the comment
-          example: 1
-        post:
-          type: integer
-          description: The ID of the associated post
-          example: 123
-        parent:
-          type: integer
-          description: The ID for the parent of the comment
-          example: 0
-        author:
-          type: integer
-          description: The ID of the user object, if author was a user
-          example: 0
-        author_name:
-          type: string
-          description: Display name for the comment author
-          example: John Doe
-        author_email:
-          type: string
-          format: email
-          description: Email address for the comment author
-          example: john@example.com
-        date:
-          type: string
-          format: date-time
-          description: The date the comment was published
-          example: '2026-04-16T08:00:00'
-        content:
-          $ref: '#/components/schemas/RenderedContent'
-        status:
-          type: string
-          description: State of the comment
-          enum:
-          - approved
-          - unapproved
-          - hold
-          - spam
-          - trash
-          example: approved
-        type:
-          type: string
-          description: Type of the comment
-          example: comment
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            BadRequest400Example:
+              summary: Bad request example
+              x-microcks-default: true
+              value:
+                code: rest_invalid_param
+                message: Invalid parameter.
+                data:
+                  status: 400
   securitySchemes:
     cookieAuth:
       type: apiKey

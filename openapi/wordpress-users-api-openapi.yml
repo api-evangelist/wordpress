@@ -181,21 +181,6 @@ components:
           example:
           - administrator
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                code: rest_post_invalid_id
-                message: Invalid post ID.
-                data:
-                  status: 404
     Unauthorized:
       description: Authentication required
       content:
@@ -211,6 +196,21 @@ components:
                 message: You are not currently logged in.
                 data:
                   status: 401
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                code: rest_post_invalid_id
+                message: Invalid post ID.
+                data:
+                  status: 404
   securitySchemes:
     cookieAuth:
       type: apiKey

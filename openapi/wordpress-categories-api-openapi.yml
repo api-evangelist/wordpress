@@ -119,6 +119,22 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
   schemas:
     ErrorResponse:
       type: object
@@ -140,6 +156,28 @@ components:
               type: integer
               description: HTTP status code
               example: 403
+    TermInput:
+      type: object
+      description: Input schema for creating or updating a term
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: HTML title for the term
+          example: Technology
+        description:
+          type: string
+          description: HTML description of the term
+          example: Technology-related posts
+        slug:
+          type: string
+          description: An alphanumeric identifier
+          example: technology
+        parent:
+          type: integer
+          description: The parent term ID
+          example: 0
     Term:
       type: object
       description: A WordPress taxonomy term (category or tag)
@@ -176,44 +214,6 @@ components:
           type: integer
           description: The parent term ID
           example: 0
-    TermInput:
-      type: object
-      description: Input schema for creating or updating a term
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: HTML title for the term
-          example: Technology
-        description:
-          type: string
-          description: HTML description of the term
-          example: Technology-related posts
-        slug:
-          type: string
-          description: An alphanumeric identifier
-          example: technology
-        parent:
-          type: integer
-          description: The parent term ID
-          example: 0
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                code: rest_not_logged_in
-                message: You are not currently logged in.
-                data:
-                  status: 401
   securitySchemes:
     cookieAuth:
       type: apiKey
