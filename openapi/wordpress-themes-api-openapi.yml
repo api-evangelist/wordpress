@@ -68,18 +68,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RenderedContent:
-      type: object
-      description: A rendered content object containing raw and rendered versions
-      properties:
-        rendered:
-          type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
     ErrorResponse:
       type: object
       description: A WordPress REST API error response
@@ -100,6 +88,18 @@ components:
               type: integer
               description: HTTP status code
               example: 403
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
     Theme:
       type: object
       description: A WordPress theme object

@@ -75,26 +75,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Block:
-      type: object
-      description: A WordPress reusable block
-      properties:
-        id:
-          type: integer
-          description: Unique identifier for the block
-          example: 15
-        status:
-          type: string
-          description: A named status for the block
-          example: publish
-        type:
-          type: string
-          description: Type of post
-          example: wp_block
-        title:
-          $ref: '#/components/schemas/RenderedContent'
-        content:
-          $ref: '#/components/schemas/RenderedContent'
     ErrorResponse:
       type: object
       description: A WordPress REST API error response
@@ -127,6 +107,26 @@ components:
           type: boolean
           description: Whether the content is protected with a password
           example: false
+    Block:
+      type: object
+      description: A WordPress reusable block
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the block
+          example: 15
+        status:
+          type: string
+          description: A named status for the block
+          example: publish
+        type:
+          type: string
+          description: Type of post
+          example: wp_block
+        title:
+          $ref: '#/components/schemas/RenderedContent'
+        content:
+          $ref: '#/components/schemas/RenderedContent'
   responses:
     Unauthorized:
       description: Authentication required

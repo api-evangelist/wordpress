@@ -121,6 +121,37 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            NotFound404Example:
+              summary: Not found example
+              x-microcks-default: true
+              value:
+                code: rest_post_invalid_id
+                message: Invalid post ID.
+                data:
+                  status: 404
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Unauthorized401Example:
+              summary: Unauthorized example
+              x-microcks-default: true
+              value:
+                code: rest_not_logged_in
+                message: You are not currently logged in.
+                data:
+                  status: 401
   schemas:
     ErrorResponse:
       type: object
@@ -180,37 +211,6 @@ components:
             type: string
           example:
           - administrator
-  responses:
-    Unauthorized:
-      description: Authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Unauthorized401Example:
-              summary: Unauthorized example
-              x-microcks-default: true
-              value:
-                code: rest_not_logged_in
-                message: You are not currently logged in.
-                data:
-                  status: 401
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            NotFound404Example:
-              summary: Not found example
-              x-microcks-default: true
-              value:
-                code: rest_post_invalid_id
-                message: Invalid post ID.
-                data:
-                  status: 404
   securitySchemes:
     cookieAuth:
       type: apiKey

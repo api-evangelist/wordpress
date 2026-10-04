@@ -128,6 +128,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
+    ErrorResponse:
+      type: object
+      description: A WordPress REST API error response
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: rest_forbidden
+        message:
+          type: string
+          description: Human-readable error message
+          example: Sorry, you are not allowed to do that.
+        data:
+          type: object
+          description: Additional data about the error
+          properties:
+            status:
+              type: integer
+              description: HTTP status code
+              example: 403
     Comment:
       type: object
       description: A WordPress comment object
@@ -178,26 +210,6 @@ components:
           type: string
           description: Type of the comment
           example: comment
-    ErrorResponse:
-      type: object
-      description: A WordPress REST API error response
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: rest_forbidden
-        message:
-          type: string
-          description: Human-readable error message
-          example: Sorry, you are not allowed to do that.
-        data:
-          type: object
-          description: Additional data about the error
-          properties:
-            status:
-              type: integer
-              description: HTTP status code
-              example: 403
     CommentInput:
       type: object
       description: Input schema for creating a comment
@@ -226,18 +238,6 @@ components:
           type: string
           description: The content for the comment
           example: Thanks for sharing!
-    RenderedContent:
-      type: object
-      description: A rendered content object containing raw and rendered versions
-      properties:
-        rendered:
-          type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
   responses:
     BadRequest:
       description: Bad request - invalid parameters
