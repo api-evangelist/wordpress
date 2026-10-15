@@ -14,3 +14,5668 @@
   relationship: compatible
   status: not-a-workflow
   arazzo: null
+- slug: wordpress-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/wordpress/integrations
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: WordPress
+    matched_domain: wordpress.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wordpress
+    beta: false
+    builder: unknown (not in the directory record)
+  status: pending-generation
+  arazzo: null
+- slug: wordpress-n8n
+  label: n8n
+  partner: n8n
+  partner_name: n8n
+  type: marketplace
+  marketplace: n8n-nodes-base
+  channel: open-source-node
+  evidence: https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/Wordpress
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
+    spec_file: null
+    role: ipaas-connector:n8n-nodes-base
+    registered_name: Wordpress
+    matched_domain: wordpress.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    node_path: Wordpress
+    trigger: false
+    builder: n8n (built-in node)
+  status: pending-generation
+  arazzo: null
+- slug: wordpress-pipedream
+  label: Pipedream
+  partner: pipedream
+  partner_name: Pipedream
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/wordpress_org
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: wordpress org
+    matched_domain: wordpress.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wordpress_org
+    actions: true
+    sources: false
+    builder: Pipedream repo (component)
+  status: pending-generation
+  arazzo: null
+- slug: wordpress-10web
+  label: 10Web
+  partner: 10web
+  partner_name: 10Web
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/photo-gallery/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: 10Web
+    matched_domain: 10web.io
+    matched_by: domain
+    listings: 6
+    sample_apps:
+    - 10Web Booster – Website speed optimization, Cache & Page Speed optimizer
+    - 10WebSocial
+    - Form Maker by 10Web – Mobile-Friendly Drag & Drop Contact Form Builder
+    - Image Optimizer by 10web – Image Optimizer and Compression plugin
+    - Photo Gallery by 10Web – Mobile-Friendly Image Gallery
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-46elks
+  label: 46Elks
+  partner: 46elks
+  partner_name: 46Elks
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/send-sms-with-46elks-for-contact-form-7/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: 46Elks
+    matched_domain: 46elks.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Send SMS with 46elks for Contact Form 7
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-accessibe
+  label: accessiBe
+  partner: accessibe
+  partner_name: accessiBe
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/accessibe/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: accessiBe
+    matched_domain: accessibe.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Web Accessibility by accessiBe
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-activecampaign
+  label: activecampaign
+  partner: activecampaign
+  partner_name: activecampaign
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/activecampaign-subscription-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: activecampaign
+    matched_domain: activecampaign.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - ActiveCampaign for WooCommerce
+    - ActiveCampaign – The autonomous marketing platform
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-addi
+  label: Addi
+  partner: addi
+  partner_name: Addi
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/buy-now-pay-later-addi/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Addi
+    matched_domain: addi.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Addi – Cuotas que se adaptan a ti
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-adroll
+  label: AdRoll
+  partner: adroll
+  partner_name: AdRoll
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/adroll-for-woocommerce-stores-dev/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: AdRoll
+    matched_domain: adroll.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - AdRoll for WooCommerce Stores
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-aftership-automizely
+  label: AfterShip & Automizely
+  partner: aftership
+  partner_name: AfterShip & Automizely
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/aftership-woocommerce-tracking/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: AfterShip & Automizely
+    matched_domain: aftership.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - AfterShip Tracking – All-In-One WooCommerce Order Tracking (Free plan available)
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-agechecker-net
+  label: AgeChecker.Net
+  partner: agechecker-net
+  partner_name: AgeChecker.Net
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/agecheckernet/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: AgeChecker.Net
+    matched_domain: agechecker.net
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Age Verification for your checkout page. Verify your customer's identity
+    - Free AgeGate for your homepage
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-agile-crm
+  label: Agile CRM
+  partner: agile-crm
+  partner_name: Agile CRM
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/agile-crm-contact-form-7-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Agile CRM
+    matched_domain: agilecrm.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Agile CRM Contact Form 7 Forms
+    - Agile CRM Gravity Forms
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-airwallex
+  label: Airwallex
+  partner: airwallex
+  partner_name: Airwallex
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/airwallex-online-payments-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Airwallex
+    matched_domain: airwallex.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Airwallex Online Payments Gateway
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-albacross
+  label: Albacross
+  partner: albacross
+  partner_name: Albacross
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/albacross/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Albacross
+    matched_domain: albacross.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Albacross – B2B Website Visitor Identification
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-amazon-payment-services
+  label: Amazon Payment Services
+  partner: amazon
+  partner_name: Amazon Payment Services
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/amazon-payment-services/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Amazon Payment Services
+    matched_domain: amazon.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Amazon payment services
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-amplitudegrowth
+  label: amplitudegrowth
+  partner: amplitude
+  partner_name: amplitudegrowth
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/amplitude/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: amplitudegrowth
+    matched_domain: amplitude.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Amplitude – Analytics, Session Replay, A/B testing and CDP for your website
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-api-video
+  label: api.video
+  partner: api-video
+  partner_name: api.video
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/api-video/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: api.video
+    matched_domain: api.video
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - api.video
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-apstal
+  label: apstal
+  partner: apstal
+  partner_name: apstal
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/apstal-ai-chatbot/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: apstal
+    matched_domain: apstal.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Apstal – AI Agent & Chatbot for Website Analytics
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-arena-im
+  label: Arena.IM
+  partner: arena
+  partner_name: Arena.IM
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/arena-liveblog-and-chat-tool/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Arena.IM
+    matched_domain: arena.im
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Arena – Group Chat for Real-Time Engagement
+    - Arena.IM – Live Blogging for real-time events
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-asaas
+  label: Asaas
+  partner: asaas
+  partner_name: Asaas
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/woo-asaas/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Asaas
+    matched_domain: asaas.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Asaas Gateway for WooCommerce
+    - Base ERP Invoices for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-astrologyapi
+  label: AstrologyAPI
+  partner: astrology-api
+  partner_name: AstrologyAPI
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/astrologyapi/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: AstrologyAPI
+    matched_domain: astrologyapi.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - AstrologyAPI
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-audiomack
+  label: audiomack
+  partner: audiomack
+  partner_name: audiomack
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/audiomack/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: audiomack
+    matched_domain: audiomack.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Audiomack
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-aviasales
+  label: aviasales
+  partner: aviasales
+  partner_name: aviasales
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/aviasalesru-search-widget/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: aviasales
+    matched_domain: aviasales.ru
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - AviaSales поиск авиабилетов
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-aweber-communications-inc
+  label: AWeber Communications, Inc.
+  partner: aweber
+  partner_name: AWeber Communications, Inc.
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/aweber-web-form-widget/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: AWeber Communications, Inc.
+    matched_domain: aweber.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - AWeber – Free Sign Up Form and Landing Page Builder Plugin for Lead Generation and Email Newsletter Growth
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-beamer
+  label: Beamer
+  partner: beamer
+  partner_name: Beamer
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/beamer/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Beamer
+    matched_domain: getbeamer.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Beamer – newsfeed and push notifications
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-bitpay
+  label: BitPay
+  partner: bitpay
+  partner_name: BitPay
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/bitpay-checkout-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: BitPay
+    matched_domain: bitpay.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - BitPay Checkout for Easy Digital Downloads
+    - BitPay Checkout for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-bitrix24
+  label: bitrix24
+  partner: bitrix24
+  partner_name: bitrix24
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/integration-with-bitrix24/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: bitrix24
+    matched_domain: bitrix24.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Bitrix24
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-devopsbizzabo
+  label: devopsbizzabo
+  partner: bizzabo
+  partner_name: devopsbizzabo
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/bizzabo/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: devopsbizzabo
+    matched_domain: bizzabo.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Bizzabo
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-blubrry
+  label: blubrry
+  partner: blubrry-api-restful-api-for-podcast-publishing-statistics
+  partner_name: blubrry
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/powerpress/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: blubrry
+    matched_domain: blubrry.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - PowerPress Podcasting plugin by Blubrry
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-blueconic
+  label: blueconic
+  partner: blueconic
+  partner_name: blueconic
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/blueconic/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: blueconic
+    matched_domain: blueconic.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - BlueConic
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-bonjoro
+  label: Bonjoro
+  partner: bonjoro
+  partner_name: Bonjoro
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/bonjoro/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Bonjoro
+    matched_domain: bonjoro.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Bonjoro
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-brevo
+  label: Brevo
+  partner: brevo
+  partner_name: Brevo
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/mailin/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Brevo
+    matched_domain: brevo.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Brevo for WooCommerce
+    - Brevo – Email, SMS, Web Push, Chat, and more.
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-bunny-net
+  label: bunny.net
+  partner: bunny-net
+  partner_name: bunny.net
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/bunnycdn/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: bunny.net
+    matched_domain: bunny.net
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - bunny.net – WordPress CDN Plugin
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-buzzsprout
+  label: Buzzsprout
+  partner: buzzsprout
+  partner_name: Buzzsprout
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/buzzsprout-podcasting/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Buzzsprout
+    matched_domain: buzzsprout.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Buzzsprout Podcasting
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-callrail
+  label: CallRail
+  partner: callrail
+  partner_name: CallRail
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/callrail-phone-call-tracking/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: CallRail
+    matched_domain: callrail.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - CallRail Phone Call Tracking
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-campaign-monitor
+  label: Campaign Monitor
+  partner: campaignmonitor
+  partner_name: Campaign Monitor
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/forms-for-campaign-monitor/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Campaign Monitor
+    matched_domain: campaignmonitor.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Campaign Monitor for WordPress
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-canto
+  label: Canto
+  partner: canto
+  partner_name: Canto
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/canto/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Canto
+    matched_domain: canto.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Canto
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-cashfree
+  label: Cashfree
+  partner: cashfree
+  partner_name: Cashfree
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/cashfree-quick-button/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Cashfree
+    matched_domain: cashfree.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Cashfree Quick Button
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-caspio-bridge
+  label: Caspio Bridge
+  partner: caspio
+  partner_name: Caspio Bridge
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/custom-database-applications-by-caspio/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Caspio Bridge
+    matched_domain: caspio.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - Caspio Deployment Control
+    - Caspio Deployment Plugin
+    - Custom Database Applications by Caspio
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-chartbeat
+  label: Chartbeat
+  partner: chartbeat
+  partner_name: Chartbeat
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/chartbeat/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Chartbeat
+    matched_domain: chartbeat.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Chartbeat
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-chatbase
+  label: chatbase
+  partner: chatbase
+  partner_name: chatbase
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/chatbase/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: chatbase
+    matched_domain: chatbase.co
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Chatbase
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ci-hub-connector
+  label: CI HUB Connector
+  partner: ci-hub
+  partner_name: CI HUB Connector
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ci-hub-connector/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: CI HUB Connector
+    matched_domain: ci-hub.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - CI HUB Connector
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-clerkio
+  label: clerkio
+  partner: clerk-io
+  partner_name: clerkio
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/clerkio/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: clerkio
+    matched_domain: clerk.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Clerk
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-clicksend
+  label: clicksend
+  partner: clicksend
+  partner_name: clicksend
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/clicksend-contactform7/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: clicksend
+    matched_domain: clicksend.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - ClickSend SMS Woo Integration
+    - SMS Contact Form 7 Notifications by ClickSend
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-cloudflare
+  label: Cloudflare
+  partner: cloudflare
+  partner_name: Cloudflare
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/cloudflare/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Cloudflare
+    matched_domain: cloudflare.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Cloudflare
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-cloudinary
+  label: Cloudinary
+  partner: cloudinary
+  partner_name: Cloudinary
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/cloudinary-image-management-and-manipulation-in-the-cloud-cdn/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Cloudinary
+    matched_domain: cloudinary.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Cloudinary – Deliver Images and Videos at Scale
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-coingate
+  label: coingate
+  partner: coingate
+  partner_name: coingate
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/coingate-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: coingate
+    matched_domain: coingate.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - CoinGate for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-coinlore
+  label: coinlore
+  partner: coinlore
+  partner_name: coinlore
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/crypto-price-ticker-coinlore/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: coinlore
+    matched_domain: coinlore.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Crypto Price Widgets – Live Cryptocurrency Prices by CoinLore
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-comoquiero
+  label: comoquiero
+  partner: comoquiero
+  partner_name: comoquiero
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/comoquiero/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: comoquiero
+    matched_domain: qcart.app
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - Qcart
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-consentx
+  label: ConsentX
+  partner: consentx
+  partner_name: ConsentX
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/consentx/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ConsentX
+    matched_domain: consentx.io
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - ConsentX
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-constant-contact
+  label: Constant Contact
+  partner: constant-contact
+  partner_name: Constant Contact
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/constant-contact-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Constant Contact
+    matched_domain: constantcontact.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Constant Contact Forms
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-kit
+  label: Kit
+  partner: convertkit
+  partner_name: Kit
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/convertkit/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Kit
+    matched_domain: kit.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Kit (formerly ConvertKit) – Email Newsletter, Email Marketing, Membership, Subscribers and Landing Pages
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-cookieyes
+  label: CookieYes
+  partner: cookieyes
+  partner_name: CookieYes
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/cookie-law-info/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: CookieYes
+    matched_domain: cookieyes.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - AccessiYes Accessibility Widget for ADA, EAA & WCAG Readiness
+    - CookieYes – Cookie Banner for Cookie Consent (Easy to setup GDPR/CCPA Compliant Cookie Notice)
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-crypto-com
+  label: Crypto.com
+  partner: crypto-com
+  partner_name: Crypto.com
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/crypto-com-pay-checkout-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Crypto.com
+    matched_domain: crypto.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Crypto.com Pay Checkout for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-dhlecomsweden
+  label: dhlecomsweden
+  partner: dhl
+  partner_name: dhlecomsweden
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/dhl-ecom-sweden/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: dhlecomsweden
+    matched_domain: dhl.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - DHL eCom Sweden
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-disqus
+  label: Disqus
+  partner: disqus
+  partner_name: Disqus
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/disqus-comment-system/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Disqus
+    matched_domain: disqus.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Disqus Comment System
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ayushdodopayments
+  label: ayushdodopayments
+  partner: dodo-payments
+  partner_name: ayushdodopayments
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/dodo-payments-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ayushdodopayments
+    matched_domain: dodopayments.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Dodo Payments for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-dotdigital
+  label: Dotdigital
+  partner: dotdigital
+  partner_name: Dotdigital
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/dotmailer-sign-up-widget/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Dotdigital
+    matched_domain: dotdigital.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Dotdigital for WordPress
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ecommpay
+  label: Ecommpay
+  partner: ecommpay
+  partner_name: Ecommpay
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ecommpay-payments/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Ecommpay
+    matched_domain: ecommpay.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - ECOMMPAY Payments
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-edamam
+  label: Edamam
+  partner: edamam
+  partner_name: Edamam
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/seo-nutrition-and-print-for-recipes-by-edamam/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Edamam
+    matched_domain: edamam.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - SEO, Nutrition and Print for Recipes by Edamam
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-elementor
+  label: Elementor
+  partner: elementor
+  partner_name: Elementor
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/elementor/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Elementor
+    matched_domain: elementor.com
+    matched_by: domain
+    listings: 11
+    sample_apps:
+    - Angie – Agentic AI
+    - Cookiez – GDPR & CCPA Cookie Banner & Consent Manager
+    - Elementor Beta (Developer Edition)
+    - Elementor Blocks for Gutenberg
+    - Elementor Website Builder – more than just a page builder
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-emailoctopus
+  label: EmailOctopus
+  partner: emailoctopus
+  partner_name: EmailOctopus
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/emailoctopus/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: EmailOctopus
+    matched_domain: emailoctopus.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Email Marketing by EmailOctopus
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-erplypos
+  label: erplypos
+  partner: erply
+  partner_name: erplypos
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/erply-integration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: erplypos
+    matched_domain: erply.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Inventory Management by Erply
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-eventmobi
+  label: EventMobi
+  partner: eventmobi
+  partner_name: EventMobi
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/eventmobi-registration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: EventMobi
+    matched_domain: eventmobi.com
+    matched_by: domain
+    listings: 4
+    sample_apps:
+    - EventMobi Registration
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-extend-solution-engineering-team
+  label: Extend Solution Engineering Team
+  partner: extend
+  partner_name: Extend Solution Engineering Team
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/helloextend-protection/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Extend Solution Engineering Team
+    matched_domain: extend.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Extend Protection For WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ezoic
+  label: ezoic
+  partner: ezoic
+  partner_name: ezoic
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ezoic-integration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ezoic
+    matched_domain: ezoic.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Ezoic
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-f6s
+  label: f6s
+  partner: f6s
+  partner_name: f6s
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/f6s/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: f6s
+    matched_domain: f6s.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - f6s WordPress Plugin
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-fanbridge
+  label: FanBridge
+  partner: fanbridge
+  partner_name: FanBridge
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/fanbridge-signup/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: FanBridge
+    matched_domain: fanbridge.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - FanBridge signup
+    - FanBridge toolbox
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-fastly
+  label: Fastly
+  partner: fastly
+  partner_name: Fastly
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/fastly/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Fastly
+    matched_domain: fastly.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Fastly
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-fatora
+  label: Fatora
+  partner: fatora
+  partner_name: Fatora
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/fatora-payment-getway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Fatora
+    matched_domain: fatora.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Fatora Payment Gateway
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ankur-patel-filestack
+  label: Ankur Patel (Filestack)
+  partner: filestack
+  partner_name: Ankur Patel (Filestack)
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/filestack-alt-text-generator/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Ankur Patel (Filestack)
+    matched_domain: filestack.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Filestack AI Image Alt Text Generator for WP
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-finix
+  label: Finix
+  partner: finix
+  partner_name: Finix
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/finix-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Finix
+    matched_domain: finix.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Finix for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-flipdish
+  label: flipdish
+  partner: flipdish
+  partner_name: flipdish
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/flipdish-ordering-system/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: flipdish
+    matched_domain: flipdish.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Flipdish Ordering System
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-floristone
+  label: floristone
+  partner: florist-one
+  partner_name: floristone
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/flower-delivery-by-florist-one/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: floristone
+    matched_domain: floristone.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Flower Delivery by Florist One
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-flutterwave
+  label: flutterwave
+  partner: flutterwave
+  partner_name: flutterwave
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/rave-woocommerce-payment-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: flutterwave
+    matched_domain: flutterwave.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Flutterwave Payments
+    - Flutterwave WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-flytedesk
+  label: flytedesk
+  partner: flytedesk
+  partner_name: flytedesk
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/flytedesk-digital/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: flytedesk
+    matched_domain: flytedesk.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Flytedesk Digital
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-taiflywire
+  label: taiflywire
+  partner: flywire
+  partner_name: taiflywire
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/flywire-payment-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: taiflywire
+    matched_domain: flywire.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Flywire for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-fontawesome
+  label: fontawesome
+  partner: font-awesome
+  partner_name: fontawesome
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/font-awesome/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: fontawesome
+    matched_domain: fontawesome.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Font Awesome
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-formassembly
+  label: FormAssembly
+  partner: formassembly
+  partner_name: FormAssembly
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/formassembly-web-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: FormAssembly
+    matched_domain: formassembly.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - WP-FormAssembly
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-fraudlabspro
+  label: fraudlabspro
+  partner: fraudlabs-pro
+  partner_name: fraudlabspro
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/fraudlabs-pro-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: fraudlabspro
+    matched_domain: fraudlabspro.com
+    matched_by: domain
+    listings: 5
+    sample_apps:
+    - FraudLabs Pro for Easy Digital Downloads
+    - FraudLabs Pro for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-fusewp
+  label: fusewp
+  partner: fusewp
+  partner_name: fusewp
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/fusewp/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: fusewp
+    matched_domain: fusewp.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - FuseWP – WordPress User Sync to Email List & Marketing Automation (Mailchimp, Constant Contact, ActiveCampaign
+      etc.)
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-gameball
+  label: Gameball
+  partner: gameball
+  partner_name: Gameball
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/gameball/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Gameball
+    matched_domain: gameball.co
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Gameball
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-geodatasource
+  label: geodatasource
+  partner: geodatasource
+  partner_name: geodatasource
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/geodatasource-country-region-dropdown/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: geodatasource
+    matched_domain: geodatasource.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - GeoDataSource Country Region DropDown
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-getresponse
+  label: GetResponse
+  partner: getresponse
+  partner_name: GetResponse
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/getresponse-official/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: GetResponse
+    matched_domain: getresponse.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - GetResponse Official
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-getty-images
+  label: Getty Images
+  partner: getty-images
+  partner_name: Getty Images
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/getty-images/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Getty Images
+    matched_domain: gettyimages.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Getty Images
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-godaddy
+  label: GoDaddy
+  partner: godaddy
+  partner_name: GoDaddy
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/godaddy-payments/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: GoDaddy
+    matched_domain: godaddy.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - GoDaddy Payments for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-guntab
+  label: GunTab
+  partner: guntab
+  partner_name: GunTab
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/guntab-payment-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: GunTab
+    matched_domain: guntab.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - GunTab Payment Gateway
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-keshavgupshup
+  label: keshavgupshup
+  partner: gupshup
+  partner_name: keshavgupshup
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/gupshup-messaging-automation-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: keshavgupshup
+    matched_domain: gupshup.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Gupshup Messaging Automation for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-hcaptcha
+  label: hcaptcha
+  partner: hcaptcha
+  partner_name: hcaptcha
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/hcaptcha-for-forms-and-more/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: hcaptcha
+    matched_domain: hcaptcha.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - hCaptcha for WP
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-helcim
+  label: Helcim
+  partner: helcim
+  partner_name: Helcim
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/helcim-commerce-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Helcim
+    matched_domain: helcim.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Helcim for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-highlight
+  label: Highlight
+  partner: highlight-io
+  partner_name: Highlight
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/highlight-io-session-recording/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Highlight
+    matched_domain: highlight.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Highlight.io Session Recording
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-holded
+  label: holded
+  partner: holded
+  partner_name: holded
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/holded-integration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: holded
+    matched_domain: holded.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Holded integration
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-hostfully
+  label: hostfully
+  partner: hostfully
+  partner_name: hostfully
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/hostfully-booking/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: hostfully
+    matched_domain: hostfully.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Hostfully Booking Widget
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-html2pdf-app
+  label: html2pdf.app
+  partner: html2pdf
+  partner_name: html2pdf.app
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/html-to-pdf-converter/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: html2pdf.app
+    matched_domain: html2pdf.app
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - HTML to PDF Converter
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-icontact
+  label: iContact
+  partner: icontact
+  partner_name: iContact
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/icontact-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: iContact
+    matched_domain: icontact.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - iContact Lead Forms
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-idenfy
+  label: idenfy
+  partner: idenfy
+  partner_name: idenfy
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/idenfy/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: idenfy
+    matched_domain: idenfy.com
+    matched_by: domain
+    listings: 4
+    sample_apps:
+    - iDenfy for WooCommerce
+    - iDenfy | Identity verification service
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-imagekit
+  label: imagekit
+  partner: imagekit
+  partner_name: imagekit
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/imagekit/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: imagekit
+    matched_domain: imagekit.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - ImageKit – URL based image manipulation and optimization
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ship-with-imile
+  label: Ship with iMile
+  partner: imile
+  partner_name: Ship with iMile
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ship-with-imile/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Ship with iMile
+    matched_domain: imile.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - iMile Delivery Shipping for Woocommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-indeed-com
+  label: Indeed.com
+  partner: indeed
+  partner_name: Indeed.com
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/indeed-apply-shortcode/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Indeed.com
+    matched_domain: indeed.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Indeed Apply Shortcode
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-instamojo
+  label: Instamojo
+  partner: instamojo
+  partner_name: Instamojo
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/woo-instamojo/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Instamojo
+    matched_domain: instamojo.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Instamojo for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-instapagedev
+  label: instapagedev
+  partner: instapage
+  partner_name: instapagedev
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/instapage/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: instapagedev
+    matched_domain: instapage.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Instapage Plugin
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ip2location
+  label: IP2Location
+  partner: ip2location
+  partner_name: IP2Location
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ip2location-country-blocker/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: IP2Location
+    matched_domain: ip2location.com
+    matched_by: domain+name-among-holders
+    listings: 8
+    sample_apps:
+    - IP2Location Country Blocker
+    - IP2Location Hello Greeting
+    - IP2Location Redirection
+    - IP2Location Tags
+    - IP2Location Variables
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ipgeolocation
+  label: IPGeolocation
+  partner: ipgeolocation
+  partner_name: IPGeolocation
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ipgeolocation-fraudshield/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: IPGeolocation
+    matched_domain: ipgeolocation.io
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - IPGeolocation FraudShield
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ipqualityscore
+  label: ipqualityscore
+  partner: ipqualityscore
+  partner_name: ipqualityscore
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ipqualityscore-fraud-detection/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ipqualityscore
+    matched_domain: ipqualityscore.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - IPQualityScore Fraud Detection
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-kapostintegrations
+  label: kapostintegrations
+  partner: kapost
+  partner_name: kapostintegrations
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/kapost-byline/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: kapostintegrations
+    matched_domain: kapost.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Kapost
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-keap
+  label: Keap
+  partner: keap
+  partner_name: Keap
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/infusionsoft-official-opt-in-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Keap
+    matched_domain: keap.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Keap Official Opt-in Forms
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-kevin-eu
+  label: kevin EU
+  partner: kevin
+  partner_name: kevin EU
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/e-commerce-payment-gateway-kevin/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: kevin EU
+    matched_domain: kevin.eu
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - kevin. Payment Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-heykinde
+  label: heykinde
+  partner: kinde
+  partner_name: heykinde
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/kinde-auth/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: heykinde
+    matched_domain: kinde.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - Kinde Auth
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-kissmetricshq
+  label: kissmetricshq
+  partner: kissmetrics
+  partner_name: kissmetricshq
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/kissmetrics/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: kissmetricshq
+    matched_domain: kissmetrics.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Kissmetrics
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-klasha
+  label: Klasha
+  partner: klasha
+  partner_name: Klasha
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/klasha-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Klasha
+    matched_domain: klasha.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Klasha Payment Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-paywithklump
+  label: paywithklump
+  partner: klump
+  partner_name: paywithklump
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/klump-wc-payment-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: paywithklump
+    matched_domain: useklump.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Klump WooCommerce Buy Now, Pay Later Plugin
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-kora
+  label: Kora
+  partner: korapay
+  partner_name: Kora
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/korapay-payments-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Kora
+    matched_domain: korahq.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Kora Payment Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-leadpages
+  label: Leadpages
+  partner: leadpages
+  partner_name: Leadpages
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/leadpages/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Leadpages
+    matched_domain: leadpages.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Leadpages
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-leadsquared
+  label: LeadSquared
+  partner: leadsquared
+  partner_name: LeadSquared
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/leadsquared-website-topbar/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: LeadSquared
+    matched_domain: leadsquared.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - LeadSquared Website Topbar
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-learnworlds
+  label: LearnWorlds
+  partner: learnworlds
+  partner_name: LearnWorlds
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/learnworlds-sso/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: LearnWorlds
+    matched_domain: learnworlds.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Learnworlds-SSO
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-lemon-squeezy
+  label: Lemon Squeezy
+  partner: lemon-squeezy
+  partner_name: Lemon Squeezy
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/lemon-squeezy/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Lemon Squeezy
+    matched_domain: lemonsqueezy.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Lemon Squeezy — Sell Digital Products, Subscriptions, and Licenses
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-limepay
+  label: Limepay
+  partner: limepay
+  partner_name: Limepay
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/limepay-woocommerce-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Limepay
+    matched_domain: limepay.com.au
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Limepay WooCommerce Gateway
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-litprotocol
+  label: litprotocol
+  partner: lit-protocol
+  partner_name: litprotocol
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/litprotocol-wp-lit-gated/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: litprotocol
+    matched_domain: litprotocol.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Token / NFT / Blockchain Page Gating
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-loginradius
+  label: loginradius
+  partner: loginradius
+  partner_name: loginradius
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/loginradius-for-wordpress/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: loginradius
+    matched_domain: loginradius.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - Authentication by LoginRadius
+    - LoginRadius CIAM
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-lokalise
+  label: Lokalise
+  partner: lokalise
+  partner_name: Lokalise
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/lokalise/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Lokalise
+    matched_domain: lokalise.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Lokalise Companion Plugin
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-lordicon
+  label: lordicon
+  partner: lordicon
+  partner_name: lordicon
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/lordicon/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: lordicon
+    matched_domain: lordicon.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Lordicon
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-lottiefiles
+  label: LottieFiles
+  partner: lottiefiles
+  partner_name: LottieFiles
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/lottiefiles/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: LottieFiles
+    matched_domain: lottiefiles.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - LottieFiles
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-mailchimp
+  label: Mailchimp
+  partner: mailchimp
+  partner_name: Mailchimp
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/mailchimp-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Mailchimp
+    matched_domain: mailchimp.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Mailchimp List Subscribe Form
+    - Mailchimp for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-mailerlite
+  label: MailerLite
+  partner: mailerlite
+  partner_name: MailerLite
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/official-mailerlite-sign-up-forms/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: MailerLite
+    matched_domain: mailerlite.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - MailerLite – Signup forms (official)
+    - MailerLite – WooCommerce integration
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-mailjet
+  label: Mailjet
+  partner: mailjet
+  partner_name: Mailjet
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/mailjet-for-wordpress/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Mailjet
+    matched_domain: mailjet.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Mailjet Email Marketing
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-mangopay
+  label: mangopay
+  partner: mangopay
+  partner_name: mangopay
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/mangopay-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: mangopay
+    matched_domain: mangopay.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - MANGOPAY for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-mapquest
+  label: MapQuest
+  partner: mapquest
+  partner_name: MapQuest
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/mapquest-map-builder/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: MapQuest
+    matched_domain: mapquest.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - MapQuest Map Builder for WordPress
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-markerlyinc
+  label: markerlyINC
+  partner: markerly
+  partner_name: markerlyINC
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/official-markerly-widget/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: markerlyINC
+    matched_domain: markerly.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Official Markerly Widget
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-wpmeteomatics
+  label: wpmeteomatics
+  partner: meteomatics
+  partner_name: wpmeteomatics
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/meteomatics-weather-widget/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: wpmeteomatics
+    matched_domain: meteomatics.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Meteomatics Weather Widget
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-metrilo
+  label: Metrilo
+  partner: metrilo
+  partner_name: Metrilo
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/metrilo-woocommerce-integration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Metrilo
+    matched_domain: metrilo.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Metrilo – WooCommerce Growth Platform
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-microsoft
+  label: Microsoft
+  partner: microsoft
+  partner_name: Microsoft
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/microsoft-clarity/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Microsoft
+    matched_domain: microsoft.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Microsoft Advertising Universal Event Tracking (UET)
+    - Microsoft Clarity
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-mollie
+  label: Mollie
+  partner: mollie
+  partner_name: Mollie
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/mollie-payments-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Mollie
+    matched_domain: mollie.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Mollie Payments for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-montonio
+  label: Montonio
+  partner: montonio
+  partner_name: Montonio
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/montonio-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Montonio
+    matched_domain: montonio.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Montonio for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-moosend
+  label: moosend
+  partner: moosend
+  partner_name: moosend
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/moosend-email-marketing/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: moosend
+    matched_domain: moosend.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Moosend Website Connector
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-moyasar
+  label: Moyasar
+  partner: moyasar
+  partner_name: Moyasar
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/moyasar/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Moyasar
+    matched_domain: moyasar.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Moyasar
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-nextiva
+  label: nextiva
+  partner: nextiva
+  partner_name: nextiva
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/nextiva/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: nextiva
+    matched_domain: nextiva.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Nextiva
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-nomba-inc
+  label: Nomba Inc.
+  partner: nomba
+  partner_name: Nomba Inc.
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/wc-nomba-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Nomba Inc.
+    matched_domain: nomba.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Nomba Payment Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-omise
+  label: Omise
+  partner: omise
+  partner_name: Omise
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/omise/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Omise
+    matched_domain: omise.co
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Omise Payments
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-omnisend
+  label: Omnisend
+  partner: omnisend
+  partner_name: Omnisend
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/omnisend-connect/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Omnisend
+    matched_domain: omnisend.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Email Marketing for WooCommerce by Omnisend
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-onesignal-push-notifications
+  label: OneSignal Push Notifications
+  partner: onesignal
+  partner_name: OneSignal Push Notifications
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/onesignal-free-web-push-notifications/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: OneSignal Push Notifications
+    matched_domain: onesignal.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - OneSignal – Web Push Notifications
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ontraport
+  label: ONTRAPORT
+  partner: ontraport
+  partner_name: ONTRAPORT
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/pilotpress/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ONTRAPORT
+    matched_domain: ontraport.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - PilotPress
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-opennode
+  label: opennode
+  partner: opennode
+  partner_name: opennode
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/opennode-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: opennode
+    matched_domain: opennode.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Accept Bitcoin instantly via OpenNode
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-openpay-sa-de-cv
+  label: Openpay SA de CV
+  partner: openpay
+  partner_name: Openpay SA de CV
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/openpay-cards/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Openpay SA de CV
+    matched_domain: openpay.mx
+    matched_by: domain
+    listings: 4
+    sample_apps:
+    - Openpay Cards Plugin
+    - Openpay PSE
+    - Openpay SPEI Plugin
+    - Openpay Stores Plugin
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ownerrez
+  label: OwnerRez
+  partner: ownerrez
+  partner_name: OwnerRez
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ownerrez/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: OwnerRez
+    matched_domain: ownerrez.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - OwnerRez
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ozowpayments
+  label: ozowpayments
+  partner: ozow
+  partner_name: ozowpayments
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/wc-ozow-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ozowpayments
+    matched_domain: ozow.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Ozow Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-p2flux
+  label: p2flux
+  partner: p2flux-api
+  partner_name: p2flux
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/p2flux-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: p2flux
+    matched_domain: p2flux.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - P2Flux Agent Paywall
+    - P2Flux for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-pantheon-systems
+  label: Pantheon Systems
+  partner: pantheon
+  partner_name: Pantheon Systems
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/bv-pantheon-migration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Pantheon Systems
+    matched_domain: pantheon.io
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Pantheon HUD
+    - Pantheon Migrations
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-paperform
+  label: paperform
+  partner: paperform
+  partner_name: paperform
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/paperform-form-builder/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: paperform
+    matched_domain: paperform.co
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Paperform Form Builder – Contact Forms, Ecommerce And Product Pages, Surveys
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-payform
+  label: payform
+  partner: payform
+  partner_name: payform
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/crowdfunding-and-fundraising-campaign-builder-by-payform/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: payform
+    matched_domain: payform.me
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Crowdfunding and Fundraising Campaign Builder for PayForm
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-payhip
+  label: payhip
+  partner: payhip
+  partner_name: payhip
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/payhip-sell-ebooks/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: payhip
+    matched_domain: payhip.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Payhip – Sell Downloads
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-paysafe-checkout
+  label: Paysafe Checkout
+  partner: paysafe
+  partner_name: Paysafe Checkout
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/paysafe-checkout/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Paysafe Checkout
+    matched_domain: paysafe.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Paysafe Checkout
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-paystack
+  label: paystack
+  partner: paystack
+  partner_name: paystack
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/woo-paystack/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: paystack
+    matched_domain: paystack.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Paystack Add-On for Gravity Forms
+    - Paystack WooCommerce Payment Gateway
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-perfectcorp
+  label: perfectcorp
+  partner: perfect-corp
+  partner_name: perfectcorp
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/youcam-makeup/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: perfectcorp
+    matched_domain: perfectcorp.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - YouCam Makeup For WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-phrase
+  label: Phrase
+  partner: phrase
+  partner_name: Phrase
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/memsource-connector/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Phrase
+    matched_domain: phrase.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Phrase Strings
+    - Phrase TMS Integration for WordPress
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-pictime
+  label: pictime
+  partner: pic-time
+  partner_name: pictime
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/pic-time-connect/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: pictime
+    matched_domain: pic-time.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Pic-Time Connect
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-pictomancerai
+  label: pictomancerai
+  partner: pictomancer-ai
+  partner_name: pictomancerai
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/pictomancer-image-optimizer/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: pictomancerai
+    matched_domain: pictomancer.ai
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - Pictomancer Image Optimizer
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-plausible-insights-o
+  label: Plausible Insights OÜ
+  partner: plausible
+  partner_name: Plausible Insights OÜ
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/plausible-analytics/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Plausible Insights OÜ
+    matched_domain: plausible.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Plausible Analytics
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-profound
+  label: Profound
+  partner: profound
+  partner_name: Profound
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/profound-agent-analytics/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Profound
+    matched_domain: tryprofound.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Profound Agent Analytics
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-pushpress
+  label: pushpress
+  partner: pushpress
+  partner_name: pushpress
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/pushpress-integration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: pushpress
+    matched_domain: pushpress.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - PushPress.com
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-quandoo-official
+  label: Quandoo Official
+  partner: quandoo
+  partner_name: Quandoo Official
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/quandoo-restaurant-reservations/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Quandoo Official
+    matched_domain: quandoo.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Quandoo Restaurant Reservations
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-quantcast
+  label: Quantcast
+  partner: quantcast
+  partner_name: Quantcast
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/quantcast-choice/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Quantcast
+    matched_domain: quantcast.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Audience Analytics – by Quantcast
+    - Quantcast Choice
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-razorpay
+  label: Razorpay
+  partner: razorpay
+  partner_name: Razorpay
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/woo-razorpay/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Razorpay
+    matched_domain: razorpay.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Razorpay Subscriptions for WooCommerce
+    - Razorpay for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-realtyna
+  label: Realtyna
+  partner: realtyna
+  partner_name: Realtyna
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/real-estate-listing-realtyna-wpl/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Realtyna
+    matched_domain: realtyna.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Realtyna Organic IDX plugin + WPL Real Estate
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-refersion
+  label: refersion
+  partner: refersion
+  partner_name: refersion
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/refersion-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: refersion
+    matched_domain: refersion.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Refersion for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-resend
+  label: Resend
+  partner: resend
+  partner_name: Resend
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/resend/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Resend
+    matched_domain: resend.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Resend
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-resolve
+  label: Resolve
+  partner: resolve
+  partner_name: Resolve
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/resolve-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Resolve
+    matched_domain: resolvepay.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Resolve for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-route
+  label: Route
+  partner: route
+  partner_name: Route
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/routeapp/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Route
+    matched_domain: route.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Route ‑ Shipping Protection
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-roxyapi
+  label: roxyapi
+  partner: roxyapi
+  partner_name: roxyapi
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/roxyapi/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: roxyapi
+    matched_domain: roxyapi.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - 'RoxyAPI: Astrology, Vedic, Forecast, Human Design, Numerology'
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sailthru
+  label: Sailthru
+  partner: sailthru
+  partner_name: Sailthru
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sailthru-widget/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Sailthru
+    matched_domain: sailthru.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Sailthru for WordPress
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-securiti
+  label: Securiti
+  partner: securiti-ai
+  partner_name: Securiti
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/securiti-privacy-policy-generator-notice-management/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Securiti
+    matched_domain: securiti.ai
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - Privacy Policy Generator & Notice Management | Securiti
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-seelinc
+  label: seelinc
+  partner: seel
+  partner_name: seelinc
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/seel-worry-free-purchase/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: seelinc
+    matched_domain: seel.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Seel Worry-Free Purchase
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-segmetrics
+  label: segmetrics
+  partner: segmetrics
+  partner_name: segmetrics
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/segmetrics/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: segmetrics
+    matched_domain: segmetrics.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - SegMetrics Marketing Analytics
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-semrush-cy-ltd
+  label: SEMrush CY LTD
+  partner: semrush
+  partner_name: SEMrush CY LTD
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/semrush-seo-writing-assistant/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: SEMrush CY LTD
+    matched_domain: semrush.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Semrush SEO Writing Assistant
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sendpulse
+  label: SendPulse
+  partner: sendpulse
+  partner_name: SendPulse
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sendpulse-web-push/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: SendPulse
+    matched_domain: sendpulse.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - SendPulse Free Web Push
+    - SendPulse subscription for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sertifier
+  label: sertifier
+  partner: sertifier
+  partner_name: sertifier
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sertifier-certificates-open-badges/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: sertifier
+    matched_domain: sertifier.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Sertifier Certificate & Badge Maker for WordPress – Tutor LMS
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sharethis
+  label: ShareThis
+  partner: sharethis
+  partner_name: ShareThis
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sharethis-share-buttons/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: ShareThis
+    matched_domain: sharethis.com
+    matched_by: domain
+    listings: 5
+    sample_apps:
+    - ShareThis Follow Buttons
+    - ShareThis Privacy Policy Generator
+    - ShareThis Reaction Buttons
+    - ShareThis Share Buttons
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-shipbob
+  label: shipbob
+  partner: shipbob
+  partner_name: shipbob
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/shipbob-express-rates/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: shipbob
+    matched_domain: shipbob.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - ShipBob Express Rates
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-shipdayinc
+  label: shipdayinc
+  partner: shipday
+  partner_name: shipdayinc
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/shipday-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: shipdayinc
+    matched_domain: shipday.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Shipday Local Delivery for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-shiprocket-limited
+  label: Shiprocket Limited
+  partner: shiprocket
+  partner_name: Shiprocket Limited
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/shiprocket-login/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Shiprocket Limited
+    matched_domain: shiprocket.in
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Fastrr Login
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-shopperapprovedapp
+  label: shopperapprovedapp
+  partner: shopper-approved
+  partner_name: shopperapprovedapp
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/shopperapproved-reviews/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: shopperapprovedapp
+    matched_domain: shopperapproved.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Shopper Approved Reviews
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-shufti
+  label: Shufti
+  partner: shufti-pro
+  partner_name: Shufti
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/shuftipro-kyc-identity-verification/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Shufti
+    matched_domain: shuftipro.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Shufti | Identity Verification Service
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sirv-cdn-and-image-hosting
+  label: Sirv CDN and Image Hosting
+  partner: sirv
+  partner_name: Sirv CDN and Image Hosting
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sirv/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Sirv CDN and Image Hosting
+    matched_domain: sirv.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Image Optimizer, Resizer and CDN – Sirv
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-site24x7
+  label: Site24x7
+  partner: site24x7
+  partner_name: Site24x7
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/site24x7-rum/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Site24x7
+    matched_domain: site24x7.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Site24x7 Real User Monitoring
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-skydropx
+  label: Skydropx
+  partner: skydropx
+  partner_name: Skydropx
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/skydropx/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Skydropx
+    matched_domain: skydropx.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Skydropx
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-smartcatai
+  label: smartcatai
+  partner: smartcat
+  partner_name: smartcatai
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/smartcat-wpml/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: smartcatai
+    matched_domain: smartcat.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Smartcat Translator for WPML
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-smartling
+  label: Smartling
+  partner: smartling
+  partner_name: Smartling
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/smartling-connector/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Smartling
+    matched_domain: smartling.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Smartling Connector
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-smartnewsdev
+  label: smartnewsdev
+  partner: smartnews
+  partner_name: smartnewsdev
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/smartformat/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: smartnewsdev
+    matched_domain: smartnews.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - SmartFormat feed for SmartNews
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-wpsonetel
+  label: wpsonetel
+  partner: sonetel
+  partner_name: wpsonetel
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sonetel-website-chat/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: wpsonetel
+    matched_domain: sonetel.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Free customer chat solution
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sovrn
+  label: Sovrn
+  partner: sovrn
+  partner_name: Sovrn
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sovrn-workbench/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Sovrn
+    matched_domain: sovrn.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Workbench by Sovrn
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-tabbyai
+  label: tabbyai
+  partner: tabby
+  partner_name: tabbyai
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/tabby-checkout/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: tabbyai
+    matched_domain: tabby.ai
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Tabby Checkout
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-taboola
+  label: Taboola
+  partner: taboola
+  partner_name: Taboola
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/taboola/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Taboola
+    matched_domain: taboola.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Taboola
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-takepayments
+  label: takepayments
+  partner: takepayments
+  partner_name: takepayments
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/takepayments-ipp-payment-gateway/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: takepayments
+    matched_domain: takepayments.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Takepayments Mercury Payment Gateway
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-talkjs
+  label: talkjs
+  partner: talkjs
+  partner_name: talkjs
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/talkjs/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: talkjs
+    matched_domain: talkjs.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - TalkJS
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-tamara-solution
+  label: Tamara Solution
+  partner: tamara
+  partner_name: Tamara Solution
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/tamara-checkout/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Tamara Solution
+    matched_domain: tamara.co
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Tamara Checkout
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-tealium
+  label: Tealium
+  partner: tealium
+  partner_name: Tealium
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/tealium/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Tealium
+    matched_domain: tealium.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Tealium
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-jonny-white-from-ticket-tailor
+  label: Jonny White (from Ticket Tailor)
+  partner: tickettailor
+  partner_name: Jonny White (from Ticket Tailor)
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ticket-tailor/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Jonny White (from Ticket Tailor)
+    matched_domain: tickettailor.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Ticket Tailor — Event Ticketing & Registration
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-trackingmore
+  label: TrackingMore
+  partner: trackingmore
+  partner_name: TrackingMore
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/trackingmore-woocommerce-tracking/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: TrackingMore
+    matched_domain: trackingmore.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - TrackingMore Order Tracking for WooCommerce (Free plan available)
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-trust-payments
+  label: Trust Payments
+  partner: trust-payments
+  partner_name: Trust Payments
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/trust-payments-hosted-payment-pages-integration/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Trust Payments
+    matched_domain: trustpayments.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Trust Payments Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-unbounce
+  label: Unbounce
+  partner: unbounce
+  partner_name: Unbounce
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/unbounce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Unbounce
+    matched_domain: unbounce.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Unbounce Landing Pages
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-urlbox-io
+  label: urlbox.io
+  partner: urlbox
+  partner_name: urlbox.io
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/urlbox-screenshots/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: urlbox.io
+    matched_domain: urlbox.com
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Urlbox Screenshots
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-userback
+  label: userback
+  partner: userback
+  partner_name: userback
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/userback/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: userback
+    matched_domain: userback.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Userback
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-usersnap
+  label: Usersnap
+  partner: usersnap
+  partner_name: Usersnap
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/usersnap/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Usersnap
+    matched_domain: usersnap.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Usersnap
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-vanillaforums
+  label: VanillaForums
+  partner: vanilla-forums
+  partner_name: VanillaForums
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/vanilla-forums/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: VanillaForums
+    matched_domain: vanillaforums.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Vanilla Forums
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-vbout
+  label: vbout
+  partner: vbout
+  partner_name: vbout
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/marketing-automation/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: vbout
+    matched_domain: vbout.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Marketing Automation
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-vev
+  label: Vev
+  partner: vev
+  partner_name: Vev
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/vev-design/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Vev
+    matched_domain: vev.design
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Vev – Digital Content Creation & Page Builder
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-vividbusiness
+  label: VividBusiness
+  partner: vivid
+  partner_name: VividBusiness
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/vivid-money-payments/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: VividBusiness
+    matched_domain: vivid.money
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Vivid Payment Gateway for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-wecantrack
+  label: wecantrack
+  partner: wecantrack
+  partner_name: wecantrack
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/wecantrack/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: wecantrack
+    matched_domain: wecantrack.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Affiliate Sales in Google Analytics and other tools
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-weglot-translate-team
+  label: Weglot Translate Team
+  partner: weglot
+  partner_name: Weglot Translate Team
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/weglot/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Weglot Translate Team
+    matched_domain: weglot.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Translate WordPress with Weglot 2.0 – Multilingual AI Translation
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-wild-apricot
+  label: Wild Apricot
+  partner: wildapricot
+  partner_name: Wild Apricot
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/wild-apricot-login/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Wild Apricot
+    matched_domain: wildapricot.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Wild Apricot Login
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-wompi
+  label: Wompi
+  partner: wompi
+  partner_name: Wompi
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/wompi-portal-de-pagos/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Wompi
+    matched_domain: wompi.co
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Wompi Portal de Pagos
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-wp-engine
+  label: WP Engine
+  partner: wpengine
+  partner_name: WP Engine
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/php-compatibility-checker/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: WP Engine
+    matched_domain: wpengine.com
+    matched_by: domain
+    listings: 3
+    sample_apps:
+    - PHP Compatibility Checker
+    - WP Engine GeoTarget
+    - WP Engine Smart Search AI
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-yoast
+  label: Yoast
+  partner: yoast
+  partner_name: Yoast
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/duplicate-post/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Yoast
+    matched_domain: yoast.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Yoast Duplicate Post
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-hectorzeffy
+  label: hectorzeffy
+  partner: zeffy
+  partner_name: hectorzeffy
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/zeffy-donate-button/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: hectorzeffy
+    matched_domain: zeffy.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Zeffy Donate Button
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-zoho-subscriptions
+  label: Zoho Subscriptions
+  partner: zoho
+  partner_name: Zoho Subscriptions
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/zoho-subscriptions/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Zoho Subscriptions
+    matched_domain: zoho.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Zoho Billing – Embed Payment Form
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-zoho-campaigns
+  label: Zoho Campaigns
+  partner: zoho-campaigns
+  partner_name: Zoho Campaigns
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/zoho-campaigns/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Zoho Campaigns
+    matched_domain: zoho.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Zoho Campaigns
+    - Zoho Marketing Automation
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-zoho-mail
+  label: Zoho Mail
+  partner: zoho-mail
+  partner_name: Zoho Mail
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/zoho-mail/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Zoho Mail
+    matched_domain: zoho.com
+    matched_by: domain+name-among-holders
+    listings: 4
+    sample_apps:
+    - Zoho Mail for WooCommerce
+    - Zoho Mail for WordPress
+    - Zoho ZeptoMail
+    - Zoho ZeptoMail for WooCommerce
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
