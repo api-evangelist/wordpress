@@ -1,0 +1,32 @@
+edges:
+- partner_name: ActivityPub
+  partner: activitypub
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: activitypub
+  type: docs
+  degree: declared-subset
+  evidence: https://wordpress.org/plugins/activitypub/
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/wordpress/blob/main/evidence/compatibility/wordpress-activitypub-1.md
+  quote: ActivityPub Reply Intent Handler Handles reply intents for federated conversations in the block editor.
+  supported_operations:
+  - Accept
+  - Add
+  - Block
+  - Follow
+  - NodeInfo
+  - Remove
+  - followers
+  - following
+  - inbox
+  - likes
+  - outbox
+  unsupported_operations: []
+  supported_share: 0.44
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-15'
+generated: '2026-10-15'
+method: searched

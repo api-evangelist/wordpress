@@ -1,0 +1,12 @@
+fetched: '2026-10-15'
+method: fetched
+source: https://wordpress.org/plugins/activitypub/
+page: https://wordpress.org/plugins/activitypub/
+file: wordpress-activitypub-1.md
+bytes: 29013
+sha256: 3e9f2d613a865e677a0fe0744d687fb2089f4e078dac83f631fca6a9929b4079
+anchor: activitypub
+shape: activitypub
+classification: declares-compatibility
+quote: ActivityPub Reply Intent Handler Handles reply intents for federated conversations in the block editor.
+note: text extracted from the provider's own page (tags stripped), saved for evidence
