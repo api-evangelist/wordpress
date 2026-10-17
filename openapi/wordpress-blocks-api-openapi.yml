@@ -95,18 +95,6 @@ components:
               type: integer
               description: HTTP status code
               example: 403
-    RenderedContent:
-      type: object
-      description: A rendered content object containing raw and rendered versions
-      properties:
-        rendered:
-          type: string
-          description: The HTML rendered version of the content
-          example: <p>Hello World</p>
-        protected:
-          type: boolean
-          description: Whether the content is protected with a password
-          example: false
     Block:
       type: object
       description: A WordPress reusable block
@@ -127,6 +115,18 @@ components:
           $ref: '#/components/schemas/RenderedContent'
         content:
           $ref: '#/components/schemas/RenderedContent'
+    RenderedContent:
+      type: object
+      description: A rendered content object containing raw and rendered versions
+      properties:
+        rendered:
+          type: string
+          description: The HTML rendered version of the content
+          example: <p>Hello World</p>
+        protected:
+          type: boolean
+          description: Whether the content is protected with a password
+          example: false
   responses:
     Unauthorized:
       description: Authentication required
