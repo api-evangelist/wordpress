@@ -5707,7 +5707,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: wordpress-meltano
   label: Meltano
@@ -5741,5 +5741,5 @@
     - silver
     - unknown
     builder: 'community (Meltano Hub variant maintainers: automattic, yoast)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
