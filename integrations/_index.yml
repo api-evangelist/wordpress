@@ -14,82 +14,6 @@
   relationship: compatible
   status: not-a-workflow
   arazzo: null
-- slug: wordpress-zapier
-  label: Zapier
-  partner: zapier
-  partner_name: Zapier
-  type: marketplace
-  marketplace: zapier-directory
-  channel: ipaas-listing
-  evidence: https://zapier.com/apps/wordpress/integrations
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Zapier app directory (zapier.com/api/v4/apps)
-    spec_file: null
-    role: ipaas-connector:zapier
-    registered_name: WordPress
-    matched_domain: wordpress.org
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: wordpress
-    beta: false
-    builder: unknown (not in the directory record)
-  status: not-a-workflow
-  arazzo: null
-- slug: wordpress-n8n
-  label: n8n
-  partner: n8n
-  partner_name: n8n
-  type: marketplace
-  marketplace: n8n-nodes-base
-  channel: open-source-node
-  evidence: https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/Wordpress
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
-    spec_file: null
-    role: ipaas-connector:n8n-nodes-base
-    registered_name: Wordpress
-    matched_domain: wordpress.org
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    node_path: Wordpress
-    trigger: false
-    builder: n8n (built-in node)
-  status: not-a-workflow
-  arazzo: null
-- slug: wordpress-pipedream
-  label: Pipedream
-  partner: pipedream
-  partner_name: Pipedream
-  type: marketplace
-  marketplace: pipedream-components
-  channel: open-source-node
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/wordpress_org
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Pipedream components (PipedreamHQ/pipedream components/)
-    spec_file: null
-    role: ipaas-connector:pipedream
-    registered_name: wordpress org
-    matched_domain: wordpress.org
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: wordpress_org
-    actions: true
-    sources: false
-    builder: Pipedream repo (component)
-  status: not-a-workflow
-  arazzo: null
 - slug: wordpress-10web
   label: 10Web
   partner: 10web
@@ -1559,6 +1483,32 @@
     signal_note: one edge per (builder, platform); listings are context, never read
     detected_by: sweep-content-design.py
     detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-ecwid-by-lightspeed-ecommerce-shopping-cart
+  label: Ecwid by Lightspeed Ecommerce Shopping Cart
+  partner: ecwid
+  partner_name: Ecwid by Lightspeed Ecommerce Shopping Cart
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/ecwid-shopping-cart/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Ecwid by Lightspeed Ecommerce Shopping Cart
+    matched_domain: ecwid.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Ecwid by Lightspeed Ecommerce Shopping Cart
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: wordpress-edamam
@@ -4159,32 +4109,6 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
-- slug: wordpress-pushpress
-  label: pushpress
-  partner: pushpress
-  partner_name: pushpress
-  category: WordPress plugin
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://wordpress.org/plugins/pushpress-integration/
-  source: edge
-  relationship: platform-app
-  contract_reference:
-    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
-    spec_file: null
-    role: wordpress-app
-    registered_name: pushpress
-    matched_domain: pushpress.com
-    matched_by: domain
-    listings: 1
-    sample_apps:
-    - PushPress.com
-    signal_note: one edge per (builder, platform); listings are context, never read
-    detected_by: sweep-content-design.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
 - slug: wordpress-quandoo-official
   label: Quandoo Official
   partner: quandoo
@@ -4445,6 +4369,33 @@
     signal_note: one edge per (builder, platform); listings are context, never read
     detected_by: sweep-content-design.py
     detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-sakurainternet
+  label: sakurainternet
+  partner: sakura-internet
+  partner_name: sakurainternet
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/sakura-rs-wp-ssl/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: sakurainternet
+    matched_domain: sakura.ad.jp
+    matched_by: domain
+    listings: 2
+    sample_apps:
+    - Easy SSL Plugin for SAKURA Rental Server
+    - TS Webfonts for さくらのレンタルサーバ
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
 - slug: wordpress-securiti
@@ -5571,6 +5522,32 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: wordpress-yotpo
+  label: Yotpo
+  partner: yotpo
+  partner_name: Yotpo
+  category: WordPress plugin
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: WordPress.org plugin directory (api.wordpress.org query_plugins)
+    spec_file: null
+    role: wordpress-app
+    registered_name: Yotpo
+    matched_domain: yotpo.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Yotpo Product Reviews
+    signal_note: one edge per (builder, platform); listings are context, never read
+    detected_by: sweep-content-design.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
 - slug: wordpress-hectorzeffy
   label: hectorzeffy
   partner: zeffy
@@ -5741,5 +5718,81 @@
     - silver
     - unknown
     builder: 'community (Meltano Hub variant maintainers: automattic, yoast)'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/wordpress/integrations
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: WordPress
+    matched_domain: wordpress.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wordpress
+    beta: false
+    builder: unknown (not in the directory record)
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-n8n
+  label: n8n
+  partner: n8n
+  partner_name: n8n
+  type: marketplace
+  marketplace: n8n-nodes-base
+  channel: open-source-node
+  evidence: https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/Wordpress
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
+    spec_file: null
+    role: ipaas-connector:n8n-nodes-base
+    registered_name: Wordpress
+    matched_domain: wordpress.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    node_path: Wordpress
+    trigger: false
+    builder: n8n (built-in node)
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-pipedream
+  label: Pipedream
+  partner: pipedream
+  partner_name: Pipedream
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/wordpress_org
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: wordpress org
+    matched_domain: wordpress.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wordpress_org
+    actions: true
+    sources: false
+    builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
