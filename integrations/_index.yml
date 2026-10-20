@@ -5796,3 +5796,127 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: wordpress-agent-skills-own-github-org
+  label: Agent Skills (own GitHub org)
+  partner_name: Agent Skills (own GitHub org)
+  category: Agent Skills package
+  type: register
+  channel: provider-built
+  evidence: https://github.com/WordPress/agent-skills
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: 'provider''s own GitHub org (GitHub REST API: repo + git tree holds SKILL.md)'
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-repo
+    matched_org: wordpress
+    matched_by: org-profile-domain:wordpress.org
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-skills-sh
+  label: skills.sh
+  partner_name: skills.sh
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://www.skills.sh/wordpress/agent-skills
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: skills.sh (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: wordpress
+    matched_by: org-profile-domain:wordpress.org
+    sample_skills:
+    - blueprint
+    - wordpress-router
+    - wp-abilities-api
+    - wp-abilities-audit
+    - wp-abilities-verify
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-skillsmp-skillsmp-com
+  label: SkillsMP (skillsmp.com)
+  partner_name: SkillsMP (skillsmp.com)
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://skillsmp.com/creators/wordpress/agent-skills
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: SkillsMP (skillsmp.com) (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: wordpress
+    matched_by: org-profile-domain:wordpress.org
+    sample_skills:
+    - skills-wordpress-router
+    - skills-wp-abilities-api
+    - skills-wp-block-development
+    - skills-wp-block-themes
+    - skills-wp-interactivity-api
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-officialskills-sh
+  label: officialskills.sh
+  partner_name: officialskills.sh
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://officialskills.sh/wordpress/skills
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: officialskills.sh (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: wordpress
+    matched_by: org-profile-domain:wordpress.org
+    sample_skills:
+    - wordpress-router
+    - wp-abilities-api
+    - wp-block-development
+    - wp-block-themes
+    - wp-interactivity-api
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-voltagent-awesome-agent-skills-community-list
+  label: VoltAgent awesome-agent-skills (community list)
+  partner_name: VoltAgent awesome-agent-skills (community list)
+  category: Agent Skills register
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/VoltAgent/awesome-agent-skills
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: VoltAgent awesome-agent-skills (community list) (public sitemap / list)
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-listing
+    matched_org: wordpress
+    matched_by: org-profile-domain:wordpress.org
+    sample_skills:
+    - wordpress-router
+    - wp-abilities-api
+    - wp-block-development
+    - wp-block-themes
+    - wp-interactivity-api
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
