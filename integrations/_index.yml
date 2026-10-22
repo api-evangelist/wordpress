@@ -5920,3 +5920,87 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: wordpress-raycast
+  label: Raycast
+  partner: raycast
+  partner_name: Raycast
+  category: Raycast Store extension (community wrapper)
+  type: marketplace
+  marketplace: raycast-store
+  channel: connector-listing
+  evidence: https://www.raycast.com/tillkruss/wordpress-docs
+  source: edge
+  relationship: connector-coverage
+  contract_reference:
+    register: Raycast Store (raycast/extensions monorepo + store_listings JSON)
+    spec_file: null
+    role: raycast-community-wrapper
+    builder: community
+    authors:
+    - edmundcwm
+    - tillkruss
+    matched_domain: wordpress.org
+    matched_by: domain
+    monorepo_commit: 84f9ac51336a8c69f70974a75bc067c0feae3658
+    listings:
+    - title: WordPress Docs
+      store_url: https://www.raycast.com/tillkruss/wordpress-docs
+      installs: 828
+      categories:
+      - Documentation
+      - Developer Tools
+      source: https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions/wordpress-docs/
+      author: tillkruss
+    - title: WordPress Plugins
+      store_url: https://www.raycast.com/edmundcwm/wordpress-plugins
+      installs: 684
+      categories:
+      - Developer Tools
+      - Productivity
+      source: https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions/wordpress-plugins/
+      author: edmundcwm
+    categories:
+    - Developer Tools
+    - Documentation
+    - Productivity
+    identity_note: the extension's own source calls a host on the product's domain AND its title / package name
+      passes partner_link's name check; built by Raycast community developers, not the vendor
+    signal_note: 'coverage: Raycast''s store reaches the product through community-built extensions; one edge per
+      (product, store); install / listing counts are context, never counted'
+    detected_by: sweep-raycast-store-extensions.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: wordpress-obsidian
+  label: Obsidian
+  partner: obsidian
+  partner_name: Obsidian
+  category: Obsidian community plugin
+  type: marketplace
+  marketplace: obsidian-community-plugins
+  channel: community-plugin
+  evidence: https://github.com/roomi-fields/obsidian-content-publisher
+  source: edge
+  relationship: connector-listing
+  contract_reference:
+    register: Obsidian community-plugins.json (obsidianmd/obsidian-releases@793b5211) + plugin repo README / manifest
+      / source
+    spec_file: null
+    role: obsidian-community-plugin:community
+    registered_name: roomi-fields
+    register_id: https://github.com/roomi-fields/obsidian-content-publisher
+    matched_domain: wordpress.org
+    matched_by: domain+name-in-listing
+    matched_where: README
+    matched_host: make.wordpress.org
+    builder: community
+    plugins:
+    - content-publisher
+    downloads_context: 2447
+    signal_note: 'ONE edge per provider: a community plugin names the provider in its name/description AND carries
+      the provider''s domain or API host in its README or source. Builder is a named community author (not the provider).
+      Plugin and download counts are context, never counted.'
+    detected_by: sweep-obsidian-community-plugins.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
